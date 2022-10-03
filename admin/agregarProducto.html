@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+            crossorigin="anonymous"></script>
+        <script src="../js/init.js"></script>
+        <script src="../js/clases.js"></script>
+
+
+
+        <title>agregar producto</title>
+    </head>
+    <body>
+
+
+        <form>
+
+            <h1>Agregar Producto</h1>
+            <p>
+                <label>codigo de barras: <input type="text" id="id-producto"></label>
+            </p>
+            
+            <p>
+                <label>nombre producto: <input type="text" id="nombre-producto"></label>
+            </p>
+
+           
+
+            <p>
+                <label>descripcion: <input type="text"
+                        id="descripcion-producto"></label>
+            </p>
+
+            <p>
+
+                <label for="categorias">categoria:</label>
+                <select name="categorias" id="categorias-productos">
+                    <option value="fermentadores">fermentadores</option>
+                    <option value="quemadores">quemadores</option>
+                    <option value="densimetros">densimetros</option>
+                    <option value="Enfriadores">Enfriadores</option>
+                </select>
+            </p>
+
+            <p>
+                <label>precio unitario: <input type="text" id="precio-producto"></label>
+            </p>
+            <p>
+                <label>stock: <input type="text" id="stock-producto"></label>
+            </p>
+
+
+            <p>
+                <button id="btn-agregar-producto">agregar</button>
+            </p>
+
+
+        </form>
+
+
+        <script src="../js/metodos.js"></script>
+
+    </body>
+
+</html>
