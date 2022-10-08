@@ -9,3 +9,17 @@ class Producto {
         this.producto_categoria_id = producto_categoria_id;
     }
 }
+//////////////////////////////
+class Usuario {
+    constructor(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_QR_mercado_libre, usuario_comercio, usuario_estado) {
+        this.usuario_email = usuario_email;
+        this.usuario_contrasenia = usuario_contrasenia;
+        this.usuario_nombre = usuario_nombre;
+        this.usuario_direccion = usuario_direccion;
+        this.usuario_telefono = usuario_telefono;
+        this.usuario_QR_mercado_libre = usuario_QR_mercado_libre;
+        this.usuario_comercio = usuario_comercio;
+        this.usuario_estado = usuario_estado;
+    }
+}
+//////////////////////////////

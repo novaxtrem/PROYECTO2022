@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+            crossorigin="anonymous"></script>
+            <script src="/PROYECTO2022/js/init.js"></script>
+            <script src="/PROYECTO2022/js/clases.js"></script>
+
+
+
+        <title>registrar usuario</title>
+    </head>
+    <body>
+
+
+        <form>
+
+            <h1>registrar usuario</h1>
+            <p>
+                <label>email usuario: <input type="text" id="usuario-email"></label>
+            </p>
+
+            <p>
+                <label>contraseña: <input type="text" id="usuario-contrasenia"></label>
+            </p>
+
+
+            <p>
+                <label>nombre: <input type="text" id="usuario-nombre"></label>
+            </p>
+
+            <p>
+                <label>direccion: <input type="text" id="usuario-direccion"></label>
+            </p>
+            <p>
+                <label>telefono: <input type="text" id="usuario-telefono"></label>
+            </p>
+
+
+            <form>
+                <p>es un local comercial?</p>
+                <input type="radio" id="local-comercial-si" name="local-comercial" value="SI">
+                <label for="local-comercial-si">SI</label><br>
+                <input type="radio" id="local-comercial-no" name="local-comercial" value="NO">
+                <label for="local-comercial-no">NO</label><br>
+            </form>
+
+
+
+            <p>
+                <button id="btn-registrar-usuario">registrar</button>
+            </p>
+
+
+        </form>
+
+        <a href="/PROYECTO2022/index.html">volver al panel de
+            gestion</a>
+
+
+        <script src="/PROYECTO2022/js/agregarUsuarios.js"></script>
+
+    </body>
+
+</html>

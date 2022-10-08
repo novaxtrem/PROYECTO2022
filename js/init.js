@@ -1,8 +1,7 @@
-//
-const SELECT = "php/select.php"; //SELECT
-const INSERT_USER_SCRIP_POST = "https://jap-site.000webhostapp.com/insert.php?"; //INSERT 
-const UPDATE_USER_SCRIPT_POST = "https://jap-site.000webhostapp.com/update.php?"; //UPDATE
-const INSERT_POST = "php/inserto.php"; // INSERT
-const CONSULTO_INVERNADEROS = "../php/consulto-invernaderos.php";
-const CONSULTO_CONTROLADORAS = "php/consulto-controladoras.php";
-const AGREGO_PRODUCTOS = "../php/agrego-prodcutos.php";
+
+// INSERT
+const AGREGO_PRODUCTOS = "/PROYECTO2022/php/agrego-productos.php";
+const AGREGO_USUARIOS = "/PROYECTO2022/php/agrego-usuarios.php";
+
+//SELECT
+const CONSULTO_PRODUCTOS = "/PROYECTO2022/php/consulto-productos.php";

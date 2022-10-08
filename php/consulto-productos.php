@@ -8,7 +8,7 @@ $rows = array();
 //$username = $_GET['username'];
 //$password = $_GET['password'];
 
-$query = "SELECT * FROM prueba";
+$query = "SELECT * FROM productos";
 
 
 
