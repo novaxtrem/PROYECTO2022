@@ -1,0 +1,64 @@
+div.jumbotron.carousel-hero {
+  color: #fff;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-bottom: 0;
+}
+
+.carousel-img-1 {
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/PROYECTO2022/imagenes/banner/banners-web-1.jpg');
+}
+
+.carousel-img-2 {
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/PROYECTO2022/imagenes/banner/banners-web-2.jpg');
+}
+
+.carousel-img-3 {
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/PROYECTO2022/imagenes/banner/banners-web-3.jpg');
+}
+
+.plat {
+  border-radius: 0px;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+  box-shadow: 0 0 0 0 #048f83 !important;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #016090;
+  border-color: #016090;
+}
+
+.btn.btn-primary {
+  background-color: #048f83 !important;
+  border-color: #048f83 !important;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+  box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .5);
+}
+
+* {
+  /*box-sizing: inherit;*/
+}
+
+*:before,
+*:after {
+  /*box-sizing: inherit;*/
+}
