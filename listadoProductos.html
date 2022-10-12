@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://code.jquery.com/jquery-3.6.1.js"
-            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-            crossorigin="anonymous"></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
-        <script src="/PROYECTO2022/js/init.js"></script>
-        <script src="/PROYECTO2022/js/clases.js"></script>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+    <script src="/PROYECTO2022/js/init.js"></script>
+    <script src="/PROYECTO2022/js/clases.js"></script>
 
+    <title>listar productos</title>
 
-        <title>listar productos</title>
+    <style>
+      /* Fix table head */
+      .tableFixHead {
+        overflow: auto;
+        height: 500px;
+      }
+      .tableFixHead th {
+        position: sticky;
+        top: 0;
+      }
 
-        <style>/* Fix table head */
-    .tableFixHead    { overflow: auto; height: 500px; }
-    .tableFixHead th { position: sticky; top: 0; }
-    
-    /* Just common table stuff. */
-    table  { border-collapse: collapse; width: 80%; }
-    th, td { padding: 8px 16px; }
-    th     { background:#eee; }</style>
-    </head>
+      /* Just common table stuff. */
+      table {
+        border-collapse: collapse;
+        width: 80%;
+      }
+      th,
+      td {
+        padding: 8px 16px;
+      }
+      th {
+        background: #eee;
+      }
+    </style>
+  </head>
 
-    <body>
+  <body>
+    <div class="tableFixHead">
+      <table>
+        <thead>
+          <tr>
+            <th>TH 1</th>
+            <th>TH 2</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-de-productos-tbody-container"></tbody>
+      </table>
+    </div>
 
+    <a href="/PROYECTO2022/index.html">volver al panel de gestion</a>
 
-        <div class="tableFixHead">
-            <table>
-                <thead>
-                    <tr>
-                        <th>TH 1</th>
-                        <th>TH 2</th>
-                    </tr>
-                </thead>
-                <tbody id="tabla-de-productos-tbody-container">
-                 
-                 
-                </tbody>
-            </table>
-        </div>
-
-
-
-        <a href="/PROYECTO2022/index.html">volver al panel de
-            gestion</a>
-
-        <script src="/PROYECTO2022/js/listarProductos.js"></script>
-    </body>
-
+    <script src="/PROYECTO2022/js/listarProductos.js"></script>
+  </body>
 </html>
