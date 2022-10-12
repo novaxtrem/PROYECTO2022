@@ -34,12 +34,12 @@ function dibujoTablaProductos() {
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="clean-product-item" id="` + listaProductos[i].producto_id + `">
                     <div class="image">
-                        <a href="#">
+                        <a href="paginaProducto.html">
                             <img class="img-fluid d-block mx-auto" src="/PROYECTO2022/imagenes/productos/cerveza-1.png">
                         </a>
                     </div>
                     <div class="product-name" name="` + listaProductos[i].producto_nombre + `">
-                        <a href="#">` + listaProductos[i].producto_nombre + `</a>
+                        <a href="paginaProducto.html">` + listaProductos[i].producto_nombre + `</a>
                     </div>
                     <div class="about">
                         <div class="price">

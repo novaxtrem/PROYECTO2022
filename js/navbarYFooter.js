@@ -12,8 +12,8 @@ function cargoNavbar() {
     htmlContentToAppend += `
         <nav class="navbar navbar-light navbar-expand-md py-3">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="#">
-                    <img src="/PROYECTO2022/imagenes/logos-marcas/beerapp-logo-marca.svg" alt="logo beerapp store">
+                <a href="index.html">
+                    <img src="/PROYECTO2022/imagenes/logos-marcas/beerapp-logo-marca.svg" alt="logo beerapp store" style="height: 45px";>
                 </a>
                 <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3">
                     <span class="visually-hidden">Toggle navigation</span>
