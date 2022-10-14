@@ -46,8 +46,41 @@
                 <textarea class="form-control" style="margin-bottom: 27px; width: 500px; min-height: 129px"></textarea>
                 <input class="border rounded-0 form-control" type="text" style="width: 500px; margin-bottom: 15px" placeholder="Precio unitario" />
                 <input class="border rounded-0 form-control" type="tel" placeholder="Stock" style="margin-bottom: 15px; width: 500px"/>
-                <input class="form-control" type="file" style="width: 500px; margin-bottom: 21px" />
-                <button class="btn btn-primary" style=" width: 500px; margin-right: 0px; margin-left: 0px; background: #fbb500;" id="btn-agregar-producto"> Agregar</button>
+                
+                
+                
+                <input  id="inputFileToLoad" class="form-control" type="file" style="width: 500px; margin-bottom: 21px" onchange="encodeImageFileAsURL();"/>
+
+
+
+<div id="imgTest"class=""></div>
+
+<script type='text/javascript'>
+  function encodeImageFileAsURL() {
+
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+
+      var fileReader = new FileReader();
+
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+
+        var newImage = document.createElement('img');
+        newImage.src = srcData;
+
+        document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+        alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+        console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }
+</script>
+
+
+                <button class="btn btn-primary" style="width: 500px; margin-right: 0px; margin-left: 0px; background: #fbb500;" id="btn-agregar-producto"> Agregar</button>
                 <div>
                     <a href="#">Volver</a>
                 </div>
