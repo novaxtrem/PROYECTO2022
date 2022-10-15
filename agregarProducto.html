@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="../PROYECTO2022/css/agregarProducto.css" />
         <script src="../PROYECTO2022/js/navbarYFooter.js"></script>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
     </head>
 
     <body>
@@ -46,9 +49,38 @@
                 <textarea class="form-control" style="margin-bottom: 27px; width: 500px; min-height: 129px"></textarea>
                 <input class="border rounded-0 form-control" type="text" style="width: 500px; margin-bottom: 15px" placeholder="Precio unitario" />
                 <input class="border rounded-0 form-control" type="tel" placeholder="Stock" style="margin-bottom: 15px; width: 500px"/>
+                <!--MOVIDA DEL MAPA-->
+                <label class="form-label">Podes econtrar el producto en la siguiente direccion:</label>
+                <div id="map" style="height:300px;width: 500px; margin-bottom: 30px;"></div>
+
+                <script>
+                    var map = L.map('map').setView([-32.60, -56], 6);
+                    var marker = L.marker();
+
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        //attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }).addTo(map);
+
+                   // map.panTo({lat: -33, lng: -55});
+
+                    function onMapClick(e) {
+                        //con este metodo solo permito un marcador
+                        marker.remove();
+                        //
+                        marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+                        //alert("You clicked the map at " + e.latlng);
+                        //console.log(e);
+                    }
+
+                    map.on('click', onMapClick);
+
+                </script>
+                <input class="border rounded-0 form-control" type="tel" placeholder="nombre del comercio/bar" style="margin-bottom: 15px; width: 500px"/>
+                <!--MOVIDA DEL MAPA FIN-->
+                <!--MOVIDA DE LA IMAGEN-->
                 <input  id="inputFileToLoad" class="form-control" type="file" style="width: 500px; margin-bottom: 21px" onchange="encodeImageFileAsURL();"/>
                 <div id="imgTest"></div>
-                
                 <script type='text/javascript'>
                     function encodeImageFileAsURL() {
                     var filesSelected = document.getElementById("inputFileToLoad").files;
@@ -68,7 +100,7 @@
                         }
                     }
                 </script>
-
+                <!--MOVIDA DE LA IMAGEN FIN-->
                 <button class="btn btn-primary" style="width: 500px; margin-right: 0px; margin-left: 0px; background: #fbb500;" id="btn-agregar-producto"> Agregar</button>
                 <div>
                     <a href="#">Volver</a>
