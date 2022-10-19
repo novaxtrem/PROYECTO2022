@@ -1,33 +1,108 @@
-var listaProductos = [];
+
+
+var producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen, srcData;
+
+
 //
+
+
+
 $(document).ready(function () {
-    /* $("#btn-agregar-producto").click(function () {
-         producto_id = $("#id-producto").val();
-         producto_nombre = $("#nombre-producto").val();
-         producto_descripcion = $("#descripcion-producto").val();
-         producto_stock = $("#stock-producto").val();
-         producto_precio = $("#precio-producto").val();
-         producto_categoria_id = 1;//$("#fname").val();
-         //
-         agregoProductos(producto_id, producto_nombre, producto_descripcion, producto_stock, producto_precio, producto_categoria_id);
-     });
- 
- 
- */
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
+
+
+
+    $('#categorias-desplegable').on('change', function () {
+        producto_categoria = $("#categorias-desplegable option:selected").val();
+        console.log(producto_categoria);
+    });
+
+
+    $('#inputFileToLoad').on('change', function () {
+        encodeImageFileAsURL();
+    });
+
+
+
+    ////////////////////////////
+    var marker = L.marker();
+    var map = L.map('map').setView([-32.60, -56], 6);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        //attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    map.on('click', onMapClick);
+    function onMapClick(e) {
+
+        //con este metodo solo permito un marcador
+        marker.remove();
+        //
+        marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+        //console.log(e);
+        producto_locacion_logitud = e.latlng.lng;
+        producto_locacion_latitud = e.latlng.lat;
+    }
+    ////////////////////////////
+
+
+
+
+    function encodeImageFileAsURL() {
+
+        var filesSelected = document.getElementById("inputFileToLoad").files;
+        if (filesSelected.length > 0) {
+            var fileToLoad = filesSelected[0];
+            var fileReader = new FileReader();
+            fileReader.onload = function (fileLoadedEvent) {
+                srcData = fileLoadedEvent.target.result; // <--- data: base64
+                var newImage = document.createElement('img');
+                newImage.style.cssText += ' max-width: 100px;';
+                newImage.src = srcData;
+                document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+                //alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+
+                //console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+            }
+            fileReader.readAsDataURL(fileToLoad);
+        }
+    }
+
+    $("#btn-agregar-producto").click(function () {
+
+        producto_nombre = $("#nombre-producto").val();
+        producto_descripcion = $("#descripcion-producto").val();
+        producto_precio = $("#precio-producto").val();
+        producto_stock = $("#stock-producto").val();
+
+
+        producto_locacion_alias = $("#comercio-alias").val();
+        producto_imagen = document.getElementById("imgTest").innerHTML;
+
+        alert(producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias,)
+
+        agregoProductos(producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen);
+
+    });
+
 
 });
-/*
-function agregoProductos(producto_id, producto_nombre, producto_descripcion, producto_stock, producto_precio, producto_categoria_id) {
+
+
+
+
+
+
+
+function agregoProductos(producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen) {
+
     $.ajax({
         url: AGREGO_PRODUCTOS,
         type: "post",
-        data: { producto_id: producto_id, producto_nombre: producto_nombre, producto_descripcion: producto_descripcion, producto_stock: producto_stock, producto_precio: producto_precio, producto_categoria_id: producto_categoria_id },
+        data: { producto_nombre: producto_nombre, producto_categoria: producto_categoria, producto_descripcion: producto_descripcion, producto_precio: producto_precio, producto_stock: producto_stock, producto_locacion_logitud: producto_locacion_logitud, producto_locacion_latitud: producto_locacion_latitud, producto_locacion_latitud, producto_locacion_alias: producto_locacion_alias, producto_imagen: producto_imagen },
         success: function (data) {
+
             console.log(data);
         }
+
     });
+
 };
-*/
