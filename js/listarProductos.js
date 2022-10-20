@@ -39,7 +39,7 @@ function dibujoTablaProductos() {
                 <div class="clean-product-item" id="` + listaProductos[i].producto_id + `" name="` + listaProductos[i].producto_categoria + `">
                     <div class="image">
                         <a href="paginaProducto.html">
-                            <img class="img-fluid d-block mx-auto" src=` + listaProductos[i].producto_imagen + `">
+                            <img class="img-fluid d-block mx-auto" src="`+ listaProductos[i].producto_imagen + `">
                         </a>
                     </div>
                     <div class="product-name" name="` + listaProductos[i].producto_nombre + `">
