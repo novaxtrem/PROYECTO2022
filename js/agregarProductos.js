@@ -73,9 +73,8 @@ $(document).ready(function () {
         producto_precio = $("#precio-producto").val();
         producto_stock = $("#stock-producto").val();
         producto_locacion_alias = $("#comercio-alias").val();
-        //
-        //producto_imagen = document.getElementById("imgTest").innerHTML;
         producto_imagen = srcData;
+        console.log(producto_imagen);
         //
         if (producto_categoria == undefined) {
             producto_categoria = "sin categoria";
@@ -83,7 +82,7 @@ $(document).ready(function () {
         if ((producto_locacion_logitud == undefined) || (producto_locacion_latitud) == undefined) {
             producto_locacion_logitud = 0;
             producto_locacion_latitud = 0;
-            producto_imagen = 0;
+            producto_imagen = "0";
             producto_locacion_alias = "sin nombre";
         }
 
@@ -105,7 +104,7 @@ function agregoProductos(producto_nombre, producto_categoria, producto_descripci
     $.ajax({
         url: AGREGO_PRODUCTOS,
         type: "post",
-        data: { producto_nombre: producto_nombre, producto_categoria: producto_categoria, producto_descripcion: producto_descripcion, producto_precio: producto_precio, producto_stock: producto_stock, producto_locacion_logitud: producto_locacion_logitud, producto_locacion_latitud: producto_locacion_latitud, producto_locacion_alias: producto_locacion_alias, producto_imagen: producto_imagen },
+        data: {producto_nombre: producto_nombre, producto_categoria: producto_categoria, producto_descripcion: producto_descripcion, producto_precio: producto_precio, producto_stock: producto_stock, producto_locacion_logitud: producto_locacion_logitud, producto_locacion_latitud: producto_locacion_latitud, producto_locacion_alias: producto_locacion_alias, producto_imagen: producto_imagen },
         success: function (data) {
 
             console.log(data);

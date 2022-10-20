@@ -20,7 +20,7 @@ function cargoArrayProductos() {
         async: false,
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                var producto = new Producto(data[i].producto_id, data[i].producto_nombre, data[i].producto_descripcion, data[i].producto_stock, data[i].producto_precio, data[i].producto_categoria_id);
+                var producto = new Producto(data[i].producto_id, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen);
                 listaProductos.push(producto);
             }
         }
@@ -30,12 +30,16 @@ function cargoArrayProductos() {
 function dibujoTablaProductos() {
     var htmlContentToAppend = "";
     for (var i = 0; i < listaProductos.length; i++) {
+
+    
+
+
         htmlContentToAppend += `
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="clean-product-item" id="` + listaProductos[i].producto_id + `">
+                <div class="clean-product-item" id="` + listaProductos[i].producto_id + `" name="` + listaProductos[i].producto_categoria + `">
                     <div class="image">
                         <a href="paginaProducto.html">
-                            <img class="img-fluid d-block mx-auto" src="/PROYECTO2022/imagenes/productos/cerveza-1.png">
+                            <img class="img-fluid d-block mx-auto" src=` + listaProductos[i].producto_imagen + `">
                         </a>
                     </div>
                     <div class="product-name" name="` + listaProductos[i].producto_nombre + `">
