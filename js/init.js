@@ -5,3 +5,4 @@ const AGREGO_USUARIOS = "/PROYECTO2022/php/agrego-usuarios.php";
 
 //SELECT
 const CONSULTO_PRODUCTOS = "/PROYECTO2022/php/consulto-productos.php";
+const CONSULTO_PRODUCTO = "/PROYECTO2022/php/consulto-producto.php";

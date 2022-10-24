@@ -1,14 +1,7 @@
 $(document).ready(function () {
 
     $('.producto-item').click(function () {
-        dibujarPaginaProductoClicado(this);
+        localStorage.setItem('ID_PRODUCT_SELECCIONADO', $(this).find('.clean-product-item').attr('id'));
+
     });
 });
-
-function dibujarPaginaProductoClicado(e) {
-
-    alert(e);
-
-    
-
-}
