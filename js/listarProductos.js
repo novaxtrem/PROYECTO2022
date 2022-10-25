@@ -31,9 +31,6 @@ function dibujoTablaProductos() {
     var htmlContentToAppend = "";
     for (var i = 0; i < listaProductos.length; i++) {
 
-    
-
-
         htmlContentToAppend += `
             <div class="col-12 col-md-6 col-lg-4 producto-item">
                 <div class="clean-product-item" id="` + listaProductos[i].producto_id + `" name="` + listaProductos[i].producto_categoria + `">

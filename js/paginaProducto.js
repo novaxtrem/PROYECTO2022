@@ -8,7 +8,9 @@ $(document).ready(function () {
 
     dibujoInformacionProducto();
 
-
+    $('#btn-agregar-carrito').click(function () {
+        alert("hola");
+    });
 
 
 });
@@ -42,26 +44,34 @@ function dibujoInformacionProducto() {
 
     htmlContentToAppend +=
         `<div class="row">
-                <div class="col-md-6">
-                    <div style="margin: 53px;">
-                        <img src="`+ producto.producto_imagen + `">
-                    </div>
+            <div class="col-md-6">
+                <div style="margin: 53px;">
+                    <img src="`+ producto.producto_imagen + `" style="width: 300px;">
                 </div>
-                <div class="col-md-6">
-                    <div class="info">
-                        <h3>`+ producto.producto_nombre + `</h3>
-                        <div class="summary">
-                            <p>`+ producto.producto_descripcion + `</p>
-                        </div>
-                        <div class="price">
-                            <h3>`+ producto.producto_precio + ` $U</h3>
-                        </div>
-                        <button class="btn btn-primary" type="button" style="background: rgb(253,157,13);">
-                            <i class="icon-basket"></i>Agregar al carrito
-                        </button>
+            </div>
+            <div class="col-md-6">
+                <div class="info">
+                    <h3>`+ producto.producto_nombre + `</h3>
+                    <div class="summary">
+                        <p>`+ producto.producto_descripcion + `</p>
                     </div>
+                    <div class="price">
+                        <h3>`+ producto.producto_precio + ` $U</h3>
+                    </div>
+                    <button class="btn btn-primary" id="btn-agregar-carrito" type="button" style="background: rgb(253,157,13);">
+                        <i class="icon-basket"></i>Agregar al carrito
+                    </button>
                 </div>
-            </div>`
+                <p>
+                    <a class="btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none;"> tambien disponible en: ver lugares
+                </a>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body"> Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+              </div>
+            </div>
+        </div>`
     document.getElementById("contenedor-informacion-producto").innerHTML = htmlContentToAppend;
 
 }
