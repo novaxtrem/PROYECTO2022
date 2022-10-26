@@ -4,8 +4,7 @@ header('Access-Control-Allow-Origin: *');
 //
 $rows = array();
 
-//$username = $_GET['username'];
-//$password = $_GET['password'];
+
 
 $query = "SELECT * FROM productos";
 

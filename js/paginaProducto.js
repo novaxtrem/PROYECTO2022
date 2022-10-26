@@ -11,7 +11,7 @@ $(document).ready(function () {
         alert("hola");
     });
 
-    if (producto.producto_locacion_alias !== "") {
+    if (producto.producto_locacion_alias !== "sin nombre") {
         var marker = L.marker();
         var map = L.map('map').setView([producto.producto_locacion_latitud, producto.producto_locacion_logitud], 9);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -46,6 +46,11 @@ function cargoProducto() {
 };
 
 function dibujoInformacionProducto() {
+
+    if (producto.producto_imagen == "0") {
+        producto.producto_imagen = SIN_IMAGEN;
+    }
+
     var htmlContentToAppend = "";
     htmlContentToAppend +=
         `<div class="row">
