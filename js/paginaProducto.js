@@ -5,19 +5,31 @@ var producto = new Producto;
 $(document).ready(function () {
 
     cargoProducto();
-
     dibujoInformacionProducto();
 
     $('#btn-agregar-carrito').click(function () {
         alert("hola");
     });
 
+    if (producto.producto_locacion_alias !== "") {
+        var marker = L.marker();
+        var map = L.map('map').setView([producto.producto_locacion_latitud, producto.producto_locacion_logitud], 9);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+        marker = L.marker([producto.producto_locacion_latitud, producto.producto_locacion_logitud]).addTo(map);
+        ////
+        var htmlContentToAppend = "";
+        ////
+        htmlContentToAppend +=
+            `<p>` + producto.producto_locacion_alias + `</p>`;
+        document.getElementById("locacion-alias-container").innerHTML = htmlContentToAppend;
+    }
+
 
 });
 
 function cargoProducto() {
-
-
 
     return $.ajax({
         url: CONSULTO_PRODUCTO,
@@ -33,15 +45,8 @@ function cargoProducto() {
     });
 };
 
-
-
-
-
-
 function dibujoInformacionProducto() {
     var htmlContentToAppend = "";
-
-
     htmlContentToAppend +=
         `<div class="row">
             <div class="col-md-6">
@@ -61,15 +66,9 @@ function dibujoInformacionProducto() {
                     <button class="btn btn-primary" id="btn-agregar-carrito" type="button" style="background: rgb(253,157,13);">
                         <i class="icon-basket"></i>Agregar al carrito
                     </button>
+                    <div id="map" style="height:200px;width: 200px;"></div>
+                    <div id="locacion-alias-container"></div>
                 </div>
-                <p>
-                    <a class="btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none;"> tambien disponible en: ver lugares
-                </a>
-                </p>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body"> Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
-                </div>
-              </div>
             </div>
         </div>`
     document.getElementById("contenedor-informacion-producto").innerHTML = htmlContentToAppend;
