@@ -16,6 +16,13 @@ $(document).ready(function () {
         localStorage.setItem('ID_PRODUCT_SELECCIONADO', $(this).find('.clean-product-item').attr('id'));
 
     });
+
+
+    $('.btn-comprar').click(function () {
+        window.location = PAGINA_PRODUCTO;
+        //console.log($(this).parent().parent().attr('id'));
+    });
+
 });
 
 function cargoArrayProductos() {
@@ -47,29 +54,16 @@ function dibujoTablaProductos() {
             <div class="col-12 col-md-6 col-lg-4 producto-item">
                 <div class="clean-product-item" id="` + listaProductos[i].producto_id + `" name="` + listaProductos[i].producto_categoria + `">
                     <div class="image">
-                        <a href="paginaProducto.html">
+                        <a href="`+ PAGINA_PRODUCTO + `">
                             <img class="img-fluid d-block mx-auto" src="`+ listaProductos[i].producto_imagen + `">
                         </a>
                     </div>
                     <div class="product-name" name="` + listaProductos[i].producto_nombre + `">
-                        <a href="paginaProducto.html">` + listaProductos[i].producto_nombre + `</a>
+                        <a href="`+ PAGINA_PRODUCTO + `">` + listaProductos[i].producto_nombre + `</a>
                     </div>
                     <div class="about">
-                        <div class="price">
-                            <h3 name="producto-precio">`+ "$" + listaProductos[i].producto_precio + `</h3>
-                        </div>
-                        <div class="input-group spinner">
-                            <input type="text" class="form-control" value="1">
-                            <div class="input-group-btn-vertical">
-                                <button class="btn btn-default subir-cantidad" type="button">
-                                    <i class="fa fa-caret-up"></i>
-                                </button>
-                                <button class="btn btn-default bajar-cantidad" type="button">
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-warning btn-comprar">comprar</button>
+                        <h3 name="producto-precio">`+ "$" + listaProductos[i].producto_precio + `</h3>
+                        <button type="button" class="btn btn-warning btn-comprar" > <a href="`+ PAGINA_PRODUCTO + `" style="color: white"> detalle</a></button>
                     </div>
                 </div>
             </div>`
