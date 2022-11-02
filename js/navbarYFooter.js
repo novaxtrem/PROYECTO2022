@@ -48,6 +48,7 @@ function cargoNavbar() {
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Mis datos</a>
                         <a class="dropdown-item" href="#">Mis productos</a>
+                        <a class="dropdown-item" href="carrito.html">Carrito</a>
                         <a class="dropdown-item" href="#">Compras</a>
                         <a class="dropdown-item" href="#">Ventas</a>
                     </div>

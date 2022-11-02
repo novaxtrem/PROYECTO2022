@@ -9,6 +9,7 @@ $(document).ready(function () {
 
     $('#btn-agregar-carrito').click(function () {
         console.log($('#produto-id').text());
+        localStorage.setItem('ID_PRODUCT_AGREGADO_AL_CARRITO', (localStorage.getItem('ID_PRODUCT_AGREGADO_AL_CARRITO') + ";" + $('#produto-id').text()));
     });
 
     if (producto.producto_locacion_alias !== "sin nombre") {
@@ -76,9 +77,9 @@ function dibujoInformacionProducto() {
                 </div>
             </div>
         </div>
-        <p id="produto-id" style="display:none">`+ producto.producto_id +`</p>
-        <p id="produto-precio" style="display:none">`+ producto.producto_precio +`</p>
-        <p id="produto-vendedor" style="display:none">`+ producto.producto_categoria +`</p>
+        <p id="produto-id" style="display:none">`+ producto.producto_id + `</p>
+        <p id="produto-precio" style="display:none">`+ producto.producto_precio + `</p>
+        <p id="produto-vendedor" style="display:none">`+ producto.producto_categoria + `</p>
 
         `
     document.getElementById("contenedor-informacion-producto").innerHTML = htmlContentToAppend;
