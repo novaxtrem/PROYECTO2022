@@ -8,8 +8,22 @@ $(document).ready(function () {
     dibujoInformacionProducto();
 
     $('#btn-agregar-carrito').click(function () {
-        console.log($('#produto-id').text());
-        localStorage.setItem('ID_PRODUCT_AGREGADO_AL_CARRITO', (localStorage.getItem('ID_PRODUCT_AGREGADO_AL_CARRITO') + ";" + $('#produto-id').text()));
+
+
+        if (localStorage.getItem('ID_PRODUCT_AGREGADO_AL_CARRITO') == null) {
+            localStorage.setItem('ID_PRODUCT_AGREGADO_AL_CARRITO', $('#produto-id').text() + ";");
+        } else {
+            localStorage.setItem('ID_PRODUCT_AGREGADO_AL_CARRITO', (localStorage.getItem('ID_PRODUCT_AGREGADO_AL_CARRITO') + ";" + $('#produto-id').text()));
+        }
+
+
+
+
+
+
+
+
+
     });
 
     if (producto.producto_locacion_alias !== "sin nombre") {
