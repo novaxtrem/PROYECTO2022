@@ -61,6 +61,7 @@ $(document).ready(function () {
 
     $("#btn-agregar-producto").click(function () {
 
+        producto_id_vendedor = "nova77v@gmail.com";
         producto_nombre = $("#nombre-producto").val();
         producto_descripcion = $("#descripcion-producto").val();
         producto_precio = $("#precio-producto").val();
@@ -78,7 +79,7 @@ $(document).ready(function () {
             producto_locacion_alias = "sin nombre";
         }
 
-        producto_id_vendedor = "nova77v@gmail.com";
+        
 
         agregoProductos(producto_id_vendedor, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen);
 

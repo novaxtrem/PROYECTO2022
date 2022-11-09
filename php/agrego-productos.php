@@ -3,9 +3,8 @@ require 'coneccion.php';
 header('Access-Control-Allow-Origin: *');
 //
 
-
-$nombre = $_POST['producto_nombre'];
 $vendedor = $_POST['producto_id_vendedor'];
+$nombre = $_POST['producto_nombre'];
 $categoria = $_POST['producto_categoria'];
 $descripcion = $_POST['producto_descripcion'];
 $precio = $_POST['producto_precio'];
@@ -15,7 +14,7 @@ $locacion_latitud = $_POST['producto_locacion_latitud'];
 $locacion_alias = $_POST['producto_locacion_alias'];
 $producto_imagen = $_POST['producto_imagen'];
 //
-$q = "INSERT INTO `productos`(`producto_id`, `producto_id_vendedor`, `producto_nombre`, `producto_categoria`, `producto_descripcion`, `producto_precio`, `producto_stock`, `producto_locacion_logitud`, `producto_locacion_latitud`, `producto_locacion_alias`, `producto_imagen`, `producto_estado`) VALUES  (DEFAULT,'$vendedor','$nombre','$categoria','$descripcion','$precio','$stock','$locacion_logitud','$locacion_latitud','$locacion_alias','$producto_imagen', DEFAULT);";
+$q = "INSERT INTO `productos`(`producto_id`, `producto_id_vendedor`, `producto_nombre`, `producto_categoria`, `producto_descripcion`, `producto_precio`, `producto_stock`, `producto_locacion_logitud`, `producto_locacion_latitud`, `producto_locacion_alias`, `producto_imagen`, `producto_estado`) VALUES (DEFAULT,'$vendedor','$nombre','$categoria','$descripcion','$precio','$stock','$locacion_logitud','$locacion_latitud','$locacion_alias','$producto_imagen', DEFAULT);";
 
 $query = mysqli_query($conn, $q);
 //
