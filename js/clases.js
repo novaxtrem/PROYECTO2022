@@ -1,7 +1,8 @@
 
 class Producto {
-    constructor(producto_id, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen) {
+    constructor(producto_id, producto_id_vendedor, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen, producto_estado) {
         this.producto_id = producto_id;
+        this.producto_id_vendedor = producto_id_vendedor;
         this.producto_nombre = producto_nombre;
         this.producto_categoria = producto_categoria;
         this.producto_descripcion = producto_descripcion;
@@ -11,7 +12,7 @@ class Producto {
         this.producto_locacion_latitud = producto_locacion_latitud;
         this.producto_locacion_alias = producto_locacion_alias;
         this.producto_imagen = producto_imagen;
-
+        this.producto_estado = producto_estado;
     }
 }
 //////////////////////////////

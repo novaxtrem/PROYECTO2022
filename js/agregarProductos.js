@@ -1,6 +1,6 @@
 
 
-var producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen, srcData;
+var producto_nombre, producto_id_vendedor, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen, srcData;
 //
 
 $(document).ready(function () {
@@ -67,7 +67,7 @@ $(document).ready(function () {
         producto_stock = $("#stock-producto").val();
         producto_locacion_alias = $("#comercio-alias").val();
         producto_imagen = srcData;
-        console.log(producto_imagen);
+
         //
         if (producto_categoria == undefined) {
             producto_categoria = "sin categoria";
@@ -78,7 +78,9 @@ $(document).ready(function () {
             producto_locacion_alias = "sin nombre";
         }
 
-        agregoProductos(producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen);
+        producto_id_vendedor = "nova77v@gmail.com";
+
+        agregoProductos(producto_id_vendedor, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen);
 
     });
 
@@ -91,12 +93,12 @@ $(document).ready(function () {
 
 
 
-function agregoProductos(producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen) {
+function agregoProductos(producto_id_vendedor, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen) {
 
     $.ajax({
         url: AGREGO_PRODUCTOS,
         type: "post",
-        data: { producto_nombre: producto_nombre, producto_categoria: producto_categoria, producto_descripcion: producto_descripcion, producto_precio: producto_precio, producto_stock: producto_stock, producto_locacion_logitud: producto_locacion_logitud, producto_locacion_latitud: producto_locacion_latitud, producto_locacion_alias: producto_locacion_alias, producto_imagen: producto_imagen },
+        data: { producto_id_vendedor: producto_id_vendedor, producto_nombre: producto_nombre, producto_categoria: producto_categoria, producto_descripcion: producto_descripcion, producto_precio: producto_precio, producto_stock: producto_stock, producto_locacion_logitud: producto_locacion_logitud, producto_locacion_latitud: producto_locacion_latitud, producto_locacion_alias: producto_locacion_alias, producto_imagen: producto_imagen },
         success: function (data) {
 
             console.log(data);

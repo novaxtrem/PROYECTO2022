@@ -10,6 +10,17 @@ $(document).ready(function () {
     $('#btn-agregar-carrito').click(function () {
 
 
+
+
+        if (localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO') == null) {
+            localStorage.setItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO', $('#vendedor-id').text());
+        } else {
+            if (localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO') != $('#vendedor-id').text()) {
+                alert("esta agregando un producto de otro vendedor, se descartará el carrito");
+            }
+        }
+
+
         if (localStorage.getItem('ID_PRODUCT_AGREGADO_AL_CARRITO') == null) {
             localStorage.setItem('ID_PRODUCT_AGREGADO_AL_CARRITO', $('#produto-id').text() + ";");
         } else {
@@ -54,7 +65,7 @@ function cargoProducto() {
         async: false,
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                producto = new Producto(data[i].producto_id, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen);
+                producto = new Producto(data[i].producto_id, data[i].producto_id_vendedor, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen, data[i].producto_estado);
             }
         }
     });
@@ -96,8 +107,9 @@ function dibujoInformacionProducto() {
             </div>
         </div>
         <p id="produto-id" style="display:none">`+ producto.producto_id + `</p>
+        <p id="vendedor-id" style="display:none">`+ producto.producto_id_vendedor + `</p>
         <p id="produto-precio" style="display:none">`+ producto.producto_precio + `</p>
-        <p id="produto-vendedor" style="display:none">`+ producto.producto_categoria + `</p>
+        <p id="produto-categoria" style="display:none">`+ producto.producto_categoria + `</p>
 
         `
     document.getElementById("contenedor-informacion-producto").innerHTML = htmlContentToAppend;
