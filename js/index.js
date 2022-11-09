@@ -32,7 +32,6 @@ function cargoArrayProductos() {
         dataType: 'json',
         async: false,
         success: function (data) {
-
             for (var i = 0; i < data.length; i++) {
                 var producto = new Producto(data[i].producto_id, data[i].producto_id_vendedor, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen, data[i].producto_estado);
                 listaProductos.push(producto);
@@ -40,8 +39,6 @@ function cargoArrayProductos() {
         },
         error: function (data) {
             console.log(data);
-
-
         },
     });
 };
