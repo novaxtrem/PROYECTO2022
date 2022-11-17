@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    cargoProducto();
     dibujoCarrito();
 
     /*
@@ -24,6 +25,7 @@ function cargoProducto() {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 producto = new Producto(data[i].producto_id, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen);
+                console.log(producto);
             }
         }
     });
@@ -43,7 +45,7 @@ function dibujoCarrito() {
             <div class="row justify-content-center align-items-center">
                 <div class="col-md-3">
                     <div class="product-image">
-                        <img class="img-fluid d-block mx-auto image" src="assets/img/tech/image2.jpg">
+                        <img class="img-fluid d-block mx-auto image" src="/PROYECTO2022/imagenes/productos/sin-imagen.png">
                     </div>
                 </div>
                 <div class="col-md-5 product-info">
