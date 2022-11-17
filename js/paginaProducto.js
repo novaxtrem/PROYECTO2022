@@ -1,6 +1,6 @@
 var producto = new Producto;
 
-
+var listaProductosCarrito = [];
 
 $(document).ready(function () {
 
@@ -13,6 +13,12 @@ $(document).ready(function () {
 
         if (localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO') == null) {
             localStorage.setItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO', $('#vendedor-id').text());
+
+
+            localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
+
+
+
         } else {
             if (localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO') != $('#vendedor-id').text()) {
 
@@ -22,10 +28,18 @@ $(document).ready(function () {
                     localStorage.setItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO', $('#vendedor-id').text());
 
                 } else {
-                    // Do nothing!
-                    console.log('Thing was not saved to the database.');
+
                 }
 
+            } else {
+                alert("entreeee");
+
+                listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
+                listaProductosCarrito.push(producto);
+                localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
+
+                console.log(JSON.parse(localStorage.getItem('CARRITO')));
+                //localStorage.setItem('CARRITO', JSON.parse(localStorage.getItem('CARRITO')));
             }
         }
 
