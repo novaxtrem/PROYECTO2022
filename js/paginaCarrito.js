@@ -60,7 +60,10 @@ function dibujoCarrito() {
                     <a class="product-name" href="#" style="color: rgb(253,157,13);">`+ listaProductosCarrito[i].producto_nombre + `</a>
                     <button class="btn btn-primary"style="background-color: rgb(253,157,13);">eliminar</button>
                 </div>
-                <div class="col-6 col-md-2 quantity"><label class="form-label d-none d-md-block" for="quantity">Cantidad</label><input type="number" id="number" class="form-control quantity-input" value="1"></div>
+                <div class="col-6 col-md-2 quantity">
+                    <label class="form-label d-none d-md-block" for="quantity">Cantidad</label>
+                    <input type="number" id="catidad-productos-comprados" class="form-control quantity-input" value="`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `">
+                </div>
                 <div class="col-6 col-md-2 price" >
                     <span id="precio">$120</span>
                 </div>

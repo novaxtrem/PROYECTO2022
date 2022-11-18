@@ -14,7 +14,7 @@ $(document).ready(function () {
         if (localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO') == null) {
             localStorage.setItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO', $('#vendedor-id').text());
 
-
+            producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
             localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
 
 
@@ -35,6 +35,9 @@ $(document).ready(function () {
                 alert("entreeee");
 
                 listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
+                //
+                producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
+                //
                 listaProductosCarrito.push(producto);
                 localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
 
@@ -116,7 +119,7 @@ function dibujoInformacionProducto() {
                     </div>
                     <div class="col-6 col-md-2 quantity" style="margin-bottom: 10px;">
                         <label class="form-label d-none d-md-block" for="quantity">Cantidad</label>
-                        <input type="number" id="cantidad-unidades" class="form-control quantity-input" value="1">
+                        <input type="number" id="cantidad-unidades" class="form-control quantity-input">
                     </div>
                     <button class="btn btn-primary" id="btn-agregar-carrito" type="button" style="background: rgb(253,157,13);">
                         <i class="icon-basket"></i>Agregar al carrito
