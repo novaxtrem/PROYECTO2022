@@ -64,8 +64,9 @@ function dibujoCarrito() {
                     <label class="form-label d-none d-md-block" for="quantity">Cantidad</label>
                     <input type="number" id="catidad-productos-comprados" class="form-control quantity-input" value="`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `">
                 </div>
-                <div class="col-6 col-md-2 price" >
-                    <span id="precio">$120</span>
+                <div class="col-6 col-md-2 price">
+                    <label class="form-label d-none d-md-block" for="precio-unitario">precio</label>
+                    <span id="precio">$`+ listaProductosCarrito[i].producto_precio + `</span>
                 </div>
             </div>
         </div>`
