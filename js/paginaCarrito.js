@@ -5,6 +5,9 @@ $(document).ready(function () {
     //  cargoProducto();
     dibujoCarrito();
 
+    $('#btn-pagar').click(function () {
+        pagoProductos();
+    });
 
     /*
     $('#btn-agregar-carrito').click(function () {
@@ -36,6 +39,26 @@ function cargoProducto() {
 };
 */
 
+function pagoProductos() {
+
+
+}
+
+$ ( '.producto' ) . each ( function ( )  {  //POR CADA UNA DE LAS "FILAS" (ELEMENTOS PRODUCTOS) QUE ENCUENTRO DENTRO DEL HTML
+    subtotal  +=  parseFloat ( $ ( this ) . children ( '.product-line-price' ) . text ( ) ) ;  //ACCEDO AL IMPORTE Y LE HAGO UN PARSE PARA TRABAJAR MATEMATICAMENTE
+    //
+    nombreArticulo  =  $ ( este ) . children ( '.product-name-and-unit-cost' ) . niños ( ".product-name" ) . texto ( ) ;
+    costoUnitario  =  $ ( esto ) . children ( '.product-name-and-unit-cost' ) . children ( ".product-unit-cost" ) . texto ( ) ;
+    cantidadComprados  =  $ ( esto ) . children ( '.pass-quantity' ) . niños ( ".itemsComprados" ) . valor ( ) ;
+    productosCompradosSender  +=  nombreArticulo  +  " "  +  costoUnitario  +  " unidades compradas: "  +  cantidadComprados  +  " " ;
+    //
+    existenElementos  =  true ;  // SI CAPTURO ALGUN ELEMENTO DE LA CALSE "ITEM", ES PORQUE EXISTEN ARTÍCULOS (EVIDENTEMENTE) ENTONCES "EXISTEN ELEMENTOS" = TRUE
+} ) ;
+
+
+
+
+
 
 
 
@@ -49,27 +72,30 @@ function dibujoCarrito() {
         console.log(listaProductosCarrito[i]);
 
         htmlContentToAppend +=
-            `<div class="product">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-3">
-                    <div class="product-image">
-                        <img class="img-fluid d-block mx-auto image" src="/PROYECTO2022/imagenes/productos/sin-imagen.png">
+            `<div class="producto">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-md-3">
+                        <div class="product-image">
+                            <img class="img-fluid d-block mx-auto image imagen-producto" src="/PROYECTO2022/imagenes/productos/sin-imagen.png">
+                        </div>
+                    </div>
+                    <div class="col-md-5 product-info">
+                        <a class="nombre-producto" href="#" style="color: rgb(253,157,13);">`+ listaProductosCarrito[i].producto_nombre + `</a>
+                        <button class="btn btn-primary"style="background-color: rgb(253,157,13);">eliminar</button>
+                    </div>
+                    <div class="col-6 col-md-2 quantity">
+                        <label class="form-label d-none d-md-block" for="quantity">Cantidad</label>
+                        <input type="number" class="form-control quantity-input catidad-productos-comprados" value="`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `">
+                    </div>
+                    <div class="col-6 col-md-2 price">
+                        <label class="form-label d-none d-md-block" for="precio-unitario">precio</label>
+                        <span class="precio-unitario">$`+ listaProductosCarrito[i].producto_precio + `</span>
                     </div>
                 </div>
-                <div class="col-md-5 product-info">
-                    <a class="product-name" href="#" style="color: rgb(253,157,13);">`+ listaProductosCarrito[i].producto_nombre + `</a>
-                    <button class="btn btn-primary"style="background-color: rgb(253,157,13);">eliminar</button>
-                </div>
-                <div class="col-6 col-md-2 quantity">
-                    <label class="form-label d-none d-md-block" for="quantity">Cantidad</label>
-                    <input type="number" id="catidad-productos-comprados" class="form-control quantity-input" value="`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `">
-                </div>
-                <div class="col-6 col-md-2 price">
-                    <label class="form-label d-none d-md-block" for="precio-unitario">precio</label>
-                    <span id="precio">$`+ listaProductosCarrito[i].producto_precio + `</span>
-                </div>
-            </div>
-        </div>`
+            </div>`
         document.getElementById("contenedor-productos-en-el-carrito").innerHTML = htmlContentToAppend;
     }
 }
+
+
+

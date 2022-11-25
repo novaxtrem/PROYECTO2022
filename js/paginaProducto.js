@@ -32,7 +32,7 @@ $(document).ready(function () {
                 }
 
             } else {
-                alert("entreeee");
+               
 
                 listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
                 //
