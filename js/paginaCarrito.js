@@ -2,22 +2,34 @@ listaProductosCarrito = [];
 
 $(document).ready(function () {
 
-    //  cargoProducto();
     dibujoCarrito();
+    calculoCostoCarrito();
 
     $('#btn-pagar').click(function () {
-        pagoProductos();
+
     });
 
-    /*
-    $('#btn-agregar-carrito').click(function () {
-        console.log($('#produto-id').text());
-        localStorage.setItem('ID_PRODUCT_AGREGADO_AL_CARRITO', (localStorage.getItem('ID_PRODUCT_AGREGADO_AL_CARRITO') + ";" + $('#produto-id').text()));
+
+    $(".catidad-productos-agregados").change(function () {
+        calculoCostoCarrito();
     });
 
-*/
+
+    $('.boton-eliminar').click(function () {
+        eliminarProducto(this);
+    });
 
 });
+
+function eliminarProducto(e) {
+
+    var productRow = $(e).parent().parent().parent();
+
+    productRow.remove();
+    calculoCostoCarrito();
+
+
+}
 
 /*
 function cargoProducto() {
@@ -39,25 +51,28 @@ function cargoProducto() {
 };
 */
 
-function pagoProductos() {
+function calculoCostoCarrito() {
+    var subTotalCostoProductos = 0;
 
+    $('.producto').each(function () {
+
+        var precioUnitario = 0;
+        var cantidad = 0;
+        var costoProducto = 0;
+        //
+        precioUnitario = parseFloat($(this).children().children('.contenedor-precio-producto').children('.precio-unitario').text().replace('$', ''));
+        cantidad = parseInt($(this).children().children('.cantidad-productos').children('.catidad-productos-agregados').val());
+        //
+        costoProducto = precioUnitario * cantidad;
+        //
+        subTotalCostoProductos += costoProducto;
+    });
+
+    $('#subtotal').text("$ " + subTotalCostoProductos);
+    $('#costo-envio').text("$ " + 200);
+    $('#precio-final').text("$ " + (200 + subTotalCostoProductos));
 
 }
-
-$ ( '.producto' ) . each ( function ( )  {  //POR CADA UNA DE LAS "FILAS" (ELEMENTOS PRODUCTOS) QUE ENCUENTRO DENTRO DEL HTML
-    subtotal  +=  parseFloat ( $ ( this ) . children ( '.product-line-price' ) . text ( ) ) ;  //ACCEDO AL IMPORTE Y LE HAGO UN PARSE PARA TRABAJAR MATEMATICAMENTE
-    //
-    nombreArticulo  =  $ ( este ) . children ( '.product-name-and-unit-cost' ) . niños ( ".product-name" ) . texto ( ) ;
-    costoUnitario  =  $ ( esto ) . children ( '.product-name-and-unit-cost' ) . children ( ".product-unit-cost" ) . texto ( ) ;
-    cantidadComprados  =  $ ( esto ) . children ( '.pass-quantity' ) . niños ( ".itemsComprados" ) . valor ( ) ;
-    productosCompradosSender  +=  nombreArticulo  +  " "  +  costoUnitario  +  " unidades compradas: "  +  cantidadComprados  +  " " ;
-    //
-    existenElementos  =  true ;  // SI CAPTURO ALGUN ELEMENTO DE LA CALSE "ITEM", ES PORQUE EXISTEN ARTÍCULOS (EVIDENTEMENTE) ENTONCES "EXISTEN ELEMENTOS" = TRUE
-} ) ;
-
-
-
-
 
 
 
@@ -69,8 +84,6 @@ function dibujoCarrito() {
     var htmlContentToAppend = "";
 
     for (var i = 0; i < listaProductosCarrito.length; i++) {
-        console.log(listaProductosCarrito[i]);
-
         htmlContentToAppend +=
             `<div class="producto">
                 <div class="row justify-content-center align-items-center">
@@ -81,15 +94,15 @@ function dibujoCarrito() {
                     </div>
                     <div class="col-md-5 product-info">
                         <a class="nombre-producto" href="#" style="color: rgb(253,157,13);">`+ listaProductosCarrito[i].producto_nombre + `</a>
-                        <button class="btn btn-primary"style="background-color: rgb(253,157,13);">eliminar</button>
+                        <button class="btn btn-primary boton-eliminar"style="background-color: rgb(253,157,13);">eliminar</button>
                     </div>
-                    <div class="col-6 col-md-2 quantity">
+                    <div class="col-6 col-md-2 cantidad-productos">
                         <label class="form-label d-none d-md-block" for="quantity">Cantidad</label>
-                        <input type="number" class="form-control quantity-input catidad-productos-comprados" value="`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `">
+                        <input type="number" class="form-control quantity-input catidad-productos-agregados" value="`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `">
                     </div>
-                    <div class="col-6 col-md-2 price">
+                    <div class="col-6 col-md-2 contenedor-precio-producto">
                         <label class="form-label d-none d-md-block" for="precio-unitario">precio</label>
-                        <span class="precio-unitario">$`+ listaProductosCarrito[i].producto_precio + `</span>
+                        <span class="precio-unitario">$ `+ listaProductosCarrito[i].producto_precio + `</span>
                     </div>
                 </div>
             </div>`
