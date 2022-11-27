@@ -129,3 +129,32 @@ a {
     top: 0;
     left: 4px;
 }
+
+
+/*///////////////////////////////*/
+
+/*MIS PRODUCTOS*/
+
+#contenedor-mis-productos .price {
+    font-size: 25px;
+}
+
+#contenedor-mis-productos .price label, #contenedor-mis-compras .price label, 
+#contenedor-mis-ventas .price label {
+    font-weight: normal;
+    font-size: 15px;
+}
+
+
+#contenedor-mis-productos .price input {
+    text-align: right;
+}
+
+/*///////////////////////////////*/
+
+/*FORMS*/
+
+ .container .content.form-login {width: auto;
+    margin: 0 auto;
+    padding: 30px;
+}
