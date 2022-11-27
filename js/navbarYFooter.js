@@ -38,17 +38,19 @@ function cargoNavbar() {
                                 <a class="dropdown-item" href="#">Termómetros</a>
                             </div>
                         </li>
-                        <li class="nav-item"></li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ingresoUsuario.html">Iniciar sesión</a>
                         </li>
                     </ul>
                     <div class="dropdown" style="margin-right: 49px;">
                     <a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(33,33,33);">Mi Taberna</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Mis datos</a>
-                        <a class="dropdown-item" href="#">Mis productos</a>
                         <a class="dropdown-item" href="carrito.html">Carrito</a>
+                        <a class="dropdown-item" href="editarUsuario.html">Mis datos</a>
+                        <a class="dropdown-item" href="#">Mis productos</a>
                         <a class="dropdown-item" href="#">Compras</a>
                         <a class="dropdown-item" href="#">Ventas</a>
                     </div>
