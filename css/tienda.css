@@ -154,7 +154,8 @@ a {
 
 /*FORMS*/
 
- .container .content.form-login {width: auto;
+ .container .content .form-login {width: 60%;
     margin: 0 auto;
     padding: 30px;
+    display: block;
 }
