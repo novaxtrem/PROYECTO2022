@@ -6,7 +6,7 @@ $(document).ready(function () {
     calculoCostoCarrito();
 
     $('#btn-pagar').click(function () {
-
+        agregoOrdenCompra();
     });
 
 
@@ -22,13 +22,10 @@ $(document).ready(function () {
 });
 
 function eliminarProducto(e) {
-
     var productRow = $(e).parent().parent().parent();
-
+    //
     productRow.remove();
     calculoCostoCarrito();
-
-
 }
 
 /*
@@ -89,11 +86,11 @@ function dibujoCarrito() {
                 <div class="row justify-content-center align-items-center">
                     <div class="col-md-3">
                         <div class="product-image">
-                            <img class="img-fluid d-block mx-auto image imagen-producto" src="/PROYECTO2022/imagenes/productos/sin-imagen.png">
+                            <img class="img-fluid d-block mx-auto image imagen-producto" src="`+ listaProductosCarrito[i].producto_imagen + `">
                         </div>
                     </div>
                     <div class="col-md-5 product-info">
-                        <a class="nombre-producto" href="#" style="color: rgb(253,157,13);">`+ listaProductosCarrito[i].producto_nombre + `</a>
+                        <a class="nombre-producto" val="`+ listaProductosCarrito[i].producto_id + `" style="color: rgb(253,157,13);">` + listaProductosCarrito[i].producto_nombre + `</a>
                         <button class="btn btn-primary boton-eliminar"style="background-color: rgb(253,157,13);">eliminar</button>
                     </div>
                     <div class="col-6 col-md-2 cantidad-productos">
@@ -112,3 +109,6 @@ function dibujoCarrito() {
 
 
 
+function agregoOrdenCompra() {
+
+}

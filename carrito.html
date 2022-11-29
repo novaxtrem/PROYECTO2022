@@ -32,7 +32,7 @@
                     <div class="row g-0">
                         <div class="col-md-12 col-lg-8">
                             <div id="contenedor-productos-en-el-carrito" class="items">
-                                
+
                             </div>
                         </div>  
                         <div class="col-md-12 col-lg-4">
@@ -50,7 +50,12 @@
                                     <span class="text">Total</span>
                                     <span class="price" id="precio-final"></span>
                                 </h4>
-                                <button class="btn btn-primary btn-lg d-block w-100"id="btn-pagar" type="button" style="background: rgb(253,171,13);">PAGAR</button>
+                                <div class="card card-body">
+                                    <img class="img-fluid d-block mx-auto" src="../PROYECTO2022/imagenes/productos/qr.jpg">
+                                    <label for="numero-de-operacion">ingrese numero de operacion</label>
+                                    <input type="text" id="numero-de-operacion" name="fname">
+                                </div>
+                                <button class="btn btn-primary btn-lg d-block w-100" id="btn-pagar"type="button" style="background: rgb(253,171,13);">PAGAR</button>
                             </div>
                         </div> 
                     </div>
@@ -58,6 +63,7 @@
             </div>
         </section>
     </main>
+
     <div id="footer-contenedor"></div>
     <!--/////////////////////////////////////////-->
     <link rel="stylesheet" href="../PROYECTO2022/css/tienda.css">
