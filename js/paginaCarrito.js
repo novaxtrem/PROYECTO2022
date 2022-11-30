@@ -1,4 +1,5 @@
 listaProductosCarrito = [];
+listaFinalProductosComprados = [];
 
 $(document).ready(function () {
 
@@ -69,6 +70,13 @@ function calculoCostoCarrito() {
     $('#costo-envio').text("$ " + 200);
     $('#precio-final').text("$ " + (200 + subTotalCostoProductos));
 
+
+    /*
+        producto = new Producto();
+    
+    
+        producto.producto_catidad_agregados_compra
+    */
 }
 
 
@@ -110,5 +118,22 @@ function dibujoCarrito() {
 
 
 function agregoOrdenCompra() {
+
+
+
+
+
+    $.ajax({
+        url: AGREGO_ORDEN_COMPRA,
+        type: "post",
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                producto = new Producto(data[i].producto_id, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen);
+
+                console.log(producto);
+            }
+        }
+
+    });
 
 }
