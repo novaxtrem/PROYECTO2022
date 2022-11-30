@@ -53,12 +53,16 @@ function cargoProducto() {
 
 function calculoCostoCarrito() {
     var subTotalCostoProductos = 0;
+    listaFinalProductosComprados = [];
 
     $('.producto').each(function () {
 
         var precioUnitario = 0;
         var cantidad = 0;
         var costoProducto = 0;
+        var idProducto = 0;
+        //
+        idProducto = $(this).children().children('.product-info').children('.id-producto').text();
         //
         precioUnitario = parseFloat($(this).children().children('.contenedor-precio-producto').children('.precio-unitario').text().replace('$', ''));
         cantidad = parseInt($(this).children().children('.cantidad-productos').children('.catidad-productos-agregados').val());
@@ -66,19 +70,24 @@ function calculoCostoCarrito() {
         costoProducto = precioUnitario * cantidad;
         //
         subTotalCostoProductos += costoProducto;
+
+
+        var detalleProductoComprado = {
+
+            detalle_orden_producto_id: idProducto,
+            detalle_orden_compra_costo_unitario_producto: precioUnitario,
+            detalle_orden_compra_cantidad_productos_comprados: cantidad,
+
+        };
+
+        listaFinalProductosComprados.push(detalleProductoComprado);
+
     });
 
     $('#subtotal').text("$ " + subTotalCostoProductos);
     $('#costo-envio').text("$ " + 200);
     $('#precio-final').text("$ " + (200 + subTotalCostoProductos));
 
-
-    /*
-        producto = new Producto();
-    
-    
-        producto.producto_catidad_agregados_compra
-    */
 }
 
 
@@ -100,7 +109,8 @@ function dibujoCarrito() {
                         </div>
                     </div>
                     <div class="col-md-5 product-info">
-                        <a class="nombre-producto" val="`+ listaProductosCarrito[i].producto_id + `" style="color: rgb(253,157,13);">` + listaProductosCarrito[i].producto_nombre + `</a>
+                        <a class="nombre-producto" style="color: rgb(253,157,13);">` + listaProductosCarrito[i].producto_nombre + `</a>
+                        <p class="id-producto" style="display:none">`+ listaProductosCarrito[i].producto_id + `</p>
                         <button class="btn btn-primary boton-eliminar"style="background-color: rgb(253,157,13);">eliminar</button>
                     </div>
                     <div class="col-6 col-md-2 cantidad-productos">
@@ -121,14 +131,11 @@ function dibujoCarrito() {
 
 function agregoOrdenCompra() {
 
-    alert("entree");
-
-
 
     $.ajax({
         url: AGREGO_ORDEN_COMPRA,
         type: "post",
-        data: { orden_compra_id: orden_compra_id, orden_compra_vendedor_id: orden_compra_vendedor_id, orden_compra_comprador_id: orden_compra_comprador_id, orden_compra_numero_operacion_mercado_pago: orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio: orden_compra_direccion_envio, orden_compra_costo_envio: orden_compra_costo_envio, orden_compra_total: orden_compra_total, orden_compra_estado: orden_compra_estado },
+        data: { orden_compra_id: orden_compra_id, orden_compra_vendedor_id: orden_compra_vendedor_id, orden_compra_comprador_id: orden_compra_comprador_id, orden_compra_numero_operacion_mercado_pago: orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio: orden_compra_direccion_envio, orden_compra_costo_envio: orden_compra_costo_envio, orden_compra_total: orden_compra_total, orden_compra_estado: orden_compra_estado, productos_comprados: JSON.stringify(listaFinalProductosComprados) },
         success: function (data) {
 
             console.log(data);
