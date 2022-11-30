@@ -1,6 +1,8 @@
 listaProductosCarrito = [];
 listaFinalProductosComprados = [];
 
+var orden_compra_id, orden_compra_vendedor_id, orden_compra_comprador_id, orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio, orden_compra_costo_envio, orden_compra_total, orden_compra_estado;
+
 $(document).ready(function () {
 
     dibujoCarrito();
@@ -119,19 +121,17 @@ function dibujoCarrito() {
 
 function agregoOrdenCompra() {
 
-
+    alert("entree");
 
 
 
     $.ajax({
         url: AGREGO_ORDEN_COMPRA,
         type: "post",
+        data: { orden_compra_id: orden_compra_id, orden_compra_vendedor_id: orden_compra_vendedor_id, orden_compra_comprador_id: orden_compra_comprador_id, orden_compra_numero_operacion_mercado_pago: orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio: orden_compra_direccion_envio, orden_compra_costo_envio: orden_compra_costo_envio, orden_compra_total: orden_compra_total, orden_compra_estado: orden_compra_estado },
         success: function (data) {
-            for (var i = 0; i < data.length; i++) {
-                producto = new Producto(data[i].producto_id, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen);
 
-                console.log(producto);
-            }
+            console.log(data);
         }
 
     });
