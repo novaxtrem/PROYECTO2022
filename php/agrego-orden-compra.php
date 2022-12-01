@@ -27,7 +27,6 @@ if ($query) {
         $q = "INSERT INTO `detalle_orden_compra`(`id`, `orden_compra_id`, `detalle_orden_producto_id`, `detalle_orden_compra_cantidad_productos_comprados`, `detalle_orden_compra_costo_unitario_producto`)     VALUES (DEFAULT, $last_id, $id_producto,$cantidad_producto_comprado, $costo_unitario_producto);";
         $query = mysqli_query($conn, $q);
         //
-
         $query = "SELECT `producto_stock` FROM `productos` WHERE `producto_id`= $id_producto;";
         $result = mysqli_query($conn, $query);
         $stockActual = mysqli_fetch_assoc($result);
