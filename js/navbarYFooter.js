@@ -22,27 +22,19 @@ function cargoNavbar() {
                 <div class="collapse navbar-collapse" id="navcol-3">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item"></li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Cervezas</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Laguer</a>
-                                <a class="dropdown-item" href="#">Bitter</a>
-                                <a class="dropdown-item" href="#">IPA</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Insumos</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Grano</a>
-                                <a class="dropdown-item" href="#">Quemadores</a>
-                                <a class="dropdown-item" href="#">Termómetros</a>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Tienda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                            <a class="nav-link" href="eventos.html">Eventos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="ingresoUsuario.html">Iniciar sesión</a>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="terminosUso.html">Terminos de uso</a>
+                                <a class="dropdown-item" href="faq.html">FAQ</a>
+                                <a class="dropdown-item" href="contacto.html">Contacto</a>
+                            </div>
                         </li>
                     </ul>
                     <div class="dropdown" style="margin-right: 49px;">
@@ -91,7 +83,7 @@ function cargoFooter() {
                                 <a href="#">FAQ</a>
                             </li>
                             <li>
-                                <a href="#">Términos del servicio</a>
+                                <a href="#">Términos de uso</a>
                             </li>
                         </ul>
                     </div>
