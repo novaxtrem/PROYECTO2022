@@ -133,7 +133,7 @@ function agregoOrdenCompra() {
 
 
     $.ajax({
-        url: AGREGO_ORDEN_COMPRA,
+        url: ALTA_ORDEN_COMPRA,
         type: "post",
         data: { orden_compra_id: orden_compra_id, orden_compra_vendedor_id: orden_compra_vendedor_id, orden_compra_comprador_id: orden_compra_comprador_id, orden_compra_numero_operacion_mercado_pago: orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio: orden_compra_direccion_envio, orden_compra_costo_envio: orden_compra_costo_envio, orden_compra_total: orden_compra_total, orden_compra_estado: orden_compra_estado, productos_comprados: JSON.stringify(listaFinalProductosComprados) },
         success: function (data) {
