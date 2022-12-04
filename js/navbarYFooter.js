@@ -1,5 +1,9 @@
-//
+var usuarioConectado = "";
+
+
 $(document).ready(function () {
+    usuarioConectado = localStorage.getItem('USUARIO_CONECTADO');
+    //
     cargoNavbar();
     cargoFooter();
 
@@ -15,10 +19,6 @@ $(document).ready(function () {
 function cargoNavbar() {
 
     var htmlContentToAppend = "";
-
-    var usuarioConectado = localStorage.getItem('USUARIO_CONECTADO');
-
-    console.log('retrievedObject: ', JSON.parse(usuarioConectado));
 
     if (usuarioConectado == null || usuarioConectado == "") {
 
@@ -60,6 +60,10 @@ function cargoNavbar() {
 
     } else {
 
+
+
+        console.log(usuarioConectado.usuario_email);
+
         htmlContentToAppend += `
         <nav class="navbar navbar-light navbar-expand-md py-3">
             <div class="container">
@@ -89,7 +93,7 @@ function cargoNavbar() {
                         </li>
                     </ul>
                     <div class="dropdown" style="margin-right: 49px;">
-                    <a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(33,33,33);">Bienvenido`+ usuarioConectado.usuario_nombre + ` Mi Taberna</a>
+                    <a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(33,33,33);">Bienvenido `+ usuarioConectado.usuario_nombre + ` Mi Taberna</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="carrito.html">Carrito</a>
                         <a class="dropdown-item" href="editarUsuario.html">Mis datos</a>

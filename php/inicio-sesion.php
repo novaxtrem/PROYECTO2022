@@ -2,8 +2,6 @@
 require 'conexion.php';
 header('Access-Control-Allow-Origin: *');
 //
-$rows = array();
-//
 $usuario_email = $_POST['usuario_email'];
 $usuario_contrasenia = $_POST['usuario_pass'];
 //
@@ -17,9 +15,9 @@ if (!$resultado) {
     exit;
 } else {
     $row = mysqli_fetch_assoc($resultado);
-    $rows[] = $row;
+
 }
-echo json_encode($rows);
+echo json_encode($row);
 $conn->close();
 //
 ?>
