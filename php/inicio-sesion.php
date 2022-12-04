@@ -10,14 +10,17 @@ $query = "SELECT * FROM `usuarios` WHERE `usuario_email`= '$usuario_email' AND `
 $resultado = mysqli_query($conn, $query);
 //
 
-if (!$resultado) {
-    var_dump(mysqli_error($conn));
-    exit;
-} else {
+if ($resultado) {
     $row = mysqli_fetch_assoc($resultado);
+    echo json_encode($row);
 
+} else {
+    if (empty($resultado)) {
+        echo json_encode("error de usuario o contraseña");
+    }
+    exit;
 }
-echo json_encode($row);
+
 $conn->close();
 //
 ?>

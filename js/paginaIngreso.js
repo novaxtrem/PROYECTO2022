@@ -15,11 +15,22 @@ function inicioSesion(usuario_email, usuario_pass) {
     return $.ajax({
         url: INICIAR_SESION,
         type: "POST",
-        data: { usuario_email: usuario_email, usuario_pass: usuario_pass },
+        cache: false,
         async: false,
+        data: { usuario_email: usuario_email, usuario_pass: usuario_pass },
         success: function (data) {
-            localStorage.setItem('USUARIO_CONECTADO', data);
-            location.href = 'index.html';
+            console.log($.trim(data));
+            if (String(data) == String("null")) {
+                alert("error con el usuario o contraseña");
+                $("#usuario-email").val("");
+                $("#usuario-pass").val("");
+            } else {
+                localStorage.setItem('USUARIO_CONECTADO', data);
+                location.href = 'index.html';
+            }
         }
     });
+
+
+
 };
