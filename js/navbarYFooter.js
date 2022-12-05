@@ -57,7 +57,6 @@ function cargoNavbar() {
         document.getElementById("contenedor-navbar").innerHTML = htmlContentToAppend;
 
     } else {
-        //console.log(usuarioConectado.usuario_email);
         htmlContentToAppend += `
         <nav class="navbar navbar-light navbar-expand-md py-3">
             <div class="container">
@@ -89,7 +88,7 @@ function cargoNavbar() {
                     <a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(33,33,33);"> Mi Taberna</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="carrito.html">Carrito</a>
-                        <a class="dropdown-item" href="editarUsuario.html">Mis datos</a>
+                        <a class="dropdown-item" href="miPerfil.html">Mis datos</a>
                         <a class="dropdown-item" href="misProductos.html">Mis productos</a>
                         <a class="dropdown-item" href="misCompras.html">Compras</a>
                         <a class="dropdown-item" href="misVentas.html">Ventas</a>
