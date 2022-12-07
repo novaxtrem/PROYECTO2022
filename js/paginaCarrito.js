@@ -103,8 +103,8 @@ function dibujoCarrito() {
     if (listaProductosCarrito == null) {
         htmlContentToAppend =
             `<div>
-                    <h1 style="color:#f29c40;text-align:center;padding-top:15px">no hay productos en el carrito</h1>
-                </div>`
+                <h1 style="color:#f29c40;text-align:center;padding-top:15px">no hay productos en el carrito</h1>
+            </div>`
         document.getElementById("contenedor-principal").innerHTML = htmlContentToAppend;
 
     } else {
