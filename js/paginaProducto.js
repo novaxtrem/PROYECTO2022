@@ -43,7 +43,7 @@ $(document).ready(function () {
                 localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
 
                 for (var i = 0; i < JSON.parse(localStorage.getItem('CARRITO')).length; i++) {
-                    alert(JSON.parse(localStorage.getItem('CARRITO'))[i]);
+                   // alert(JSON.parse(localStorage.getItem('CARRITO'))[i]);
                 }
 
                 //console.log(JSON.parse(localStorage.getItem('CARRITO')));

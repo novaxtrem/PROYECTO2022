@@ -8,7 +8,7 @@ $(document).ready(function () {
     dibujoCarrito();
     calculoCostoCarrito();
 
-    $('#btn-pagar').click(function () {
+    $('#btn-confirmar-orden').click(function () {
         agregoOrdenCompra();
     });
 
@@ -85,8 +85,9 @@ function calculoCostoCarrito() {
     });
 
     $('#subtotal').text("$ " + subTotalCostoProductos);
-    $('#costo-envio').text("$ " + 200);
-    $('#precio-final').text("$ " + (200 + subTotalCostoProductos));
+    //$('#costo-envio').text("$ " + 200);
+    //$('#precio-final').text("$ " + (200 + subTotalCostoProductos));
+    $('#precio-final').text("$ " + (subTotalCostoProductos));
 
 }
 
@@ -136,13 +137,38 @@ function dibujoCarrito() {
             document.getElementById("contenedor-productos-en-el-carrito").innerHTML = htmlContentToAppend;
         }
     }
+
+
+
 }
 
 function agregoOrdenCompra() {
+
+    usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
+
+    
+
+    //
+    orden_compra_vendedor_id = localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO');
+    orden_compra_numero_operacion_mercado_pago = $('#numero-de-operacion').val();
+    //
+
+    orden_compra_direccion_envio= $('input[name="tipo-envio"]:checked').val();
+
+    if(orden_compra_direccion_envio=="retira"){
+            alert(orden_compra_direccion_envio);
+
+    } else{
+        alert(orden_compra_direccion_envio);
+    }
+
+    console.log(orden_compra_numero_operacion_mercado_pago);
+
+
     $.ajax({
         url: ALTA_ORDEN_COMPRA,
         type: "post",
-        data: { orden_compra_id: orden_compra_id, orden_compra_vendedor_id: orden_compra_vendedor_id, orden_compra_comprador_id: orden_compra_comprador_id, orden_compra_numero_operacion_mercado_pago: orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio: orden_compra_direccion_envio, orden_compra_costo_envio: orden_compra_costo_envio, orden_compra_total: orden_compra_total, orden_compra_estado: orden_compra_estado, productos_comprados: JSON.stringify(listaFinalProductosComprados) },
+        data: { orden_compra_vendedor_id: orden_compra_vendedor_id, orden_compra_comprador_id: usuarioConectado.usuario_email, orden_compra_numero_operacion_mercado_pago: orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio: orden_compra_direccion_envio, orden_compra_costo_envio: orden_compra_costo_envio, orden_compra_total: orden_compra_total, orden_compra_estado: orden_compra_estado, productos_comprados: JSON.stringify(listaFinalProductosComprados) },
         success: function (data) {
             console.log(data);
         }

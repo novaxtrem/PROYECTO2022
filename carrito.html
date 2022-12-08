@@ -38,10 +38,11 @@
                                 <span class="text">Subtotal</span>
                                 <span class="price" id="subtotal"></span>
                             </h4>
-                            <h4>
+                            <!--<h4>
                                 <span class="text">Envío</span>
                                 <span class="price" id="costo-envio"></span>
                             </h4>
+                            -->
                             <h4 style="color: rgb(243, 115, 97)">
                                 <span class="text">Total</span>
                                 <span class="price" id="precio-final"></span>
@@ -49,12 +50,22 @@
                             <div class="card card-body">
                                 <img class="img-fluid d-block mx-auto" src="../PROYECTO2022/imagenes/productos/qr.jpg"/>
                                 <label for="numero-de-operacion">ingrese numero de operacion</label>
-                                <input type="text" id="numero-de-operacion" name="fname" />
+                                <input type="text" id="numero-de-operacion"/>
+                            </div>
+                            <br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipo-envio" value="retira" checked>
+                                <label class="form-check-label">retiro en el local</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tipo-envio" value="domicilio">
+                                <label class="form-check-label">envio a domicilio</label>
                             </div>
                             <button class="btn btn-primary btn-lg d-block w-100" id="btn-confirmar-orden" type="button" style="background: rgb(253, 171, 13)">Confirmar orden</button>
                         </div>
                     </div>
                 </div>
+                 
             </section>
         </main>
         <div id="footer-contenedor"></div>
