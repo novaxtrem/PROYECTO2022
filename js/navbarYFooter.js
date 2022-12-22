@@ -30,6 +30,7 @@ function cargoNavbar() {
                                 <a class="dropdown-item" href="#">IPA</a>
                             </div>
                         </li>
+<<<<<<< Updated upstream
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Insumos</a>
                             <div class="dropdown-menu">
@@ -38,6 +39,30 @@ function cargoNavbar() {
                                 <a class="dropdown-item" href="#">Termómetros</a>
                             </div>
                         </li>
+=======
+                      
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-warning btn-detalle login-btn" > <a href="`+ PAGINA_ALTA_USUARIO + `"> registrate</a> / <a class="nav-link"  href="ingreso.html">inicia sesión</a></button>
+            </div>
+        </nav>`
+        document.getElementById("contenedor-navbar").innerHTML = htmlContentToAppend;
+
+    } else {
+        htmlContentToAppend += `
+        <nav class="navbar navbar-light navbar-expand-md py-3">
+            <div class="container">
+                <a href="index.html">
+                    <img src="/PROYECTO2022/imagenes/logos-marcas/beerapp-logo-marca.svg" alt="logo beerapp store" style="height: 45px";>
+                </a>
+                <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3">
+                    <span class="visually-hidden">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navcol-3">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"></li>
+>>>>>>> Stashed changes
                         <li class="nav-item">
                             <a class="nav-link" href="#">Contacto</a>
                         </li>
@@ -51,8 +76,14 @@ function cargoNavbar() {
                         <a class="dropdown-item" href="carrito.html">Carrito</a>
                         <a class="dropdown-item" href="editarUsuario.html">Mis datos</a>
                         <a class="dropdown-item" href="misProductos.html">Mis productos</a>
+<<<<<<< Updated upstream
                         <a class="dropdown-item" href="misCompras.html">Compras</a>
                         <a class="dropdown-item" href="misVentas.html">Ventas</a>
+=======
+                        <a class="dropdown-item" href="misCompras.html">Mis Compras</a>
+                        <a class="dropdown-item" href="misVentas.html">Mis Ventas</a>
+                        <a class="dropdown-item" id="cerrar-sesion" href="index.html">Cerrar sesion</a>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>

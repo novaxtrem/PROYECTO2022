@@ -85,6 +85,17 @@ a {
     margin-left: 15px;
 }
 
+
+.login-btn, .login-btn a {
+  color: white;
+  display: inline-block;
+}
+
+.login-btn {
+
+}
+
+
 /*///////////////////////////////*/
 
 /*SPINER CANTIDAD*/
