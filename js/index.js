@@ -1,5 +1,6 @@
 
-
+var arrayFiltros = [];
+if (localStorage.getItem('arrayFiltros')) arrayFiltros = localStorage.getItem('arrayFiltros').split(",");
 var listaProductos = [];
 //
 $(document).ready(function () {
@@ -54,6 +55,8 @@ function dibujoTablaProductos() {
         }
 
         htmlContentToAppend += `
+
+
             <div class="col-12 col-md-6 col-lg-4 producto-item">
                 <div class="clean-product-item" id="` + listaProductos[i].producto_id + `" name="` + listaProductos[i].producto_categoria + `">
                     <div class="image">

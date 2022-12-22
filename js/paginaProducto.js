@@ -1,6 +1,10 @@
 var producto = new Producto;
 
 var listaProductosCarrito = [];
+var misparams = window.location.search;
+var producto_id = misparams.split("=",-1)[1];
+localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
+
 
 $(document).ready(function () {
 
@@ -112,7 +116,7 @@ function dibujoInformacionProducto() {
                     </div>
                     <div class="col-6 col-md-2 quantity" style="margin-bottom: 10px;">
                         <label class="form-label d-none d-md-block" for="quantity">Cantidad</label>
-                        <input type="number" id="cantidad-unidades" class="form-control quantity-input">
+                        <input type="number" id="cantidad-unidades" class="form-control quantity-input" value="1">
                     </div>
                     <button class="btn btn-primary" id="btn-agregar-carrito" type="button" style="background: rgb(253,157,13);">
                         <i class="icon-basket"></i>Agregar al carrito
