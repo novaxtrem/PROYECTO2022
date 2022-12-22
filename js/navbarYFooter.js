@@ -46,12 +46,10 @@ function cargoNavbar() {
                                 <a class="dropdown-item" href="faq.html">FAQ</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="ingreso.html">iniciar sesion</a>
-                        </li>
+                      
                     </ul>
                 </div>
-                <button type="button" class="btn btn-warning btn-detalle" > <a href="`+ PAGINA_ALTA_USUARIO + `" style="color: white"> registrate!</a></button>
+                <button type="button" class="btn btn-warning btn-detalle login-btn" > <a href="`+ PAGINA_ALTA_USUARIO + `"> registrate</a> / <a class="nav-link"  href="ingreso.html">inicia sesión</a></button>
             </div>
         </nav>`
         document.getElementById("contenedor-navbar").innerHTML = htmlContentToAppend;
@@ -90,8 +88,8 @@ function cargoNavbar() {
                         <a class="dropdown-item" href="carrito.html">Carrito</a>
                         <a class="dropdown-item" href="miPerfil.html">Mis datos</a>
                         <a class="dropdown-item" href="misProductos.html">Mis productos</a>
-                        <a class="dropdown-item" href="misCompras.html">Compras</a>
-                        <a class="dropdown-item" href="misVentas.html">Ventas</a>
+                        <a class="dropdown-item" href="misCompras.html">Mis Compras</a>
+                        <a class="dropdown-item" href="misVentas.html">Mis Ventas</a>
                         <a class="dropdown-item" id="cerrar-sesion" href="index.html">Cerrar sesion</a>
                     </div>
                 </div>
