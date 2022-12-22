@@ -1,6 +1,9 @@
+var listaProductos = [];
+
 $(document).ready(function () {
 
     cargoArrayCompras();
+    dibujoMisCompras();   
 
 });
 
@@ -10,7 +13,7 @@ function cargoArrayCompras() {
     return $.ajax({
         url: CONSULTO_COMPRAS_REALIZADAS,
         type: "POST",
-        data: { comprador_email: "nova77v@gmail.com" },
+        data: {comprador_email: "stephyz.b@gmail.com"},
         dataType: 'json',
         async: false,
         success: function (data) {

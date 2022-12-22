@@ -61,7 +61,7 @@ $(document).ready(function () {
 
     $("#btn-agregar-producto").click(function () {
 
-        producto_id_vendedor = "nova77v@gmail.com";
+        producto_id_vendedor = "stephaniebarbitta@gmail.com";
         producto_nombre = $("#nombre-producto").val();
         producto_descripcion = $("#descripcion-producto").val();
         producto_precio = $("#precio-producto").val();
