@@ -22,4 +22,9 @@ while ($row = mysqli_fetch_assoc($resultado)) {
 echo json_encode($rows);
 $conn->close();
 //
+
+
+
+
+
 ?>
