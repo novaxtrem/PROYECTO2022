@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+        <title>Agregar Producto</title>
+        <!--/////////////////////////////////////////-->
+        <link rel="stylesheet" href="../PROYECTO2022/css/bootstrap.min.css" />
+        <!--/////////////////////////////////////////-->
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <!--/////////////////////////////////////////-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--/////////////////////////////////////////-->
+        <link rel="stylesheet" href="../PROYECTO2022/css/agregarProducto.css" />
+        <!--/////////////////////////////////////////-->
+        <script src="../PROYECTO2022/js/init.js"></script>
+        <script src="../PROYECTO2022/js/navbarYFooter.js"></script>
+        <script src="../PROYECTO2022/js/altaProducto.js"></script>
+        <!--/////////////////////////////////////////-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+        <!--/////////////////////////////////////////-->
+    
+    </head>
+
+    <body>
+        <div id="contenedor-navbar"></div>
+        <div style="margin-bottom: 78px"></div>
+        <div class="container" style="width: 600px">
+            <form style="width: 600px">
+                <h1 style="font-size: 20px; margin-bottom: 15px">
+                    <i class="fas fa-store" style="color: #ffb800; padding-right: 15px;font-size: 35px;border-color: var(--bs-purple);"></i>Publicar Producto
+                </h1>
+                <input class="border rounded-0 form-control" id="nombre-producto"type="text" style="width: 500px; margin-bottom: 15px" placeholder="Nombre del producto"/>
+                <select id="categorias-desplegable" style="margin-top: -14px; z-index:2000;width: 500px;">
+                    <option value="Cervezas">Cervezas</option>
+                    <option value="Fermentadores">Fermentadores</option>
+                    <option value="Mangueras">Mangueras</option>
+                    <option value="Quemadores">Quemadores</option>
+                    <option value="Canillas">Canillas</option>
+                    <option value="Chillers">Chillers</option>
+                    <option value="Botellas">Botellas</option>
+                    <option value="Tapas">Tapas</option>
+                    <option value="Tapadoras">Tapadoras</option>
+                    <option value="Balanzas">Balanzas</option>
+                    <option value="Termómetros">Termómetros</option>
+                    <option value="Coladores">Coladores</option>
+                    <option value="Bomba de recirculación">Bomba de recirculación</option>
+                    <option value="Densímetro">Densímetro</option>
+                    <option value="Air Blocks">Air Blocks</option>
+                    <option value="Hollas">Ollas</option>
+                    <option value="Materia Prima">Materia Prima</option>
+                </select>
+
+                <label class="form-label">Descripción del producto</label>
+                <textarea class="form-control" style="margin-bottom: 27px; width: 500px; min-height: 129px" id="descripcion-producto"></textarea>
+                <input class="border rounded-0 form-control" type="text" style="width: 500px; margin-bottom: 15px" placeholder="Precio unitario" id="precio-producto"/>
+                <input class="border rounded-0 form-control" type="tel" placeholder="Stock" style="margin-bottom: 15px; width: 500px" id="stock-producto"/>
+                <!--MOVIDA DEL MAPA-->
+                <label class="form-label">Podés encontrar el producto en la siguiente dirección:</label>
+                <div id="map" style="height:300px;width: 500px; margin-bottom: 30px;"></div>
+
+                
+                <input class="border rounded-0 form-control" id="comercio-alias" type="tel" placeholder="nombre del comercio/bar" style="margin-bottom: 15px; width: 500px"/>
+                <!--MOVIDA DEL MAPA FIN-->
+                <!--MOVIDA DE LA IMAGEN-->
+                <input  id="inputFileToLoad" class="form-control" type="file" style="width: 500px; margin-bottom: 21px"/>
+                <div id="imgTest"></div>
+                <!--MOVIDA DE LA IMAGEN FIN-->
+                <button class="btn btn-primary" id="btn-agregar-producto" style="width: 500px; margin-right: 0px; margin-left: 0px; background: #fbb500;" > Agregar</button>
+                <div>
+                    <a href="miPerfil.html">Volver</a>
+                </div>
+            </form>
+            <div style="margin-bottom: 78px"></div>
+        </div>
+        <div id="footer-contenedor"></div>
+        <!--/////////////////////////////////////////-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <!--/////////////////////////////////////////-->
+    </body>
+</html>

@@ -17,6 +17,7 @@ $(document).ready(function () {
             producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
             localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
 
+            
 
 
         } else {
@@ -32,7 +33,7 @@ $(document).ready(function () {
                 }
 
             } else {
-               
+
 
                 listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
                 //
@@ -41,22 +42,14 @@ $(document).ready(function () {
                 listaProductosCarrito.push(producto);
                 localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
 
-                console.log(JSON.parse(localStorage.getItem('CARRITO')));
+                for (var i = 0; i < JSON.parse(localStorage.getItem('CARRITO')).length; i++) {
+                   // alert(JSON.parse(localStorage.getItem('CARRITO'))[i]);
+                }
+
+                //console.log(JSON.parse(localStorage.getItem('CARRITO')));
                 //localStorage.setItem('CARRITO', JSON.parse(localStorage.getItem('CARRITO')));
             }
         }
-
-        /*
-                if (localStorage.getItem('ID_PRODUCT_AGREGADO_AL_CARRITO') == null) {
-                    localStorage.setItem('ID_PRODUCT_AGREGADO_AL_CARRITO', $('#produto-id').text() + ";");
-                } else {
-                    localStorage.setItem('ID_PRODUCT_AGREGADO_AL_CARRITO', (localStorage.getItem('ID_PRODUCT_AGREGADO_AL_CARRITO') + ";" + $('#produto-id').text()));
-                }
-        */
-
-
-
-
 
     });
 
