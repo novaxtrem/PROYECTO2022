@@ -1,9 +1,0 @@
-.fit-cover {
-  object-fit: cover;
-}
-
-@media (min-width: 300px) {
-  #carousel {
-  }
-}
-
