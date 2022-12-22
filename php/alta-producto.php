@@ -1,5 +1,5 @@
 <?php
-require 'coneccion.php';
+require 'conexion.php';
 header('Access-Control-Allow-Origin: *');
 //
 

@@ -97,7 +97,7 @@ $(document).ready(function () {
 function agregoProductos(producto_id_vendedor, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen) {
 
     $.ajax({
-        url: AGREGO_PRODUCTOS,
+        url: ALTA_PRODUCTO,
         type: "post",
         data: { producto_id_vendedor: producto_id_vendedor, producto_nombre: producto_nombre, producto_categoria: producto_categoria, producto_descripcion: producto_descripcion, producto_precio: producto_precio, producto_stock: producto_stock, producto_locacion_logitud: producto_locacion_logitud, producto_locacion_latitud: producto_locacion_latitud, producto_locacion_alias: producto_locacion_alias, producto_imagen: producto_imagen },
         success: function (data) {
