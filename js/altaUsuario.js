@@ -19,6 +19,7 @@ $(document).ready(function () {
         //
 
         agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_QR_mercado_libre);
+
     });
 
 

@@ -2,7 +2,7 @@
     $dbhost = 'localhost:3306';
     $dbuser = 'epicoTest';
     $dbpass = 'proyecto2022';
-    $dbname = 'poryecto2022';
+    $dbname = 'proyecto2022';
     // Create connection
     $conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
     header('Access-Control-Allow-Origin: *');
