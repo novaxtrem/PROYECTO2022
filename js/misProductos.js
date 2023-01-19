@@ -1,4 +1,4 @@
-usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
+var usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 var listaProductosDelUsuario = [];
 
 $(document).ready(function () {
@@ -13,18 +13,40 @@ $(document).ready(function () {
         var productRow = $(this).parent().parent().parent();
         var idProducto = $(productRow).prop('id');
 
-        //console.log($(this).parent().parent().parent().attr('id'));
-        alert(idProducto);
+
+        if ($(this).text() == "editar") {
+
+            $(".titulo").prop("readonly", false);
+            $(this).text("cancelar");
+            $(productRow).find('.titulo').css({ "border-width": "1px" });
+            $(this).css({ "background-color": "rgb(204, 0, 0)" });
+        } else {
+            $(this).text("editar");
+            $(productRow).find('.titulo').css({ "border-width": "0px" });
+            $(this).css({ "background-color": "rgb(253,157,13)" });
+            $(".titulo").prop("readonly", true);
+        }
+
+
+
+
+
+
+
 
     });
+
+
 
 
 });
 
 
 function cargoArrayProductosPorUsuario() {
+
+
     return $.ajax({
-        url: CONSULTO_PRODUCTOS_PUBLICADOS_POR_VENDEDOR,
+        url: CONSULTO_PRODUCTOS_PUBLICADOS_POR_USUARIO,
         type: "POST",
         data: { producto_id_vendedor: usuarioConectado.usuario_email },
         dataType: 'json',
@@ -49,8 +71,6 @@ function dibujoProductosPublicadosPorElUsuario() {
 
     for (var i = 0; i < listaProductosDelUsuario.length; i++) {
 
-        var htmlContentToAppend = "";
-
         htmlContentToAppend +=
             `<div class="product"  id="` + listaProductosDelUsuario[i].producto_id + `">
                 <div class="row justify-content-center align-items-center">
@@ -60,8 +80,10 @@ function dibujoProductosPublicadosPorElUsuario() {
                         </div>
                     </div>
                     <div class="col-md-5 product-info">
-                        <a class="product-name" href="#" style="color: rgb(253,157,13);">`+ listaProductosDelUsuario[i].producto_nombre + `</a>
+                        <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
+                        
                         <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
+                        <button class="btn btn-primary btn-confirmar-edicion"style="background-color: 	rgb(0, 153, 204);">cofirmar</button>
                     </div>
                     <div class="col-6 col-md-2 quantity">
                         <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
