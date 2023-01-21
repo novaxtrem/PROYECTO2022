@@ -18,5 +18,8 @@ const CONSULTO_COMPRAS_REALIZADAS = "/PROYECTO2022/php/consulto-ordenes-compra.p
 const CONSULTO_BUSCADOR = "/PROYECTO2022/php/buscador.php";
 const CONSULTO_PRODUCTOS_PUBLICADOS_POR_USUARIO ="/PROYECTO2022/php/consulto-productos-publicados-por-usuario.php"
 
+//UPDATE
+const ACTUALIZO_PRODUCTO ="/PROYECTO2022/php/actualizo-producto.php";
+
 //LOGIN
 const INICIAR_SESION = "/PROYECTO2022/php/inicio-sesion.php";

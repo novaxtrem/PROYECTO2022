@@ -1,5 +1,6 @@
 var usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 var listaProductosDelUsuario = [];
+var productRow;
 
 $(document).ready(function () {
 
@@ -7,16 +8,34 @@ $(document).ready(function () {
     cargoArrayProductosPorUsuario();
     dibujoProductosPublicadosPorElUsuario();
 
+    $(".titulo").prop("readonly", true);
+    $(".stock").prop("readonly", true);
+    $(".precio-unitario").prop("readonly", true);
+    $(".btn-confirmar-edicion").attr("disabled", true);
+    //
+
+    $('.btn-confirmar-edicion').click(function () {
+
+        actualizoProducto();
+        location.reload();
+    });
+
+
 
     $('.btn-editar-producto').click(function () {
 
-        var productRow = $(this).parent().parent().parent();
-        var idProducto = $(productRow).prop('id');
+        productRow = $(this).parent().parent().parent();
 
 
         if ($(this).text() == "editar") {
 
             $(".titulo").prop("readonly", false);
+            $(".stock").prop("readonly", false);
+            $(".precio-unitario").prop("readonly", false);
+            $(".btn-confirmar-edicion").attr("disabled", false);
+
+
+            //
             $(this).text("cancelar");
             $(productRow).find('.titulo').css({ "border-width": "1px" });
             $(this).css({ "background-color": "rgb(204, 0, 0)" });
@@ -24,7 +43,12 @@ $(document).ready(function () {
             $(this).text("editar");
             $(productRow).find('.titulo').css({ "border-width": "0px" });
             $(this).css({ "background-color": "rgb(253,157,13)" });
+            //
             $(".titulo").prop("readonly", true);
+            $(".stock").prop("readonly", true);
+            $(".precio-unitario").prop("readonly", true);
+            $(".btn-confirmar-edicion").attr("disabled", true);
+
         }
 
 
@@ -87,10 +111,11 @@ function dibujoProductosPublicadosPorElUsuario() {
                     </div>
                     <div class="col-6 col-md-2 quantity">
                         <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
-                        <input type="number" class="form-control quantity-input" value="` + listaProductosDelUsuario[i].producto_stock + `">
+                        <input type="number" class="form-control quantity-input stock" value="` + listaProductosDelUsuario[i].producto_stock + `">
                     </div>
                     <div class="col-6 col-md-2 price" >
-                       <label class="form-label d-none d-md-block" for="price">Precio unidad</label> <input type="number" id="number" class="form-control quantity-input" value="`+ listaProductosDelUsuario[i].producto_precio + `">
+                       <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
+                       <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
                     </div>
 
                 </div>
@@ -98,3 +123,32 @@ function dibujoProductosPublicadosPorElUsuario() {
         document.getElementById("contenedor-mis-productos").innerHTML = htmlContentToAppend;
     }
 }
+
+
+
+function actualizoProducto() {
+
+    var idProducto = $(productRow).prop('id');
+    var nombreProducto = $(productRow).find('.titulo').val();
+    var precioProducto = $(productRow).find('.precio-unitario').val();
+    var stockProducto = $(productRow).find('.stock').val();
+    //
+    return $.ajax({
+        url: ACTUALIZO_PRODUCTO,
+        type: "POST",
+        data: { producto_id: idProducto, producto_nombre: nombreProducto, producto_precio: precioProducto, producto_stock: stockProducto },
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+
+            console.log(data);
+        },
+        error: function (data) {
+            console.log(data);
+        },
+
+    });
+
+
+};
+
