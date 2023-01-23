@@ -108,16 +108,26 @@ function dibujoProductosPublicadosPorElUsuario() {
                         
                         <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
                         <button class="btn btn-primary btn-confirmar-edicion"style="background-color: 	rgb(0, 153, 204);">cofirmar</button>
+                        <select name="selector-disponibilidad">
+                            <option value="activo">disponible</option>
+                            <option value="inactivo">no disponible</option>
+                        </select>
                     </div>
+                  
+                     
+                 
                     <div class="col-6 col-md-2 quantity">
                         <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
                         <input type="number" class="form-control quantity-input stock" value="` + listaProductosDelUsuario[i].producto_stock + `">
                     </div>
+
                     <div class="col-6 col-md-2 price" >
                        <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
                        <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
                     </div>
 
+                    
+                    
                 </div>
             </div>`
         document.getElementById("contenedor-mis-productos").innerHTML = htmlContentToAppend;
@@ -132,6 +142,8 @@ function actualizoProducto() {
     var nombreProducto = $(productRow).find('.titulo').val();
     var precioProducto = $(productRow).find('.precio-unitario').val();
     var stockProducto = $(productRow).find('.stock').val();
+    var disponibilidad = $(productRow).find('.selector-disponibilidad').filter(":selected").val();
+    alert(disponibilidad);
     //
     return $.ajax({
         url: ACTUALIZO_PRODUCTO,
