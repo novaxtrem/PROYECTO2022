@@ -108,10 +108,13 @@ function dibujoProductosPublicadosPorElUsuario() {
                         
                         <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
                         <button class="btn btn-primary btn-confirmar-edicion"style="background-color: 	rgb(0, 153, 204);">cofirmar</button>
-                        <select class="selector-disponibilidad">
-                            <option value="activo">disponible</option>
-                            <option value="inactivo">no disponible</option>
-                        </select>
+                        
+                      
+                            <select name="selector-disponibilidad">
+                                <option value="activo">disponible</option>
+                                <option value="inactivo">no disponible</option>
+                            </select>
+                        
                     </div>
                   
                      
@@ -142,8 +145,9 @@ function actualizoProducto() {
     var nombreProducto = $(productRow).find('.titulo').val();
     var precioProducto = $(productRow).find('.precio-unitario').val();
     var stockProducto = $(productRow).find('.stock').val();
-    var disponibilidad = $(productRow).find('.selector-disponibilidad').filter(":selected").val();
-    alert(disponibilidad);
+    var disponibilidad = $(productRow).find('select[name=selector-disponibilidad] option').filter(':selected').val()
+
+
     //
     return $.ajax({
         url: ACTUALIZO_PRODUCTO,
