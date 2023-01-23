@@ -14,13 +14,16 @@ function cargoArrayCompras() {
     return $.ajax({
         url: CONSULTO_COMPRAS_REALIZADAS,
         type: "POST",
-        data: {orden_compra_comprador_id: usuarioConectado.usuario_email },
+        data: { orden_compra_comprador_id: usuarioConectado.usuario_email },
         dataType: 'json',
         async: false,
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
+               
+                /*
                 var compra = new Compra(data[i].orden_compra_id, data[i].orden_compra_numero_operacion_mercado_pago, data[i].orden_compra_costo_envio, data[i].orden_compra_total, data[i].orden_compra_estado);
                 listaComprasDelUsuario.push(compra);
+                */
             }
         },
         error: function (data) {

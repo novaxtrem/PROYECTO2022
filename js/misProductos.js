@@ -108,7 +108,7 @@ function dibujoProductosPublicadosPorElUsuario() {
                         
                         <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
                         <button class="btn btn-primary btn-confirmar-edicion"style="background-color: 	rgb(0, 153, 204);">cofirmar</button>
-                        <select name="selector-disponibilidad">
+                        <select class="selector-disponibilidad">
                             <option value="activo">disponible</option>
                             <option value="inactivo">no disponible</option>
                         </select>
