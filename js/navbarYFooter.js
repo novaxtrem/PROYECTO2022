@@ -24,7 +24,7 @@ function cargoNavbar() {
         <nav class="navbar navbar-light navbar-expand-md py-3">
             <div class="container">
                 <a href="index.html">
-                    <img src="/PROYECTO2022/imagenes/logos-marcas/beerapp-logo-marca.svg" alt="logo beerapp store" style="height: 45px";>
+                    <img src="/PROYECTO2022/imagenes/logos-marcas/beerapp-logo-marca.svg" alt="logo beerapp store" style="height: 45px">
                 </a>
                 <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3">
                     <span class="visually-hidden">Toggle navigation</span>
@@ -59,7 +59,7 @@ function cargoNavbar() {
         <nav class="navbar navbar-light navbar-expand-md py-3">
             <div class="container">
                 <a href="index.html">
-                    <img src="/PROYECTO2022/imagenes/logos-marcas/beerapp-logo-marca.svg" alt="logo beerapp store" style="height: 45px";>
+                    <img src="/PROYECTO2022/imagenes/logos-marcas/beerapp-logo-marca.svg" alt="logo beerapp store" style="height: 45px">
                 </a>
                 <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3">
                     <span class="visually-hidden">Toggle navigation</span>
@@ -139,7 +139,7 @@ function cargoFooter() {
             </div>
             <div class="footer-copyright">
                 <p>Desarrollado por GESTEMA&nbsp;<span style="font-weight: normal !important; font-style: normal !important;">©2022&nbsp;</span>
-                    <br>
+                    <br />
                 </p>
             </div>
         </footer>`

@@ -4,9 +4,12 @@ header('Access-Control-Allow-Origin: *');
 //
 $rows = array();
 
-$comprador_email = $_POST['comprador_email'];
- 
-$query = "SELECT * FROM `ordenes_de_compras` INNER JOIN usuarios ON ordenes_de_compras.orden_compra_comprador_id = usuarios.usuario_email WHERE usuarios.usuario_email='$comprador_email' AND ordenes_de_compras.orden_compra_estado='NUEVO';";
+
+$comprador_email= $_POST['orden_compra_comprador_id'];
+//
+
+
+$query = "SELECT * FROM `ordenes_de_compras` WHERE `orden_compra_comprador_id`='$comprador_email';";
 
 
 
