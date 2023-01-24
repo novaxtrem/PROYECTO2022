@@ -12,20 +12,16 @@ $(document).ready(function () {
     $(".stock").prop("readonly", true);
     $(".precio-unitario").prop("readonly", true);
     $(".btn-confirmar-edicion").attr("disabled", true);
+    $('.selector').prop('disabled', true);
     //
-
     $('.btn-confirmar-edicion').click(function () {
-
         actualizoProducto();
         location.reload();
     });
 
-
-
     $('.btn-editar-producto').click(function () {
 
         productRow = $(this).parent().parent().parent();
-
 
         if ($(this).text() == "editar") {
 
@@ -33,8 +29,7 @@ $(document).ready(function () {
             $(".stock").prop("readonly", false);
             $(".precio-unitario").prop("readonly", false);
             $(".btn-confirmar-edicion").attr("disabled", false);
-
-
+            $('.selector').prop('disabled', false);
             //
             $(this).text("cancelar");
             $(productRow).find('.titulo').css({ "border-width": "1px" });
@@ -48,20 +43,11 @@ $(document).ready(function () {
             $(".stock").prop("readonly", true);
             $(".precio-unitario").prop("readonly", true);
             $(".btn-confirmar-edicion").attr("disabled", true);
+            $('.selector').prop('disabled', true);
 
         }
 
-
-
-
-
-
-
-
     });
-
-
-
 
 });
 
@@ -95,44 +81,63 @@ function dibujoProductosPublicadosPorElUsuario() {
 
     for (var i = 0; i < listaProductosDelUsuario.length; i++) {
 
-        htmlContentToAppend +=
-            `<div class="product"  id="` + listaProductosDelUsuario[i].producto_id + `">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-md-3">
-                        <div class="product-image">
-                            <img class="img-fluid d-block mx-auto image" src="`+ listaProductosDelUsuario[i].producto_imagen + `">
+        if( listaProductosDelUsuario[i].producto_estado=="ACTIVO") {
+            htmlContentToAppend +=`
+                <div class="product"  id="` + listaProductosDelUsuario[i].producto_id + `">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-3">
+                            <div class="product-image">
+                                <img class="img-fluid d-block mx-auto image" src="`+ listaProductosDelUsuario[i].producto_imagen + `">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-5 product-info">
-                        <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
-                        
-                        <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
-                        <button class="btn btn-primary btn-confirmar-edicion"style="background-color: 	rgb(0, 153, 204);">cofirmar</button>
-                        
-                      
-                            <select name="selector-disponibilidad">
-                                <option value="activo">disponible</option>
+                        <div class="col-md-5 product-info">
+                            <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
+                            <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
+                            <button class="btn btn-primary btn-confirmar-edicion"style="background-color: 	rgb(0, 153, 204);">cofirmar</button>    
+                            <select name="selector-disponibilidad" class="selector">
+                                <option value="activo" selected>disponible</option>
                                 <option value="inactivo">no disponible</option>
                             </select>
-                        
+                        </div>
+                        <div class="col-6 col-md-2 quantity">
+                            <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
+                            <input type="number" class="form-control quantity-input stock" value="` + listaProductosDelUsuario[i].producto_stock + `">
+                        </div>
+                        <div class="col-6 col-md-2 price" >
+                           <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
+                           <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
+                        </div>
                     </div>
-                  
-                     
-                 
-                    <div class="col-6 col-md-2 quantity">
-                        <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
-                        <input type="number" class="form-control quantity-input stock" value="` + listaProductosDelUsuario[i].producto_stock + `">
+                </div>`
+        }  else {
+            htmlContentToAppend +=`
+                <div class="product"  id="` + listaProductosDelUsuario[i].producto_id + `">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-3">
+                            <div class="product-image">
+                                <img class="img-fluid d-block mx-auto image" src="`+ listaProductosDelUsuario[i].producto_imagen + `">
+                            </div>
+                        </div>
+                        <div class="col-md-5 product-info">
+                            <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
+                            <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
+                            <button class="btn btn-primary btn-confirmar-edicion"style="background-color: 	rgb(0, 153, 204);">cofirmar</button>
+                            <select name="selector-disponibilidad" class="selector">
+                                <option value="activo" >disponible</option>
+                                <option value="inactivo" selected>no disponible</option>
+                            </select>
+                        </div>
+                        <div class="col-6 col-md-2 quantity">
+                            <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
+                            <input type="number" class="form-control quantity-input stock" value="` + listaProductosDelUsuario[i].producto_stock + `">
+                        </div>
+                        <div class="col-6 col-md-2 price" >
+                           <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
+                           <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
+                        </div>
                     </div>
-
-                    <div class="col-6 col-md-2 price" >
-                       <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
-                       <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
-                    </div>
-
-                    
-                    
-                </div>
-            </div>`
+                </div>`
+        }
         document.getElementById("contenedor-mis-productos").innerHTML = htmlContentToAppend;
     }
 }
@@ -145,14 +150,12 @@ function actualizoProducto() {
     var nombreProducto = $(productRow).find('.titulo').val();
     var precioProducto = $(productRow).find('.precio-unitario').val();
     var stockProducto = $(productRow).find('.stock').val();
-    var disponibilidad = $(productRow).find('select[name=selector-disponibilidad] option').filter(':selected').val()
-
-
+    var disponibilidad = $(productRow).find('select[name=selector-disponibilidad] option').filter(':selected').val().toUpperCase();
     //
     return $.ajax({
         url: ACTUALIZO_PRODUCTO,
         type: "POST",
-        data: { producto_id: idProducto, producto_nombre: nombreProducto, producto_precio: precioProducto, producto_stock: stockProducto },
+        data: { producto_id: idProducto, producto_nombre: nombreProducto, producto_precio: precioProducto, producto_stock: stockProducto, producto_estado: disponibilidad },
         dataType: 'json',
         async: false,
         success: function (data) {
