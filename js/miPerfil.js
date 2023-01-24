@@ -54,7 +54,7 @@ function dibujoPerfil() {
             </div>
             <div class="col-md-10">
                 <label class="labels"></label>
-                <button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Compras</button>
+                <a href="misCompras.html"><button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Compras</button></a>
                 <button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Ventas</button>
                 <button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Productos</button>
             </div>
