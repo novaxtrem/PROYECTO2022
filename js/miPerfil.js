@@ -26,12 +26,12 @@ function dibujoPerfil() {
             </div>
             
             <div class="col-md-12">
-            <!--MOVIDA DE LA IMAGEN-->
-            <label class="labels">QR Mercado libre</label>
-            <div width="300px" id="imgTest"></div>
-            <input  id="inputFileToLoad" class="form-control" type="file"/>
-            <!--MOVIDA DE LA IMAGEN FIN-->       
-            <br>
+                <!--MOVIDA DE LA IMAGEN-->
+                <label class="labels">QR Mercado libre</label>
+                <div width="300px" id="imgTest"></div>
+                <input  id="inputFileToLoad" class="form-control" type="file"/>
+                <!--MOVIDA DE LA IMAGEN FIN-->       
+                <br>
             </div>
             <div class="col-md-12">
                 <label class="labels">Nombre</label>
@@ -54,13 +54,22 @@ function dibujoPerfil() {
             </div>
             <div class="col-md-10">
                 <label class="labels"></label>
-                <a href="misCompras.html"><button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Compras</button></a>
-                <button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Ventas</button>
-                <button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Productos</button>
+                <a href="misCompras.html">
+                    <button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Compras</button>
+                </a>
+                <a href="misVentas.html">
+                    <button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Ventas</button>
+                </a>
+                <a href="misProductos.html">
+                    <button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Productos</button>
+                </a>
             </div>
             <div class="mt-5 text-center">
                 <button class="btn btn-warning profile-button" type="button">Guardar</button>
             </div>
+            <style>
+                a {text-decoration: none;}
+            </style>
         </div>`;
 
     document.getElementById("contenedor-perfil").innerHTML = htmlContentToAppend;
