@@ -18,10 +18,19 @@ $(document).ready(function () {
         actualizoProducto();
         location.reload();
     });
+    //
+    $('.btn-eliminar-producto').click(function () {
+        productRow = $(this).parent().parent();
+        eliminoProducto();
+        location.reload();
+    });
+
+
+
 
     $('.btn-editar-producto').click(function () {
 
-        productRow = $(this).parent().parent().parent();
+        productRow = $(this).parent().parent();
 
         if ($(this).text() == "editar") {
 
@@ -54,7 +63,6 @@ $(document).ready(function () {
 
 function cargoArrayProductosPorUsuario() {
 
-
     return $.ajax({
         url: CONSULTO_PRODUCTOS_PUBLICADOS_POR_USUARIO,
         type: "POST",
@@ -81,60 +89,58 @@ function dibujoProductosPublicadosPorElUsuario() {
 
     for (var i = 0; i < listaProductosDelUsuario.length; i++) {
 
-        if( listaProductosDelUsuario[i].producto_estado=="ACTIVO") {
-            htmlContentToAppend +=`
-                <div class="product"  id="` + listaProductosDelUsuario[i].producto_id + `">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-md-3">
-                            <div class="product-image">
-                                <img class="img-fluid d-block mx-auto image" src="`+ listaProductosDelUsuario[i].producto_imagen + `">
-                            </div>
-                        </div>
-                        <div class="col-md-5 product-info">
-                            <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
-                            <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
-                            <button class="btn btn-primary btn-confirmar-edicion"style="background-color: 	rgb(0, 153, 204);">cofirmar</button>    
-                            <select name="selector-disponibilidad" class="selector">
-                                <option value="activo" selected>disponible</option>
-                                <option value="inactivo">no disponible</option>
-                            </select>
-                        </div>
-                        <div class="col-6 col-md-2 quantity">
-                            <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
-                            <input type="number" class="form-control quantity-input stock" value="` + listaProductosDelUsuario[i].producto_stock + `">
-                        </div>
-                        <div class="col-6 col-md-2 price" >
-                           <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
-                           <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
+        if (listaProductosDelUsuario[i].producto_estado == "ACTIVO") {
+            htmlContentToAppend += `
+                <div class="product row justify-content-center align-items-center" id="` + listaProductosDelUsuario[i].producto_id + `">
+                    <div class="col-md-3">
+                        <div class="product-image">
+                            <img style="max-width: 30%;" class="img-fluid d-block mx-auto image" src="`+ listaProductosDelUsuario[i].producto_imagen + `">
                         </div>
                     </div>
+                    <div class="col-md-5 product-info">
+                        <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
+                        <button class="btn btn-primary btn-editar-producto" style="background-color: rgb(253,157,13);">editar</button>
+                        <button class="btn btn-primary btn-confirmar-edicion" style="background-color: rgb(0, 153, 204);">cofirmar</button>
+                        <button class="btn btn-primary btn-eliminar-producto" style="background-color: black">borrar</button>        
+                        <select name="selector-disponibilidad" class="selector">
+                            <option value="activo" selected>disponible</option>
+                            <option value="inactivo">no disponible</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-md-2 quantity">
+                        <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
+                        <input type="number" class="form-control quantity-input stock" value="` + listaProductosDelUsuario[i].producto_stock + `">
+                    </div>
+                    <div class="col-6 col-md-2 price" >
+                       <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
+                       <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
+                    </div>
                 </div>`
-        }  else {
-            htmlContentToAppend +=`
-                <div class="product"  id="` + listaProductosDelUsuario[i].producto_id + `">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-md-3">
-                            <div class="product-image">
-                                <img class="img-fluid d-block mx-auto image" src="`+ listaProductosDelUsuario[i].producto_imagen + `">
-                            </div>
+        } else {
+            htmlContentToAppend += `
+                <div class="product row justify-content-center align-items-center"  id="` + listaProductosDelUsuario[i].producto_id + `">
+                    <div class="col-md-3">
+                        <div class="product-image">
+                            <img style="max-width: 30%;" class="img-fluid d-block mx-auto image" src="`+ listaProductosDelUsuario[i].producto_imagen + `">
                         </div>
-                        <div class="col-md-5 product-info">
-                            <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
-                            <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
-                            <button class="btn btn-primary btn-confirmar-edicion"style="background-color: 	rgb(0, 153, 204);">cofirmar</button>
-                            <select name="selector-disponibilidad" class="selector">
-                                <option value="activo" >disponible</option>
-                                <option value="inactivo" selected>no disponible</option>
-                            </select>
-                        </div>
-                        <div class="col-6 col-md-2 quantity">
-                            <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
-                            <input type="number" class="form-control quantity-input stock" value="` + listaProductosDelUsuario[i].producto_stock + `">
-                        </div>
-                        <div class="col-6 col-md-2 price" >
-                           <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
-                           <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
-                        </div>
+                    </div>
+                    <div class="col-md-5 product-info">
+                        <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
+                        <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
+                        <button class="btn btn-primary btn-confirmar-edicion"style="background-color: rgb(0, 153, 204);">cofirmar</button>
+                        <button class="btn btn-primary btn-eliminar-producto"style="background-color: black">borrar</button>
+                        <select name="selector-disponibilidad" class="selector">
+                            <option value="activo" >disponible</option>
+                            <option value="inactivo" selected>no disponible</option>
+                        </select>
+                    </div>
+                    <div class="col-6 col-md-2 quantity">
+                        <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
+                        <input type="number" class="form-control quantity-input stock" value="` + listaProductosDelUsuario[i].producto_stock + `">
+                    </div>
+                    <div class="col-6 col-md-2 price">
+                       <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
+                       <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
                     </div>
                 </div>`
         }
@@ -165,9 +171,30 @@ function actualizoProducto() {
         error: function (data) {
             console.log(data);
         },
-
     });
 
-
 };
+
+
+function eliminoProducto() {
+ 
+    console.log(productRow);
+    var idProducto = $(productRow).prop('id');
+    //
+    
+    return $.ajax({
+        url: ELIMINO_PRODUCTO,
+        type: "POST",
+        data: { producto_id: idProducto },
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (data) {
+            console.log(data);
+        },
+    });
+};
+
 

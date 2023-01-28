@@ -6,7 +6,7 @@ $rows = array();
 //
 $idVendedor = $_POST['producto_id_vendedor'];
 //
-$query = "SELECT * FROM `productos` WHERE `producto_id_vendedor`='$idVendedor';";
+$query = "SELECT * FROM `productos` WHERE `producto_id_vendedor`='$idVendedor' AND `producto_estado`!='ELIMINADO';";
 
 $resultado = mysqli_query($conn, $query);
 //
