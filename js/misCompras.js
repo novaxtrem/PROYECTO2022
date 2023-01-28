@@ -19,7 +19,7 @@ function cargoArrayCompras() {
         async: false,
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                var compra = new Compra(data[i].orden_compra_id, data[i].orden_compra_numero_operacion_mercado_pago, data[i].orden_compra_costo_envio, data[i].orden_compra_total, data[i].orden_compra_estado);
+                var compra = new OrdenDeCompra(data[i].orden_compra_id, data[i].orden_compra_vendedor_id, data[i].orden_compra_comprador_id, data[i].orden_compra_numero_operacion_mercado_pago, data[i].orden_compra_direccion_envio, data[i].orden_compra_costo_envio,   data[i].orden_compra_total, data[i].orden_compra_estado);
                 listaComprasDelUsuario.push(compra);
             }
         },
@@ -36,24 +36,28 @@ function dibujoComprasDelUsuario() {
     for (var i = 0; i < listaComprasDelUsuario.length; i++) {
 
         htmlContentToAppend +=
-            `<div class="product"  id="` + listaComprasDelUsuario[i].orden_compra_id + `">
+            `<div class="compra"  id="compra-` + listaComprasDelUsuario[i].orden_compra_id + `">
                 <div class="row justify-content-center align-items-center">
-                    <div class="col-md-3">
-                      Test
+
+                    <div class="col-md-1 compra-id">
+                      <p class="compra-id" style="color: rgb(253,157,13);">` + listaComprasDelUsuario[i].orden_compra_id + `</p>
                     </div>
-                    <div class="col-md-5 product-info">
-                    <p>` + listaComprasDelUsuario[i].orden_compra_id + `</p>
-                        <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaComprasDelUsuario[i].orden_compra_id + `">
-                        
-                      
+
+
+                    <div class="col-md-3 compra-operacion">
+                        <p class="compra-operacion"> ` + listaComprasDelUsuario[i].orden_compra_numero_operacion_mercado_pago + ` </p>
                     </div>
-                    <div class="col-6 col-md-2 quantity">
-                        <label class="form-label d-none d-md-block" for="quantity">Stock disponible</label>
-                        <input type="number" class="form-control quantity-input stock" value="` + listaComprasDelUsuario[i].orden_compra_numero_operacion_mercado_pago + `">
+
+                    <div class="col-md-4 compra-envio" >
+                       <p class="compra-envio"> `+ listaComprasDelUsuario[i].orden_compra_direccion_envio + `</p>
                     </div>
-                    <div class="col-6 col-md-2 price" >
-                       <label class="form-label d-none d-md-block" for="price">Precio unidad</label>
-                       <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaComprasDelUsuario[i].orden_compra_total + `">
+
+                    <div class="col-md-1 compra-total" >
+                       <p class="compra-total">$`+ listaComprasDelUsuario[i].orden_compra_total + `</p>
+                    </div>
+
+                     <div class="col-md-2 compra-estado" >
+                       <p class="compra-estado">`+ listaComprasDelUsuario[i].orden_compra_estado + `</p>
                     </div>
 
                 </div>

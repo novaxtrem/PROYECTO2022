@@ -161,6 +161,29 @@ a {
     text-align: right;
 }
 
+/*MIS COMPRAS*/
+
+#contenedor-mis-compras .text-orange {
+    color: rgb(253,157,13);
+}
+
+#contenedor-mis-compras.items, #contenedor-mis-ventas.items {
+    padding-top: 0;
+}
+
+.mis-compras.items, .mis-ventas.items {
+    font-weight: 600;
+}
+
+
+/*MIS VENTAS*/
+
+#contenedor-mis-ventas .compra {
+    padding-bottom: 10px;
+}
+
+
+
 /*///////////////////////////////*/
 
 /*FORMS*/

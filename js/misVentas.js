@@ -1,61 +1,140 @@
+var usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
+var listaVentasDelUsuario = [];
+var productRow;
+
 $(document).ready(function () {
 
-    dibujoCarrito();
+    cargoArrayVentas();
+    dibujoVentasDelUsuario();
 
-    /*
-    $('#btn-agregar-carrito').click(function () {
-        console.log($('#produto-id').text());
-        localStorage.setItem('ID_PRODUCT_AGREGADO_AL_CARRITO', (localStorage.getItem('ID_PRODUCT_AGREGADO_AL_CARRITO') + ";" + $('#produto-id').text()));
+    $(".compra-estado").prop("readonly", true);
+    $(".btn-confirmar-edicion").attr("disabled", true);
+    //
+
+    $('.btn-confirmar-edicion').click(function () {
+
+        actualizoVentas();
+        location.reload();
     });
 
-*/
+
+    $('.btn-editar-producto').click(function () {
+
+        productRow = $(this).parent().parent().parent();
+
+
+        if ($(this).text() == "editar") {
+
+            $(".compra-estado").prop("readonly", false);
+            $(".btn-confirmar-edicion").attr("disabled", false);
+
+
+            //
+            $(this).text("cancelar");
+            $(productRow).find('.compra-estado').css({ "border-width": "1px" });
+            $(this).css({ "background-color": "rgb(204, 0, 0)" });
+        } else {
+            $(this).text("editar");
+            $(productRow).find('.compra-estado').css({ "border-width": "0px" });
+            $(this).css({ "background-color": "rgb(253,157,13)" });
+            //
+            $(".compra-estado").prop("readonly", true);
+            $(".btn-confirmar-edicion").attr("disabled", true);
+
+        }
+
+    });
+
+
+
 
 });
 
 
-function cargoProducto() {
+function cargoArrayVentas() {
 
     return $.ajax({
-        url: CONSULTO_PRODUCTO,
+        url: CONSULTO_MIS_VENTAS,
         type: "POST",
-        data: { producto_id: localStorage.getItem('ID_PRODUCT_SELECCIONADO') },
+        data: {orden_compra_vendedor_id: usuarioConectado.usuario_email },
         dataType: 'json',
         async: false,
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                producto = new Producto(data[i].producto_id, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen);
+                var compra = new OrdenDeCompra(data[i].orden_compra_id, data[i].orden_compra_vendedor_id, data[i].orden_compra_comprador_id, data[i].orden_compra_numero_operacion_mercado_pago, data[i].orden_compra_direccion_envio, data[i].orden_compra_costo_envio,   data[i].orden_compra_total, data[i].orden_compra_estado);
+                listaVentasDelUsuario.push(compra);
             }
-        }
+        },
+        error: function (data) {
+            console.log(data);
+        },
     });
 };
 
+function dibujoVentasDelUsuario() {
 
+    var htmlContentToAppend = "";
 
+    for (var i = 0; i < listaVentasDelUsuario.length; i++) {
 
-
-function dibujoCarrito() {
-
-    for (var i = 0; i < 1; i++) {
-
-        var htmlContentToAppend = "";
         htmlContentToAppend +=
-            `<div class="product">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-md-3">
-                    <div class="product-image">
-                        <img class="img-fluid d-block mx-auto image" src="assets/img/tech/image2.jpg">
+            `<div class="compra"  id="compra-` + listaVentasDelUsuario[i].orden_compra_id + `">
+                <div class="row justify-content-center align-items-center">
+
+                    <div class="col-md-1 compra-id">
+                      <p class="compra-id" style="color: rgb(253,157,13);">` + listaVentasDelUsuario[i].orden_compra_id + `</p>
                     </div>
+
+
+                    <div class="col-md-3 compra-operacion">
+                        <p class="compra-operacion"> ` + listaVentasDelUsuario[i].orden_compra_numero_operacion_mercado_pago + ` </p>
+                    </div>
+
+                    <div class="col-md-2 compra-envio" >
+                       <p class="compra-envio"> `+ listaVentasDelUsuario[i].orden_compra_direccion_envio + `</p>
+                    </div>
+
+                    <div class="col-md-1 compra-total" >
+                       <p class="compra-total">$`+ listaVentasDelUsuario[i].orden_compra_total + `</p>
+                    </div>
+
+                     <div class="col-md-2 compra-estado" >
+                       <input class="compra-estado" type="text" style="color: rgb(253,157,13); border-width:0px; " value="`+ listaVentasDelUsuario[i].orden_compra_estado + `">
+                       
+                    </div>
+                    <div class="col-md-3 compra-estado" >
+                       
+                       <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
+                        <button class="btn btn-primary btn-confirmar-edicion"style="background-color:   rgb(0, 153, 204);">confirmar</button>
+                    </div>
+
                 </div>
-                <div class="col-md-5 product-info">
-                    <a class="product-name" href="#" style="color: rgb(253,157,13);">Lorem Ipsum dolor</a>
-                    <button class="btn btn-primary"style="background-color: rgb(253,157,13);">aprobar</button>
-                </div>
-                <div class="col-6 col-md-2 quantity"><label class="form-label d-none d-md-block" for="quantity">Cantidad</label><input type="number" id="number" class="form-control quantity-input" value="1"></div>
-                <div class="col-6 col-md-2 price" >
-                   <label class="form-label d-none d-md-block" for="price">Total</label> <span id="precio">$120</span>
-                </div>
-            </div>
-        </div>`
+            </div>`
         document.getElementById("contenedor-mis-ventas").innerHTML = htmlContentToAppend;
     }
 }
+
+
+function actualizoVentas() {
+
+    var compraID = $(productRow).prop('id');
+    var estadoCompra = $(productRow).find('.compra-estado').val();
+    //
+    return $.ajax({
+        url: ACTUALIZO_VENTAS,
+        type: "POST",
+         data: {orden_compra_id: compraID, orden_compra_estado: estadoCompra },
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+
+            console.log(data);
+        },
+        error: function (data) {
+            console.log(data);
+        },
+
+    });
+
+
+};
