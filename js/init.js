@@ -25,3 +25,6 @@ const ACTUALIZO_VENTAS ="/PROYECTO2022/php/actualizo-ventas.php";
 
 //LOGIN
 const INICIAR_SESION = "/PROYECTO2022/php/inicio-sesion.php";
+
+//DELETE
+const ELIMINO_PRODUCTO ="/PROYECTO2022/php/eliminar-producto.php";

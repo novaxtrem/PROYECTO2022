@@ -3,17 +3,16 @@ require 'conexion.php';
 header('Access-Control-Allow-Origin: *');
 //
 $rows = array();
-
-
-$comprador_email= $_POST['orden_compra_comprador_id'];
 //
+$idComprador = $_POST['orden_compra_comprador_id'];
+//
+$query = "SELECT * FROM `ordenes_de_compras` WHERE `orden_compra_comprador_id`='$idComprador';";
 
-
-$query = "SELECT * FROM `ordenes_de_compras` WHERE `orden_compra_comprador_id`='$comprador_email';";
 
 
 
 $resultado = mysqli_query($conn, $query);
+//
 
 if (!$resultado) {
     var_dump(mysqli_error($conn));
@@ -26,4 +25,3 @@ echo json_encode($rows);
 $conn->close();
 //
 ?>
-
