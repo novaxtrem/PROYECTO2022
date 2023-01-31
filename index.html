@@ -16,6 +16,7 @@
         <script src="../PROYECTO2022/js/init.js"></script>
         <script src="../PROYECTO2022/js/clases.js"></script>
         <script src="../PROYECTO2022/js/navbarYFooter.js"></script>
+        
         <!--/////////////////////////////////////////-->
     </head>
 
@@ -89,7 +90,8 @@
                 <div class="container">
                     <div class="row padMar" style="margin-bottom: 12px;margin-top: -24px;">
                         <div class="col padMar">
-                            <div class="input-group"><input class="form-control autocomplete" type="text" placeholder="Buscar" id="buscar" name="buscar" onkeyup="buscar_ahora($('#buscar').val());">
+                            <div class="input-group">
+                                <input class="form-control autocomplete" type="text" placeholder="Buscar" id="buscar" name="buscar" onkeyup="buscar_ahora($('#buscar').val());">
                                 <button class="btn btn-warning" type="button">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -177,9 +179,7 @@
                             </div>
                             <div class="col-md-9 maximo">
                                 <div class="products scroller">
-                                    <div class="row g-0" id="datos_buscador"></div>
-                                    
-                                    
+                                    <div class="row g-0" id="contenedor-productos-listado"></div>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +195,7 @@
         <!--/////////////////////////////////////////-->
         <script src="../PROYECTO2022/js/index.js"></script>
         <script src="../PROYECTO2022/js/theme.js"></script>
-        <script src="../PROYECTO2022/js/buscador.js"></script>
+        <!--<script src="../PROYECTO2022/js/buscador.js"></script>-->
     </body>
 
 </html>

@@ -7,7 +7,7 @@ function buscar_ahora(buscar) {
               type: 'POST',
               url: CONSULTO_BUSCADOR,
               success: function (data) {
-                     document.getElementById("datos_buscador").innerHTML = data;
+                     document.getElementById("contenedor-productos-listado").innerHTML = data;
               }
        });
 }

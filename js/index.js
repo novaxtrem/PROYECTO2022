@@ -7,17 +7,10 @@ $(document).ready(function () {
     cargoArrayProductos();
     dibujoTablaProductos();
 
-    /*
-    $('.btn-comprar').click(function () {
-        comprarProducto(this);
-    });
-    */
-
     $('.producto-item').click(function () {
+
         localStorage.setItem('ID_PRODUCT_SELECCIONADO', $(this).find('.clean-product-item').attr('id'));
-
     });
-
 
     $('.btn-detalle').click(function () {
         window.location = PAGINA_PRODUCTO;
@@ -27,6 +20,7 @@ $(document).ready(function () {
 });
 
 function cargoArrayProductos() {
+
     return $.ajax({
         url: CONSULTO_PRODUCTOS,
         type: "GET",
@@ -55,10 +49,8 @@ function dibujoTablaProductos() {
         }
 
         htmlContentToAppend += `
-
-
             <div class="col-12 col-md-6 col-lg-4 producto-item">
-                <div class="clean-product-item" id="` + listaProductos[i].producto_id + `" name="` + listaProductos[i].producto_categoria + `">
+                <div class="clean-product-item" id="` + listaProductos[i].producto_id + ` "name="` + listaProductos[i].producto_categoria + `">
                     <div class="image">
                         <a href="`+ PAGINA_PRODUCTO + `">
                             <img class="img-fluid d-block mx-auto" src="`+ listaProductos[i].producto_imagen + `">
@@ -76,15 +68,3 @@ function dibujoTablaProductos() {
         document.getElementById("contenedor-productos-listado").innerHTML = htmlContentToAppend;
     }
 }
-
-
-/*
-function comprarProducto(btnComprar) {
-    var productoRow = $(btnComprar).parent().parent();
-    var id_producto = parseInt(productoRow.children('td[name="id-producto"]').text());
-    var nombreProducto = productoRow.children('td[name="nombre-producto"]').text();
-    //////////////////////////////
-    alert("nombre del producto " + nombreProducto + " id del producto " + id_producto);
-
-}
-*/

@@ -19,6 +19,9 @@ const CONSULTO_MIS_VENTAS = "/PROYECTO2022/php/consulto-mis-ventas.php";
 const CONSULTO_BUSCADOR = "/PROYECTO2022/php/buscador.php";
 const CONSULTO_PRODUCTOS_PUBLICADOS_POR_USUARIO ="/PROYECTO2022/php/consulto-productos-publicados-por-usuario.php"
 
+
+const CONSULTO_PRODUCTOS_RELACIONADOS ="/PROYECTO2022/php/consulto-productos-relacionados.php"
+
 //UPDATE
 const ACTUALIZO_PRODUCTO ="/PROYECTO2022/php/actualizo-producto.php";
 const ACTUALIZO_VENTAS ="/PROYECTO2022/php/actualizo-ventas.php";

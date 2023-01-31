@@ -1,14 +1,16 @@
 var producto = new Producto;
 
 var listaProductosCarrito = [];
+var listaProductosRelacionados = [];
 var misparams = window.location.search;
-var producto_id = misparams.split("=",-1)[1];
-localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
+var producto_id = misparams.split("=", -1)[1];
+//localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
 
 
 $(document).ready(function () {
 
     cargoProducto();
+
     dibujoInformacionProducto();
 
     $('#btn-agregar-carrito').click(function () {
@@ -21,7 +23,7 @@ $(document).ready(function () {
             producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
             localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
 
-            
+
 
 
         } else {
@@ -47,7 +49,7 @@ $(document).ready(function () {
                 localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
 
                 for (var i = 0; i < JSON.parse(localStorage.getItem('CARRITO')).length; i++) {
-                   // alert(JSON.parse(localStorage.getItem('CARRITO'))[i]);
+                    // alert(JSON.parse(localStorage.getItem('CARRITO'))[i]);
                 }
 
                 //console.log(JSON.parse(localStorage.getItem('CARRITO')));
@@ -56,6 +58,8 @@ $(document).ready(function () {
         }
 
     });
+
+    $
 
     if (producto.producto_locacion_alias !== "sin nombre") {
         var marker = L.marker();
@@ -71,9 +75,24 @@ $(document).ready(function () {
             `<p>` + producto.producto_locacion_alias + `</p>`;
         document.getElementById("locacion-alias-container").innerHTML = htmlContentToAppend;
     }
+    consultoProductosRelacionados();
+    dibujoProductosRelacionados();
 
+    $('.relacionado').click(function () {
+        cambioProductoSolicitado(this);
+    });
 
 });
+
+
+
+function cambioProductoSolicitado(e) {
+
+    localStorage.setItem('ID_PRODUCT_SELECCIONADO', $(e).attr('id'));
+    //
+
+}
+
 
 function cargoProducto() {
 
@@ -90,6 +109,24 @@ function cargoProducto() {
         }
     });
 };
+
+function consultoProductosRelacionados() {
+
+    return $.ajax({
+        url: CONSULTO_PRODUCTOS_RELACIONADOS,
+        type: "POST",
+        data: { producto_id: localStorage.getItem('ID_PRODUCT_SELECCIONADO') },
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                producto = new Producto(data[i].producto_id, data[i].producto_id_vendedor, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen, data[i].producto_estado);
+                listaProductosRelacionados.push(producto);
+            }
+        }
+    });
+};
+
 
 function dibujoInformacionProducto() {
 
@@ -133,5 +170,52 @@ function dibujoInformacionProducto() {
 
         `
     document.getElementById("contenedor-informacion-producto").innerHTML = htmlContentToAppend;
+
+}
+
+
+
+function dibujoProductosRelacionados() {
+    var htmlContentToAppend = "";
+
+    var maximo = listaProductosRelacionados.length;
+    if (maximo >= 3) {
+        maximo = 3;
+    } else {
+        maximo = listaProductosRelacionados.length;
+    }
+
+    if (listaProductosRelacionados.length > 0) {
+        for (var i = 0; i < maximo; i++) {
+            if (listaProductosRelacionados[i].producto_imagen == "0") {
+                producto.producto_imagen = SIN_IMAGEN;
+            }
+            htmlContentToAppend += `
+            <div class="col-sm-6 col-lg-4 relacionado" id="`+ listaProductosRelacionados[i].producto_id + `">
+                <div class="clean-related-item">
+                    <a href="`+ PAGINA_PRODUCTO + `">
+                        <div class="image center">
+                            <img class="img-fluid  img-responsive center-block" src="`+ listaProductosRelacionados[i].producto_imagen + `" style="width: 150px; margin-left: 25%">
+                        </div>
+                        <div class="related-name" >
+                            <h5>`+ listaProductosRelacionados[i].producto_nombre + `</h5>
+                            <h6>$300</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>`
+            document.getElementById("contenedor-productos-relacionados").innerHTML = htmlContentToAppend;
+
+
+        }
+
+    } else {
+
+    }
+
+
+
+
+
 
 }
