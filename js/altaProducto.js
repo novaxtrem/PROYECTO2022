@@ -11,7 +11,6 @@ $(document).ready(function () {
 
     $('#categorias-desplegable').on('change', function () {
         producto_categoria = $("#categorias-desplegable option:selected").val();
-        console.log(producto_categoria);
     });
 
 
@@ -64,7 +63,6 @@ $(document).ready(function () {
     $("#btn-agregar-producto").click(function () {
 
         producto_id_vendedor = usuarioConectado.usuario_email;
-        alert(producto_id_vendedor);
         producto_nombre = $("#nombre-producto").val();
         producto_descripcion = $("#descripcion-producto").val();
         producto_precio = $("#precio-producto").val();
@@ -73,8 +71,13 @@ $(document).ready(function () {
         producto_imagen = srcData;
         //
         if (producto_categoria == undefined) {
-            producto_categoria = "sin categoria";
+            producto_categoria = $("#categorias-desplegable option:selected").val();
+        } else {
+            producto_categoria = $("#categorias-desplegable option:selected").val();
+
         }
+
+
         if ((producto_locacion_logitud == undefined) || (producto_locacion_latitud) == undefined) {
             producto_locacion_logitud = 0;
             producto_locacion_latitud = 0;
