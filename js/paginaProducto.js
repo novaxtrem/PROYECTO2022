@@ -1,136 +1,38 @@
 var producto = new Producto;
-
+var productoRelacionado = new Producto;
 var listaProductosCarrito = [];
 var listaProductosRelacionados = [];
-var misparams = window.location.search;
-var producto_id = misparams.split("=", -1)[1];
-//localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
-
-var usuarioConectado = "";
-//usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
-
-
-
+//
 $(document).ready(function () {
 
     cargoProducto();
 
-    dibujoInformacionProducto();
-
-    if (JSON.parse(localStorage.getItem('USUARIO_CONECTADO')) == null) {
-
-        $('#btn-agregar-carrito').click(function () {
-            alert("debe iniciar sesion");
-            window.location.href = PAGINA_INGRESO;
-        });
-
+    if (producto.producto_id == null || producto.producto_id == undefined) {
+        window.location.href = PAGINA_404;
     } else {
-
-        if (producto.producto_id_vendedor == usuarioConectado.usuario_email) {
-            $('#btn-agregar-carrito').prop('disabled', true);
-            $('#btn-agregar-carrito').text("no puedes comprar tu propio producto");
+        dibujoProducto();
+        cargoYDibujoInformacionGeografica();
+        consultoProductosRelacionados();
+        dibujoProductosRelacionados();
+        //
+        $('.relacionado').click(function () {
+            localStorage.setItem('ID_PRODUCT_SELECCIONADO', $(this).attr('id'));
+        });
+        //
+        if (JSON.parse(localStorage.getItem('USUARIO_CONECTADO')) == null) {
+            rutninaUsuarioNoLogiado();
+        } else if ((localStorage.getItem('USUARIO_CONECTADO')) != null) {
+            rutninaUsuarioLogiado();
         } else {
-
-            $('#btn-agregar-carrito').prop('disabled', false);
+            window.location.href = PAGINA_404;
         }
 
     }
 
-
-    $('#btn-agregar-carrito').click(function () {
-
-
-
-        if (localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO') == null) {
-            localStorage.setItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO', $('#vendedor-id').text());
-            producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
-            localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
-
-            mostarAlerta();
-
-        } else {
-            if (localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO') != $('#vendedor-id').text()) {
-
-                if (confirm("esta agregando un producto de otro vendedor, se descartará el carrito")) {
-
-      
-                    /*localStorage.removeItem('CARRITO'); 
-                    localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");*/
-                    localStorage.removeItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO');
-                    localStorage.setItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO', $('#vendedor-id').text());
-                    mostarAlerta();
-
-                } else {
-
-                }
-
-            } else {
-
-
-                listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
-                //
-                producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
-                //
-                listaProductosCarrito.push(producto);
-                localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
-
-                for (var i = 0; i < JSON.parse(localStorage.getItem('CARRITO')).length; i++) {
-                    // alert(JSON.parse(localStorage.getItem('CARRITO'))[i]);
-                }
-                mostarAlerta();
-                //console.log(JSON.parse(localStorage.getItem('CARRITO')));
-                //localStorage.setItem('CARRITO', JSON.parse(localStorage.getItem('CARRITO')));
-            }
-        }
-
-    });
-
-    if (producto.producto_locacion_alias !== "sin nombre") {
-        var marker = L.marker();
-        var map = L.map('map').setView([producto.producto_locacion_latitud, producto.producto_locacion_logitud], 9);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-        }).addTo(map);
-        marker = L.marker([producto.producto_locacion_latitud, producto.producto_locacion_logitud]).addTo(map);
-        ////
-        var htmlContentToAppend = "";
-        ////
-        htmlContentToAppend +=
-            `<p>` + producto.producto_locacion_alias + `</p>`;
-        document.getElementById("locacion-alias-container").innerHTML = htmlContentToAppend;
-    }
-    consultoProductosRelacionados();
-    dibujoProductosRelacionados();
-
-    $('.relacionado').click(function () {
-        cambioProductoSolicitado(this);
-    });
-
-});
-
-
-function mostarAlerta() {
-    $('.alert').show();
-
-
-    setTimeout(function () {
-        $('.alert').fadeOut('slow');
-    }, 3000
-    );
-
-}
-
-
-function cambioProductoSolicitado(e) {
-
-    localStorage.setItem('ID_PRODUCT_SELECCIONADO', $(e).attr('id'));
-    //
-
-}
+})
 
 
 function cargoProducto() {
-
     return $.ajax({
         url: CONSULTO_PRODUCTO,
         type: "POST",
@@ -143,39 +45,17 @@ function cargoProducto() {
             }
         }
     });
-};
-
-function consultoProductosRelacionados() {
-
-    return $.ajax({
-        url: CONSULTO_PRODUCTOS_RELACIONADOS,
-        type: "POST",
-        data: { producto_id: localStorage.getItem('ID_PRODUCT_SELECCIONADO') },
-        dataType: 'json',
-        async: false,
-        success: function (data) {
-            for (var i = 0; i < data.length; i++) {
-                producto = new Producto(data[i].producto_id, data[i].producto_id_vendedor, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen, data[i].producto_estado);
-                listaProductosRelacionados.push(producto);
-            }
-        }
-    });
-};
-
-
-function dibujoInformacionProducto() {
+}
+//
+function dibujoProducto() {
 
     if (producto.producto_imagen == "0") {
         producto.producto_imagen = SIN_IMAGEN;
     }
-    if (producto.producto_id == null || producto.producto_id == undefined) {
-        window.location.href = PAGINA_404;
 
-    } else {
-
-        var htmlContentToAppend = "";
-        htmlContentToAppend +=
-            `<div class="row">
+    var htmlContentToAppend = "";
+    htmlContentToAppend +=
+        `<div class="row">
                 <div class="col-md-6">
                     <div style="margin: 53px;">
                         <img src="`+ producto.producto_imagen + `" style="width: 300px;">
@@ -211,20 +91,79 @@ function dibujoInformacionProducto() {
             <p id="produto-id" style="display:none">`+ producto.producto_id + `</p>
             <p id="vendedor-id" style="display:none">`+ producto.producto_id_vendedor + `</p>
             <p id="produto-precio" style="display:none">`+ producto.producto_precio + `</p>
-            <p id="produto-categoria" style="display:none">`+ producto.producto_categoria + `</p>
-    
-            `
-        document.getElementById("contenedor-informacion-producto").innerHTML = htmlContentToAppend;
-    }
-
+            <p id="produto-categoria" style="display:none">`+ producto.producto_categoria + `</p>  
+        `
+    document.getElementById("contenedor-informacion-producto").innerHTML = htmlContentToAppend;
 
 }
+//
+function rutninaUsuarioNoLogiado() {
 
+    $('#btn-agregar-carrito').click(function () {
+        alert("debe iniciar sesion");
+        window.location.href = PAGINA_INGRESO;
+    });
+}
+//
+function rutninaUsuarioLogiado() {
+    if (usuarioConectado.usuario_email == producto.producto_id_vendedor) {
+        $('#btn-agregar-carrito').prop('disabled', true);
+        $('#btn-agregar-carrito').text("autocompra no disponible");
+    } else {
+        $('#btn-agregar-carrito').click(function () {
 
+            if (localStorage.getItem('CARRITO') == null) {
+                producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
+                localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
+                mostarAlerta();
+            } else {
+                listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
+                if (listaProductosCarrito[0].producto_id_vendedor == producto.producto_id_vendedor) {
+                    listaProductosCarrito.push(producto);
+                    localStorage.setItem('CARRITO', "[" + JSON.stringify(listaProductosCarrito) + "]");
+                    mostarAlerta();
+                } else {
+                    if (confirm("esta agregando un producto de otro vendedor, se descartará el carrito")) {
+                        localStorage.removeItem('CARRITO');
+                        producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
+                        localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
+                        mostarAlerta();
+                    }
+                }
+            }
 
+        })
+    }
+};
+//
+function mostarAlerta() {
+    $('.alert').show();
+
+    setTimeout(function () {
+        $('.alert').fadeOut('slow');
+    }, 1300
+    );
+
+}
+//
+function consultoProductosRelacionados() {
+    return $.ajax({
+        url: CONSULTO_PRODUCTOS_RELACIONADOS,
+        type: "POST",
+        data: { producto_id: producto.producto_id },
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            for (var i = 0; i < data.length; i++) {
+                productoRelacionado = new Producto(data[i].producto_id, data[i].producto_id_vendedor, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen, data[i].producto_estado);
+                listaProductosRelacionados.push(productoRelacionado);
+            }
+        }
+    });
+};
+//
 function dibujoProductosRelacionados() {
     var htmlContentToAppend = "";
-
     var maximo = listaProductosRelacionados.length;
     if (maximo >= 3) {
         maximo = 3;
@@ -238,31 +177,37 @@ function dibujoProductosRelacionados() {
                 producto.producto_imagen = SIN_IMAGEN;
             }
             htmlContentToAppend += `
-            <div class="col-sm-6 col-lg-4 relacionado" id="`+ listaProductosRelacionados[i].producto_id + `">
-                <div class="clean-related-item">
-                    <a href="`+ PAGINA_PRODUCTO + `">
-                        <div class="image center">
-                            <img class="img-fluid  img-responsive center-block" src="`+ listaProductosRelacionados[i].producto_imagen + `" style="width: 150px; margin-left: 25%">
-                        </div>
-                        <div class="related-name" >
-                            <h5>`+ listaProductosRelacionados[i].producto_nombre + `</h5>
-                            <h6>$300</h6>
-                        </div>
-                    </a>
+                <div class="col-sm-6 col-lg-4 relacionado" id="`+ listaProductosRelacionados[i].producto_id + `">
+                    <div class="clean-related-item">
+                        <a href="`+ PAGINA_PRODUCTO + `">
+                            <div class="image center">
+                                <img class="img-fluid  img-responsive center-block" src="`+ listaProductosRelacionados[i].producto_imagen + `" style="width: 150px; margin-left: 25%">
+                            </div>
+                            <div class="related-name" >
+                                <h5>`+ listaProductosRelacionados[i].producto_nombre + `</h5>
+                                <h6>$300</h6>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>`
+            `
             document.getElementById("contenedor-productos-relacionados").innerHTML = htmlContentToAppend;
-
-
         }
-
-    } else {
-
     }
-
-
-
-
-
+}
+//
+function cargoYDibujoInformacionGeografica() {
+    if (producto.producto_locacion_alias !== "sin nombre") {
+        var marker = L.marker();
+        var map = L.map('map').setView([producto.producto_locacion_latitud, producto.producto_locacion_logitud], 9);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+        marker = L.marker([producto.producto_locacion_latitud, producto.producto_locacion_logitud]).addTo(map);
+        ////
+        var htmlContentToAppend = "";
+        htmlContentToAppend += `<p>` + producto.producto_locacion_alias + `</p>`;
+        document.getElementById("locacion-alias-container").innerHTML = htmlContentToAppend;
+    }
 
 }
