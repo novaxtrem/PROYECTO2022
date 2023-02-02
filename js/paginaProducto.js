@@ -6,7 +6,7 @@ var listaProductosRelacionados = [];
 $(document).ready(function () {
 
     cargoProducto();
-
+    //
     if (producto.producto_id == null || producto.producto_id == undefined) {
         window.location.href = PAGINA_404;
     } else {
@@ -26,9 +26,7 @@ $(document).ready(function () {
         } else {
             window.location.href = PAGINA_404;
         }
-
     }
-
 })
 
 
@@ -131,7 +129,6 @@ function rutninaUsuarioLogiado() {
                     }
                 }
             }
-
         })
     }
 };
