@@ -37,7 +37,7 @@ function cargoNavbar() {
                         </li>
                         <li class="nav-item dropdown">
                             <div class="dropdown-menu">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="`+ PAGINA_SOBRE_NOSOTROS + `">Sobre Nosotros</a>
+                                <a class="dropdown-item" href="`+ PAGINA_QUIENES_SOMOS + `">Quienes somos</a>
                                 <a class="dropdown-item" href="`+ PAGINA_FAQ + `">FAQ</a>
                             </div>
                         </li>
@@ -73,7 +73,8 @@ function cargoNavbar() {
                         </li>
                         <li class="nav-item dropdown">
                             <div class="dropdown-menu">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="`+ PAGINA_SOBRE_NOSOTROS + `">Sobre Nosotros</a>
+                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
+                                <a class="dropdown-item" href="`+ PAGINA_QUIENES_SOMOS + `">Quienes somos</a>
                                 <a class="dropdown-item" href="`+ PAGINA_FAQ + `">FAQ</a>
                             </div>
                         </li>

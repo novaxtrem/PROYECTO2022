@@ -19,18 +19,16 @@ function inicioSesion(usuario_email, usuario_pass) {
         async: false,
         data: { usuario_email: usuario_email, usuario_pass: usuario_pass },
         success: function (data) {
-            console.log($.trim(data));
+            //console.log($.trim(data));
             if (String(data) == String("null")) {
                 alert("error con el usuario o contraseña");
                 $("#usuario-email").val("");
                 $("#usuario-pass").val("");
             } else {
                 localStorage.setItem('USUARIO_CONECTADO', data);
-                location.href = 'index.html';
+                location.href = PAGINA_INDEX;
             }
         }
     });
-
-
 
 };
