@@ -20,7 +20,7 @@ function cargoNavbar() {
         <nav class="navbar navbar-light navbar-expand-md py-3">
             <div class="container">
                 <a href="`+ PAGINA_INDEX + `">
-                    <img src=`+ LOGO_BEERAPP + `alt="logo beerapp store" style="height: 45px">
+                    <img src="`+ LOGO_BEERAPP + `" alt="logo beerapp store" style="height: 45px">
                 </a>
                 <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-3">
                     <span class="visually-hidden">Toggle navigation</span>
@@ -37,6 +37,7 @@ function cargoNavbar() {
                         </li>
                         <li class="nav-item dropdown">
                             <div class="dropdown-menu">
+                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
                                 <a class="dropdown-item" href="`+ PAGINA_QUIENES_SOMOS + `">Quienes somos</a>
                                 <a class="dropdown-item" href="`+ PAGINA_FAQ + `">FAQ</a>
                             </div>

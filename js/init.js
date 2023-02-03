@@ -9,16 +9,16 @@ const PAGINA_INGRESO = "ingreso.html"
 const PAGINA_PRODUCTO = "paginaProducto.html";
 const PAGINA_ALTA_USUARIO = "altaUsuario.html";
 const PAGINA_404 = "404.html";
-const PAGINA_INDEX = "index.hmtl";
+const PAGINA_INDEX = "index.html";
 const PAGINA_EVENTOS = "eventos.html";
 const PAGINA_CARRITO = "carrito.html";
 const PAGINA_MIS_DATOS = "miPerfil.html";
 const PAGINA_MIS_PRODUCTOS = "misProductos.html";
-const PAGINA_MIS_COMPRAS = "misCompras.hmtl";
-const PAGINA_MIS_VENTAS = "misVentas.hmtl";
+const PAGINA_MIS_COMPRAS = "misCompras.html";
+const PAGINA_MIS_VENTAS = "misVentas.html";
 const PAGINA_FAQ = "faq.html"
 const PAGINA_TERMINOS_DE_USO = "terminosUso.html";
-const PAGINA_QUIENES_SOMOS ="quienesSomos.hmtl";
+const PAGINA_QUIENES_SOMOS ="quienesSomos.html";
 
 
 
