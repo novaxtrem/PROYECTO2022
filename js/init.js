@@ -18,7 +18,7 @@ const PAGINA_MIS_COMPRAS = "misCompras.hmtl";
 const PAGINA_MIS_VENTAS = "misVentas.hmtl";
 const PAGINA_FAQ = "faq.html"
 const PAGINA_TERMINOS_DE_USO = "terminosUso.html";
-//
+const PAGINA_SOBRE_NOSOTROS ="sobreNosotros.hmtl";
 
 
 
