@@ -25,17 +25,10 @@ $(document).ready(function () {
         location.reload();
     });
 
-    var valorPrevioTitulo, valorPrevioPrecio, valorPrevioStock;
-
-
-
     $('.btn-editar-producto').click(function () {
 
         productRow = $(this).parent().parent();
-
-
         if ($(this).text() == "editar") {
-            //
             $(this).text("cancelar");
             $(productRow).find('.titulo').css({ "border-width": "1px" });
             $(this).css({ "background-color": "rgb(204, 0, 0)" });
@@ -47,7 +40,6 @@ $(document).ready(function () {
             $(productRow).find($(".precio-unitario")).prop("readonly", false);
             $(productRow).find($(".btn-confirmar-edicion")).attr("disabled", false);
             $(productRow).find($(".selector")).prop('disabled', false);
-
         } else {
             location.reload();
         }

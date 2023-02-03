@@ -1,12 +1,9 @@
 
-
+var usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 
 $(document).ready(function () {
-    var usuarioConectado = "";
-    usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
-    //
+    
     dibujoPerfil();
-
     $("#inputFileToLoad").change(function () {
         encodeImageFileAsURL(this);
     });
@@ -17,8 +14,6 @@ $(document).ready(function () {
 
 function dibujoPerfil() {
     var htmlContentToAppend = "";
-    //
-    
     htmlContentToAppend += `
         <div class="row">
             <div class="d-flex justify-content-between align-items-center mb-3">
