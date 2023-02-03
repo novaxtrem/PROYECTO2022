@@ -6,7 +6,7 @@ $rows = array();
 
 
 
-$query = "SELECT * FROM productos";
+$query = "SELECT * FROM productos WHERE `producto_estado`='ACTIVO';";
 
 
 

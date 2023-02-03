@@ -25,6 +25,7 @@ $(document).ready(function () {
         location.reload();
     });
 
+    var valorPrevioTitulo, valorPrevioPrecio, valorPrevioStock;
 
 
 
@@ -32,32 +33,25 @@ $(document).ready(function () {
 
         productRow = $(this).parent().parent();
 
-        if ($(this).text() == "editar") {
 
-            $(".titulo").prop("readonly", false);
-            $(".stock").prop("readonly", false);
-            $(".precio-unitario").prop("readonly", false);
-            $(".btn-confirmar-edicion").attr("disabled", false);
-            $('.selector').prop('disabled', false);
+        if ($(this).text() == "editar") {
             //
             $(this).text("cancelar");
             $(productRow).find('.titulo').css({ "border-width": "1px" });
             $(this).css({ "background-color": "rgb(204, 0, 0)" });
+            $(productRow).find('.btn-confirmar-edicion').css({ "display": "unset" });
+            $(".btn-editar-producto").attr("disabled", true);
+            $(this).attr("disabled", false);
+            $(productRow).find($(".titulo")).prop("readonly", false);
+            $(productRow).find($(".stock")).prop("readonly", false);
+            $(productRow).find($(".precio-unitario")).prop("readonly", false);
+            $(productRow).find($(".btn-confirmar-edicion")).attr("disabled", false);
+            $(productRow).find($(".selector")).prop('disabled', false);
+
         } else {
-            $(this).text("editar");
-            $(productRow).find('.titulo').css({ "border-width": "0px" });
-            $(this).css({ "background-color": "rgb(253,157,13)" });
-            //
-            $(".titulo").prop("readonly", true);
-            $(".stock").prop("readonly", true);
-            $(".precio-unitario").prop("readonly", true);
-            $(".btn-confirmar-edicion").attr("disabled", true);
-            $('.selector').prop('disabled', true);
-
+            location.reload();
         }
-
     });
-
 });
 
 
@@ -86,8 +80,7 @@ function cargoArrayProductosPorUsuario() {
 function dibujoProductosPublicadosPorElUsuario() {
 
     var htmlContentToAppend = "";
-
-    if (listaProductosDelUsuario > 0) {
+    if (listaProductosDelUsuario.length > 0) {
         for (var i = 0; i < listaProductosDelUsuario.length; i++) {
             if (listaProductosDelUsuario[i].producto_estado == "ACTIVO") {
                 htmlContentToAppend += `
@@ -100,7 +93,7 @@ function dibujoProductosPublicadosPorElUsuario() {
                     <div class="col-md-5 product-info">
                         <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
                         <button class="btn btn-primary btn-editar-producto" style="background-color: rgb(253,157,13);">editar</button>
-                        <button class="btn btn-primary btn-confirmar-edicion" style="background-color: rgb(0, 153, 204);">cofirmar</button>
+                        <button class="btn btn-primary btn-confirmar-edicion" style="background-color: rgb(0, 153, 204);display: none;">cofirmar</button>
                         <button class="btn btn-primary btn-eliminar-producto" style="background-color: black">borrar</button>        
                         <select name="selector-disponibilidad" class="selector">
                             <option value="activo" selected>disponible</option>
@@ -127,7 +120,7 @@ function dibujoProductosPublicadosPorElUsuario() {
                     <div class="col-md-5 product-info">
                         <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
                         <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
-                        <button class="btn btn-primary btn-confirmar-edicion"style="background-color: rgb(0, 153, 204);">cofirmar</button>
+                        <button class="btn btn-primary btn-confirmar-edicion"style="background-color: rgb(0, 153, 204);display: none;">cofirmar</button>
                         <button class="btn btn-primary btn-eliminar-producto"style="background-color: black">borrar</button>
                         <select name="selector-disponibilidad" class="selector">
                             <option value="activo" >disponible</option>
