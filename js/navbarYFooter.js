@@ -36,8 +36,9 @@ function cargoNavbar() {
                             <a class="nav-link" href="`+ PAGINA_EVENTOS + `">Eventos</a>
                         </li>
                         <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
+                               
                                 <a class="dropdown-item" href="`+ PAGINA_QUIENES_SOMOS + `">Quienes somos</a>
                                 <a class="dropdown-item" href="`+ PAGINA_FAQ + `">FAQ</a>
                             </div>
@@ -73,8 +74,9 @@ function cargoNavbar() {
                             <a class="nav-link" href="`+ PAGINA_INDEX + `">Eventos</a>
                         </li>
                         <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
+                               
                                 <a class="dropdown-item" href="`+ PAGINA_QUIENES_SOMOS + `">Quienes somos</a>
                                 <a class="dropdown-item" href="`+ PAGINA_FAQ + `">FAQ</a>
                             </div>
