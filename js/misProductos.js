@@ -87,10 +87,10 @@ function dibujoProductosPublicadosPorElUsuario() {
 
     var htmlContentToAppend = "";
 
-    for (var i = 0; i < listaProductosDelUsuario.length; i++) {
-
-        if (listaProductosDelUsuario[i].producto_estado == "ACTIVO") {
-            htmlContentToAppend += `
+    if (listaProductosDelUsuario > 0) {
+        for (var i = 0; i < listaProductosDelUsuario.length; i++) {
+            if (listaProductosDelUsuario[i].producto_estado == "ACTIVO") {
+                htmlContentToAppend += `
                 <div class="product row justify-content-center align-items-center" id="` + listaProductosDelUsuario[i].producto_id + `">
                     <div class="col-md-3">
                         <div class="product-image">
@@ -116,8 +116,8 @@ function dibujoProductosPublicadosPorElUsuario() {
                        <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
                     </div>
                 </div>`
-        } else {
-            htmlContentToAppend += `
+            } else {
+                htmlContentToAppend += `
                 <div class="product row justify-content-center align-items-center"  id="` + listaProductosDelUsuario[i].producto_id + `">
                     <div class="col-md-3">
                         <div class="product-image">
@@ -143,7 +143,14 @@ function dibujoProductosPublicadosPorElUsuario() {
                        <input type="number" class="form-control quantity-input precio-unitario" value="`+ listaProductosDelUsuario[i].producto_precio + `">
                     </div>
                 </div>`
+            }
+            document.getElementById("contenedor-mis-productos").innerHTML = htmlContentToAppend;
         }
+    } else {
+        htmlContentToAppend +=
+            `<div class="col text-center">
+                <h2 class="display-12 fw-bold mb-4">no hay productos publicados</h2>
+            </div>`
         document.getElementById("contenedor-mis-productos").innerHTML = htmlContentToAppend;
     }
 }
@@ -177,11 +184,11 @@ function actualizoProducto() {
 
 
 function eliminoProducto() {
- 
+
     console.log(productRow);
     var idProducto = $(productRow).prop('id');
     //
-    
+
     return $.ajax({
         url: ELIMINO_PRODUCTO,
         type: "POST",

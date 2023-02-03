@@ -46,7 +46,7 @@ function cargoNavbar() {
                     </ul>
                 </div>
                 <button type="button" class="btn btn-warning btn-detalle login-btn" > 
-                    <a class="nav-link"  href="`+ PAGINA_ALTA_USUARIO + `"> registrate</a> / 
+                    <a class="nav-link"  href="`+ PAGINA_ALTA_USUARIO + `"> registrate</a> | 
                     <a class="nav-link"  href="`+ PAGINA_INGRESO + `">inicia sesión</a>
                 </button>
             </div>
@@ -71,7 +71,7 @@ function cargoNavbar() {
                             <a class="nav-link" href="`+ PAGINA_INDEX + `">Tienda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="`+ PAGINA_INDEX + `">Eventos</a>
+                            <a class="nav-link" href="`+ PAGINA_EVENTOS + `">Eventos</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
