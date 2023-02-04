@@ -23,7 +23,12 @@ function dibujoPerfil() {
             <div class="col-md-12">
                 <!--MOVIDA DE LA IMAGEN-->
                 <label class="labels">QR Mercado libre</label>
-                <div width="300px" id="imgTest"></div>
+                <div width="200px" id="imgTest"></div>
+                <label class="labels">subir imagen del codigo QR de Mercado Libre
+                    <small>
+                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                    </small>
+                </label>
                 <input  id="inputFileToLoad" class="form-control" type="file"/>
                 <!--MOVIDA DE LA IMAGEN FIN-->       
                 <br>
@@ -35,7 +40,8 @@ function dibujoPerfil() {
             </div>
             <div class="col-md-12">
                 <label class="labels">email</label>
-                <span class="text-black-50">` + usuarioConectado.usuario_email + `</span>
+                <input type="text" class="form-control text-muted" value="` + usuarioConectado.usuario_email + `" readonly>
+                <br>
             </div>
             <div class="col-md-12">
                 <label class="labels">Direccion</label>
@@ -58,19 +64,24 @@ function dibujoPerfil() {
                 <a href="misProductos.html">
                     <button type="button" class="btn btn-outline-dark"style="margin-top: 10px;margin-left: 10px;">Mis Productos</button>
                 </a>
-            </div>
-            <div class="mt-5 text-center">
-                <button class="btn btn-warning profile-button" type="button">Guardar</button>
+
+                <a href="#">
+                    <button type="button" class="btn btn-outline-dark btn-warning"style="margin-top: 10px;margin-left: 10px;">Guardar</button>
+                </a>
+                
             </div>
             <style>
                 a {text-decoration: none;}
+                img{padding: 8px;}
             </style>
-        </div>`;
+        </div>
+        <br>
+        <br>`;
 
     document.getElementById("contenedor-perfil").innerHTML = htmlContentToAppend;
     //
     var imgMeli = document.createElement('img');
-    imgMeli.style.cssText += 'max-width: 300px;';
+    imgMeli.style.cssText += 'max-width: 150px;';
     imgMeli.src = usuarioConectado.usuario_QR_mercado_libre;
     document.getElementById("imgTest").innerHTML = imgMeli.outerHTML;
     //
@@ -85,7 +96,7 @@ function encodeImageFileAsURL() {
         fileReader.onload = function (fileLoadedEvent) {
             srcData = fileLoadedEvent.target.result; // <--- data: base64
             var newImage = document.createElement('img');
-            newImage.style.cssText += ' max-width: 100px;';
+            newImage.style.cssText += 'max-width: 100px;';
             newImage.src = srcData;
             document.getElementById("imgTest").innerHTML = newImage.outerHTML;
         }

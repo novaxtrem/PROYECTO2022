@@ -1,10 +1,13 @@
 var producto = new Producto;
 var productoRelacionado = new Producto;
-var listaProductosCarrito = [];
+var listaProductosCarrito;
 var listaProductosRelacionados = [];
 //
 var usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
-//
+listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
+
+
+
 $(document).ready(function () {
 
     cargoProducto();
@@ -12,6 +15,10 @@ $(document).ready(function () {
     if (producto.producto_id == null || producto.producto_id == undefined) {
         window.location.href = PAGINA_404;
     } else {
+
+        if (listaProductosCarrito == null || listaProductosCarrito == 0) {
+            listaProductosCarrito = [];
+        }
         dibujoProducto();
         cargoYDibujoInformacionGeografica();
         consultoProductosRelacionados();
@@ -111,21 +118,30 @@ function rutninaUsuarioLogiado() {
         $('#btn-agregar-carrito').text("autocompra no disponible");
     } else {
         $('#btn-agregar-carrito').click(function () {
-            listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
-            if (localStorage.getItem('CARRITO') == null || listaProductosCarrito.length <= 0) {
+
+            if ((localStorage.getItem('CARRITO') == null) || (listaProductosCarrito.length <= 0)) {
+                //
                 producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
-                localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
+                listaProductosCarrito.push(producto);
+                localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
+                //
                 mostarAlerta();
             } else {
                 if (listaProductosCarrito[0].producto_id_vendedor == producto.producto_id_vendedor) {
+                    //
+                    producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
                     listaProductosCarrito.push(producto);
-                    localStorage.setItem('CARRITO', "[" + JSON.stringify(listaProductosCarrito) + "]");
+                    localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
+                    //
                     mostarAlerta();
                 } else {
                     if (confirm("esta agregando un producto de otro vendedor, se descartará el carrito")) {
                         localStorage.removeItem('CARRITO');
+                        //
                         producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
-                        localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
+                        listaProductosCarrito.push(producto);
+                        localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
+                        //
                         mostarAlerta();
                     }
                 }
@@ -141,7 +157,6 @@ function mostarAlerta() {
         $('.alert').fadeOut('slow');
     }, 1300
     );
-
 }
 //
 function consultoProductosRelacionados() {

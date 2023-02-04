@@ -48,7 +48,7 @@
     background-image: url('/PROYECTO2022/imagenes/mini-banners/productores.jpg');
 }
 
-a {
+* a {
     text-decoration: none;
 }
 
@@ -91,10 +91,14 @@ a {
   display: inline-block;
 }
 
-.login-btn {
-
+ 
+.alert {
+    display: none;
 }
 
+.no-editable{
+
+}
 
 /*///////////////////////////////*/
 

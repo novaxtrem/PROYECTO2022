@@ -45,10 +45,14 @@ function cargoNavbar() {
                         </li>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-warning btn-detalle login-btn" > 
-                    <a class="nav-link"  href="`+ PAGINA_ALTA_USUARIO + `"> registrate</a> | 
-                    <a class="nav-link"  href="`+ PAGINA_INGRESO + `">inicia sesión</a>
-                </button>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-warning login-btn">
+                        <a class="nav-link"  href="`+ PAGINA_ALTA_USUARIO + `"> registrate</a>
+                    </button>
+                    <button type="button" class="btn btn-warning login-btn">
+                        <a class="nav-link"  href="`+ PAGINA_INGRESO + `">inicia sesión</a>
+                    </button>
+                </div>
             </div>
         </nav>`
         document.getElementById("contenedor-navbar").innerHTML = htmlContentToAppend;
@@ -76,7 +80,6 @@ function cargoNavbar() {
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
                             <div class="dropdown-menu">
-                               
                                 <a class="dropdown-item" href="`+ PAGINA_QUIENES_SOMOS + `">Quienes somos</a>
                                 <a class="dropdown-item" href="`+ PAGINA_FAQ + `">FAQ</a>
                             </div>

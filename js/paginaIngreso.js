@@ -25,10 +25,21 @@ function inicioSesion(usuario_email, usuario_pass) {
                 $("#usuario-email").val("");
                 $("#usuario-pass").val("");
             } else {
+                mostarAlerta();
                 localStorage.setItem('USUARIO_CONECTADO', data);
-                location.href = PAGINA_INDEX;
             }
         }
     });
 
 };
+
+
+function mostarAlerta() {
+    $('.alert').show();
+
+    setTimeout(function () {
+        $('.alert').fadeOut('slow');
+        location.href = PAGINA_INDEX;
+    }, 850);
+    
+}
