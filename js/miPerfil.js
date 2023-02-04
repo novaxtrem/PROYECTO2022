@@ -1,5 +1,7 @@
 
 var usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
+var srcData = usuarioConectado.usuario_QR_mercado_libre;
+
 
 $(document).ready(function () {
 
@@ -111,14 +113,13 @@ function encodeImageFileAsURL() {
 
 
 function actualizarDatosPerfil() {
-
+    var usuario_QR_mercado_libre = "";
     var usuario_contrasenia = $("#usuario-contrasenia").val();
     var usuario_nombre = $("#usuario-nombre").val();
     var usuario_direccion = $("#usuario-direccion").val();
     var usuario_telefono = $("#usuario-telefono").val();
-    var usuario_QR_mercado_libre = $("#usuario-QR-mercado-libre").val();
+    var usuario_QR_mercado_libre = srcData;
     var usuario_email = $("#usuario-email").val();
-    
 
     return $.ajax({
         url: ACTUALIZO_DATOS_USUARIO,
