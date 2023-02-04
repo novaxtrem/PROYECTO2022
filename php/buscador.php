@@ -27,19 +27,19 @@ while ($resultado = mysqli_fetch_assoc($buscador)) {
     <div class="clean-product-item" id="<?php echo $resultado["producto_id"]; ?>"
       name="<?php echo $resultado["producto_categoria"]; ?>">
       <div class="image">
-        <a href="paginaProducto.html?producto_id=<?php echo $resultado["producto_id"]; ?>">
+        <a href="producto.html?producto_id=<?php echo $resultado["producto_id"]; ?>">
           <img class="img-fluid d-block mx-auto" src="<?php echo $resultado["producto_imagen"]; ?>">
         </a>
       </div>
       <div class="product-name" name="<?php echo $resultado["producto_nombre"]; ?>">
-        <a href="paginaProducto.html?producto_id=<?php echo $resultado["producto_id"]; ?>"><?php echo $resultado["producto_nombre"]; ?></a>
+        <a href="producto.html?producto_id=<?php echo $resultado["producto_id"]; ?>"><?php echo $resultado["producto_nombre"]; ?></a>
       </div>
       <div class="about">
         <h3 name="producto-precio">$
           <?php echo $resultado["producto_precio"]; ?>
         </h3>
         <button type="button" class="btn btn-warning btn-detalle"> <a
-            href="paginaProducto.html?producto_id=<?php echo $resultado["producto_id"]; ?>" style="color: white">
+            href="producto.html?producto_id=<?php echo $resultado["producto_id"]; ?>" style="color: white">
             detalle</a></button>
       </div>
     </div>

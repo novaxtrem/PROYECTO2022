@@ -6,7 +6,7 @@ const SIN_IMAGEN = "/PROYECTO2022/imagenes/productos/sin-imagen.png";
 
 //PAGINAS
 const PAGINA_INGRESO = "ingreso.html"
-const PAGINA_PRODUCTO = "paginaProducto.html";
+const PAGINA_PRODUCTO = "producto.html";
 const PAGINA_ALTA_USUARIO = "altaUsuario.html";
 const PAGINA_404 = "404.html";
 const PAGINA_INDEX = "index.html";

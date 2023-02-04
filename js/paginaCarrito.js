@@ -14,6 +14,11 @@ $(document).ready(function () {
     });
 
 
+    $('.btn-borrar-producto-carrito').click(function () {
+        eliminarProductoCarrito(this);
+    });
+
+
 });
 
 
@@ -39,29 +44,21 @@ function dibujoCarrito() {
 
         for (var i = 0; i < listaProductosCarrito.length; i++) {
             htmlContentToAppend +=
-                `<div class="producto">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-md-3">
-                            <div class="product-image">
-                                <img class="img-fluid d-block mx-auto image imagen-producto" src="`+ listaProductosCarrito[i].producto_imagen + `">
-                            </div>
+                `<div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src="`+ listaProductosCarrito[i].producto_imagen + `"></div>
+                        <div class="col">
+                            <div class="row text-muted">`+ listaProductosCarrito[i].producto_categoria + `</div>
+                            <div class="row" id="`+ listaProductosCarrito[i].producto_id + `">` + listaProductosCarrito[i].producto_nombre + `</div>
                         </div>
-                        <div class="col-md-5 product-info">
-                            <a class="nombre-producto" style="color: rgb(253,157,13);">` + listaProductosCarrito[i].producto_nombre + `</a>
-                            <p class="id-producto" style="display:none">`+ listaProductosCarrito[i].producto_id + `</p>
-                            <button class="btn btn-primary boton-eliminar"style="background-color: rgb(253,157,13);">eliminar</button>
+                        <div class="col">
+                            <a href="#">-</a><a href="#" class="border">`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `</a><a href="#">+</a>
                         </div>
-                        <div class="col-6 col-md-2 cantidad-productos">
-                            <label class="form-label d-none d-md-block" for="quantity">Cantidad</label>
-                            <input type="number" class="form-control quantity-input catidad-productos-agregados" value="`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `">
-                        </div>
-                        <div class="col-6 col-md-2 contenedor-precio-producto">
-                            <label class="form-label d-none d-md-block" for="precio-unitario">precio</label>
-                            <span class="precio-unitario">$ `+ listaProductosCarrito[i].producto_precio + `</span>
-                        </div>
+                        <div class="col">`+ listaProductosCarrito[i].producto_precio + `$ <span class="close btn-borrar-producto-carrito"> borrar</span></div>
                     </div>
-                </div>`
-            document.getElementById("contenedor-productos-en-el-carrito").innerHTML = htmlContentToAppend;
+                 </div>
+                `
+            document.getElementById("contenedor-productos-carrito").innerHTML = htmlContentToAppend;
         }
     }
 
@@ -75,6 +72,7 @@ function eliminarProductoCarrito(e) {
     var productRow = $(e).parent().parent().parent();
     productRow.remove();
     //
+    /*
     idProducto = $(productRow).children().children('.product-info').children('.id-producto').text();
 
     alert(idProducto);
@@ -87,7 +85,7 @@ function eliminarProductoCarrito(e) {
         }
     }
 
-
+*/
 
 
 
