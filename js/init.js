@@ -18,8 +18,9 @@ const PAGINA_MIS_COMPRAS = "misCompras.html";
 const PAGINA_MIS_VENTAS = "misVentas.html";
 const PAGINA_FAQ = "faq.html"
 const PAGINA_TERMINOS_DE_USO = "terminosUso.html";
-const PAGINA_QUIENES_SOMOS ="quienesSomos.html";
-
+const PAGINA_QUIENES_SOMOS = "quienesSomos.html";
+const PAGINA_TOP_VENTAS = "topVentas.html";
+const PAGINA_ADMIN ="backendAdmin.html";
 
 
 
@@ -44,8 +45,10 @@ const CONSULTO_PRODUCTOS_PUBLICADOS_POR_USUARIO = "/PROYECTO2022/php/consulto-pr
 const CONSULTO_PRODUCTOS_RELACIONADOS = "/PROYECTO2022/php/consulto-productos-relacionados.php"
 
 //UPDATE
+const ACTUALIZO_DATOS_USUARIO = "/PROYECTO2022/php/actualizo-usuario.php";
 const ACTUALIZO_PRODUCTO = "/PROYECTO2022/php/actualizo-producto.php";
 const ACTUALIZO_VENTAS = "/PROYECTO2022/php/actualizo-ventas.php";
+
 
 //DELETE
 const ELIMINO_PRODUCTO = "/PROYECTO2022/php/eliminar-producto.php";

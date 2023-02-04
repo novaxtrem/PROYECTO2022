@@ -15,14 +15,8 @@ $(document).ready(function () {
         usuario_direccion = $("#usuario-direccion").val();
         usuario_telefono = $("#usuario-telefono").val();
         //
-
-        //
-
         agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_QR_mercado_libre);
-
     });
-
-
 });
 
 function agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_QR_mercado_libre) {
@@ -35,8 +29,6 @@ function agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usua
         }
     });
 };
-
-
 
 function encodeImageFileAsURL() {
     var filesSelected = document.getElementById("inputFileToLoad").files;
@@ -52,13 +44,7 @@ function encodeImageFileAsURL() {
             usuario_QR_mercado_libre = newImage.src;
             //
             document.getElementById("imgTest").innerHTML = newImage.outerHTML;
-            //alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
-
-            //console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
         }
         fileReader.readAsDataURL(fileToLoad);
-
     }
-
-
 }

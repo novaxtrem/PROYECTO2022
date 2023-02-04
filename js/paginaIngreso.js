@@ -25,8 +25,18 @@ function inicioSesion(usuario_email, usuario_pass) {
                 $("#usuario-email").val("");
                 $("#usuario-pass").val("");
             } else {
-                mostarAlerta();
-                localStorage.setItem('USUARIO_CONECTADO', data);
+
+                var usuarioConectado = JSON.parse(data);
+               
+                if (usuarioConectado.usuario_estado == "ADMIN") {
+                    mostarAlerta();
+                    window.location.href = PAGINA_ADMIN;
+                    localStorage.setItem('USUARIO_CONECTADO', data);
+                } else {
+                    mostarAlerta();
+                    localStorage.setItem('USUARIO_CONECTADO', data);
+                }
+
             }
         }
     });
@@ -41,5 +51,5 @@ function mostarAlerta() {
         $('.alert').fadeOut('slow');
         location.href = PAGINA_INDEX;
     }, 850);
-    
+
 }
