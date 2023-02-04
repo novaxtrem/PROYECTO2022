@@ -1,107 +1,34 @@
 listaProductosCarrito = [];
-listaFinalProductosComprados = [];
+//
 
-var orden_compra_id, orden_compra_vendedor_id, orden_compra_comprador_id, orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio, orden_compra_costo_envio, orden_compra_total, orden_compra_estado;
+usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
+listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
 
 $(document).ready(function () {
 
     dibujoCarrito();
-    calculoCostoCarrito();
-
-    $('#btn-confirmar-orden').click(function () {
-        agregoOrdenCompra();
-    });
-
-
-    $(".catidad-productos-agregados").change(function () {
-        calculoCostoCarrito();
-    });
 
 
     $('.boton-eliminar').click(function () {
-        eliminarProducto(this);
+        eliminarProductoCarrito(this);
     });
+
 
 });
 
-function eliminarProducto(e) {
-    var productRow = $(e).parent().parent().parent();
-    //
-    productRow.remove();
-    calculoCostoCarrito();
-}
 
-/*
-function cargoProducto() {
-
-    return $.ajax({
-        url: CONSULTO_PRODUCTO,
-        type: "POST",
-        data: { producto_id: localStorage.getItem('ID_PRODUCT_SELECCIONADO') },
-        dataType: 'json',
-        async: false,
-        success: function (data) {
-            for (var i = 0; i < data.length; i++) {
-                producto = new Producto(data[i].producto_id, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen);
-                
-                console.log(producto);
-            }
-        }
-    });
-};
-*/
-
-function calculoCostoCarrito() {
-    var subTotalCostoProductos = 0;
-    listaFinalProductosComprados = [];
-
-    $('.producto').each(function () {
-
-        var precioUnitario = 0;
-        var cantidad = 0;
-        var costoProducto = 0;
-        var idProducto = 0;
-        //
-        idProducto = $(this).children().children('.product-info').children('.id-producto').text();
-        //
-        precioUnitario = parseFloat($(this).children().children('.contenedor-precio-producto').children('.precio-unitario').text().replace('$', ''));
-        cantidad = parseInt($(this).children().children('.cantidad-productos').children('.catidad-productos-agregados').val());
-        //
-        costoProducto = precioUnitario * cantidad;
-        //
-        subTotalCostoProductos += costoProducto;
-
-
-        var detalleProductoComprado = {
-
-            detalle_orden_producto_id: idProducto,
-            detalle_orden_compra_costo_unitario_producto: precioUnitario,
-            detalle_orden_compra_cantidad_productos_comprados: cantidad,
-
-        };
-
-        listaFinalProductosComprados.push(detalleProductoComprado);
-
-    });
-
-    $('#subtotal').text("$ " + subTotalCostoProductos);
-    //$('#costo-envio').text("$ " + 200);
-    //$('#precio-final').text("$ " + (200 + subTotalCostoProductos));
-    $('#precio-final').text("$ " + (subTotalCostoProductos));
-
-}
 
 
 
 
 function dibujoCarrito() {
 
-    listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
+
     var htmlContentToAppend = "";
 
 
 
-    if (listaProductosCarrito == null) {
+    if (listaProductosCarrito == null || listaProductosCarrito <= 0) {
         htmlContentToAppend =
             `<div>
                 <h1 style="color:#f29c40;text-align:center;padding-top:15px">no hay productos en el carrito</h1>
@@ -142,36 +69,26 @@ function dibujoCarrito() {
 
 }
 
-function agregoOrdenCompra() {
 
-    usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
+function eliminarProductoCarrito(e) {
 
-    
-
+    var productRow = $(e).parent().parent().parent();
+    productRow.remove();
     //
-    orden_compra_vendedor_id = localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO');
-    orden_compra_numero_operacion_mercado_pago = $('#numero-de-operacion').val();
-    //
+    idProducto = $(productRow).children().children('.product-info').children('.id-producto').text();
 
-    orden_compra_direccion_envio= $('input[name="tipo-envio"]:checked').val();
+    alert(idProducto);
 
-    if(orden_compra_direccion_envio=="retira"){
-            alert(orden_compra_direccion_envio);
-
-    } else{
-        alert(orden_compra_direccion_envio);
+    for (var i = 0; i < listaProductosCarrito.length; i++) {
+        if (listaProductosCarrito[i].producto_id == idProducto) {
+            listaProductosCarrito.splice(i, 12);
+            localStorage.setItem('CARRITO', "[" + JSON.stringify(listaProductosCarrito) + "]");
+            location.reload();
+        }
     }
 
-    console.log(orden_compra_numero_operacion_mercado_pago);
 
 
-    $.ajax({
-        url: ALTA_ORDEN_COMPRA,
-        type: "post",
-        data: { orden_compra_vendedor_id: orden_compra_vendedor_id, orden_compra_comprador_id: usuarioConectado.usuario_email, orden_compra_numero_operacion_mercado_pago: orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio: orden_compra_direccion_envio, orden_compra_costo_envio: orden_compra_costo_envio, orden_compra_total: orden_compra_total, orden_compra_estado: orden_compra_estado, productos_comprados: JSON.stringify(listaFinalProductosComprados) },
-        success: function (data) {
-            console.log(data);
-        }
-    });
+
 
 }

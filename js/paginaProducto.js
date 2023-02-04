@@ -3,6 +3,8 @@ var productoRelacionado = new Producto;
 var listaProductosCarrito = [];
 var listaProductosRelacionados = [];
 //
+var usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
+//
 $(document).ready(function () {
 
     cargoProducto();
@@ -109,13 +111,12 @@ function rutninaUsuarioLogiado() {
         $('#btn-agregar-carrito').text("autocompra no disponible");
     } else {
         $('#btn-agregar-carrito').click(function () {
-
-            if (localStorage.getItem('CARRITO') == null) {
+            listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
+            if (localStorage.getItem('CARRITO') == null || listaProductosCarrito.length <= 0) {
                 producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
                 localStorage.setItem('CARRITO', "[" + JSON.stringify(producto) + "]");
                 mostarAlerta();
             } else {
-                listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
                 if (listaProductosCarrito[0].producto_id_vendedor == producto.producto_id_vendedor) {
                     listaProductosCarrito.push(producto);
                     localStorage.setItem('CARRITO', "[" + JSON.stringify(listaProductosCarrito) + "]");
