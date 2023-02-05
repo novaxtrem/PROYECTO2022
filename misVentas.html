@@ -9,6 +9,7 @@
     <meta name="description" content="Tienda dedicada a la comercialización de cerveza artesanal e insumos, Eventos relacionados a maquinaria y degustación.">
     <!--/////////////////////////////////////////-->
     <link rel="stylesheet" href="../PROYECTO2022/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../PROYECTO2022/css/tienda.css">
     <!--/////////////////////////////////////////-->
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -36,13 +37,14 @@
 <div class="mis-ventas items">
                 <div class="row justify-content-center align-items-center">
 
-                    <div class="col-md-1 compra-id">
-                      <label class="form-label d-none d-md-block" style="color: rgb(253,157,13);">ID</label>
+                    <div class="col-md-5 compra-detalle text-center">
+                      <label class="form-label d-none d-md-block" style="color: rgb(253,157,13);">Detalle de la venta</label>
                     </div>
 
+                   
 
-                    <div class="col-md-3 compra-operacion">
-                        <label class="form-label d-none d-md-block" style="color: rgb(253,157,13);">No. Operación <br />(Mercado Pago / Transf.)</label>
+                    <div class="col-md-2 compra-operacion text-center">
+                        <label class="form-label d-none d-md-block" style="color: rgb(253,157,13);">No. Ref. de pago</label>
                     </div>
 
                     <div class="col-md-2 compra-envio" >
@@ -54,7 +56,7 @@
                     </div>
 
                      <div class="col-md-2 compra-estado" >
-                       <label class="form-label d-none d-md-block" style="color: rgb(253,157,13);">Estado de Compra</label>
+                       <label class="form-label d-none d-md-block" style="color: rgb(253,157,13);">Estado de la Venta</label>
                     </div>
 
                     <div class="col-md-3 compra-estado" >
@@ -67,6 +69,18 @@
                             <div id="contenedor-mis-ventas" class="items">
                                 
                             </div>
+
+                            <div class="notes items">
+                            
+                            Referencias de "Estado de la Venta":
+
+                            <ul>
+                              <li><b>NUEVA:</b> La compra ha ingresado con éxito y está siendo pendiente de revisión</li>  
+                              <li><b>COMPLETADA:</b> Usted ha aprobado la compra y está lista para retirar/enviar</li> 
+                              <li><b>RECHAZADA:</b> Los datos de la compra no son correctos y usted ha rechazado la misma</li> 
+
+                            </ul>
+                        </div>
                         </div>  
                        
                         </div> 
@@ -76,8 +90,7 @@
         </section>
     </main>
     <div id="footer-contenedor"></div>
-    <!--/////////////////////////////////////////-->
-    <link rel="stylesheet" href="../PROYECTO2022/css/tienda.css">
+
     <!--/////////////////////////////////////////-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
     <!--/////////////////////////////////////////-->

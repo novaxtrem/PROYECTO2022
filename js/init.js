@@ -47,7 +47,7 @@ const CONSULTO_PRODUCTOS_RELACIONADOS = "/PROYECTO2022/php/consulto-productos-re
 //UPDATE
 const ACTUALIZO_DATOS_USUARIO = "/PROYECTO2022/php/actualizo-usuario.php";
 const ACTUALIZO_PRODUCTO = "/PROYECTO2022/php/actualizo-producto.php";
-const ACTUALIZO_VENTAS = "/PROYECTO2022/php/actualizo-ventas.php";
+const ACTUALIZO_VENTA = "/PROYECTO2022/php/actualizo-venta.php";
 
 
 //DELETE

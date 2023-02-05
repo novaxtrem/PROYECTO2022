@@ -3,11 +3,14 @@ require 'conexion.php';
 header('Access-Control-Allow-Origin: *');
 //
 
-$compraID = $_POST['orden_compra_id'];
-$estadoCompra  = $_POST['orden_compra_estado'];
+
+$compraEstado = $_POST['orden_compra_estado'];
+
+
 
 //
-$q = "UPDATE `ordenes_de_compras` SET `orden_compra_estado`='$estadoCompra' ' WHERE `orden_compra_id`='$compraID';";
+$q = "UPDATE `ordenes_de_compras` SET `orden_compra_estado`='$compraEstado' WHERE `orden_compra_vendedor_id`='$comprador_email';";
+
 
 $query = mysqli_query($conn, $q);
 //

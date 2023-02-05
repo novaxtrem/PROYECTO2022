@@ -175,9 +175,23 @@
     padding-top: 0;
 }
 
+
+#contenedor-mis-compras .product-info {
+    border-right: 1px solid #ccc;
+}
+
 .mis-compras.items, .mis-ventas.items {
     font-weight: 600;
 }
+
+.notes {
+    font-size: 12px;
+    line-height: 24px;
+}
+
+
+
+
 
 
 /*MIS VENTAS*/
@@ -186,6 +200,12 @@
     padding-bottom: 10px;
 }
 
+input.compra-estado {
+    width: 100%;
+    color: rgb(253,157,13); 
+    border-width:0px; 
+    margin-bottom: 5px;
+}
 
 
 /*///////////////////////////////*/
