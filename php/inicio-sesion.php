@@ -5,7 +5,7 @@ header('Access-Control-Allow-Origin: *');
 $usuario_email = $_POST['usuario_email'];
 $usuario_contrasenia = $_POST['usuario_pass'];
 //
-$query = "SELECT * FROM `usuarios` WHERE `usuario_email`= '$usuario_email' AND `usuario_contrasenia`= '$usuario_contrasenia';";
+$query = "SELECT * FROM `usuarios` WHERE `usuario_email`= '$usuario_email' AND `usuario_contrasenia`= md5('$usuario_contrasenia');";
 //
 $resultado = mysqli_query($conn, $query);
 //
