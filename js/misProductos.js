@@ -57,6 +57,11 @@ function cargoArrayProductosPorUsuario() {
         async: false,
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
+                //
+                if (data[i].producto_imagen == undefined || data[i].producto_imagen == null || data[i].producto_imagen == "") {
+                    data[i].producto_imagen = SIN_IMAGEN;
+                }
+                //
                 var producto = new Producto(data[i].producto_id, data[i].producto_id_vendedor, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen, data[i].producto_estado);
                 listaProductosDelUsuario.push(producto);
             }
@@ -169,11 +174,8 @@ function actualizoProducto() {
 
 
 function eliminoProducto() {
-
-    console.log(productRow);
     var idProducto = $(productRow).prop('id');
     //
-
     return $.ajax({
         url: ELIMINO_PRODUCTO,
         type: "POST",

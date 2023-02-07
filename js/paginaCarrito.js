@@ -120,15 +120,10 @@ function eliminarProductoCarrito(e) {
 
 function agregoOrdenCompra() {
 
-
     orden_compra_numero_operacion = $('#numero-de-operacion').val();
 
-
-
-
-
-
-
+    
+    //
     $.ajax({
         url: ALTA_ORDEN_COMPRA,
         type: "post",
