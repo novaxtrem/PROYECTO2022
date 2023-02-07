@@ -14,10 +14,11 @@ $(document).ready(function () {
         usuario_nombre = $("#usuario-nombre").val();
         usuario_direccion = $("#usuario-direccion").val();
         usuario_telefono = $("#usuario-telefono").val();
+        usuario_cuenta_bancaria = $("#usuario-cuenta-bancaria").val();
         //
         if (checkmail(usuario_email)) {
             if (usuario_contrasenia && usuario_nombre && usuario_direccion && usuario_telefono) {
-                agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_QR_mercado_libre);
+                agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_cuenta_bancaria, usuario_QR_mercado_libre);
                 alert("Usuario registrado exitosamente")
             }
             else alert("Debe completar todos los datos para registrar un usuario nuevo")
@@ -26,13 +27,15 @@ $(document).ready(function () {
     });
 });
 
-function agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_QR_mercado_libre) {
+function agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_cuenta_bancaria, usuario_QR_mercado_libre) {
     $.ajax({
         url: ALTA_USUARIO,
         type: "post",
-        data: { usuario_email: usuario_email, usuario_contrasenia: usuario_contrasenia, usuario_nombre: usuario_nombre, usuario_direccion: usuario_direccion, usuario_telefono: usuario_telefono, usuario_QR_mercado_libre: usuario_QR_mercado_libre },
+        data: { usuario_email: usuario_email, usuario_contrasenia: usuario_contrasenia, usuario_nombre: usuario_nombre, usuario_direccion: usuario_direccion, usuario_telefono: usuario_telefono, usuario_cuenta_bancaria: usuario_cuenta_bancaria, usuario_QR_mercado_libre: usuario_QR_mercado_libre },
         success: function (data) {
-            console.log(data);
+            if (data.trim() == "ok") {
+                alert("usuario creado correctamente")
+            }
         }
     });
 };

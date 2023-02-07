@@ -17,14 +17,14 @@ class Producto {
 }
 //////////////////////////////
 class Usuario {
-    constructor(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_QR_mercado_libre, usuario_cuenta_bancaria, usuario_estado) {
+    constructor(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_cuenta_bancaria, usuario_QR_mercado_libre, usuario_estado) {
         this.usuario_email = usuario_email;
         this.usuario_contrasenia = usuario_contrasenia;
         this.usuario_nombre = usuario_nombre;
         this.usuario_direccion = usuario_direccion;
         this.usuario_telefono = usuario_telefono;
-        this.usuario_QR_mercado_libre = usuario_QR_mercado_libre;
         this.usuario_cuenta_bancaria = usuario_cuenta_bancaria;
+        this.usuario_QR_mercado_libre = usuario_QR_mercado_libre;
         this.usuario_estado = usuario_estado;
     }
 }

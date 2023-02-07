@@ -14,7 +14,37 @@ $(document).ready(function () {
         actualizarDatosPerfil();
     });
 
+    $('#borrar-cuenta').click(function () {
+        if (confirm("esta apunto de borrar su cuenta, esta seguro?")) {
+            borrarCuentaUsuario();
+            localStorage.clear();
+            window.location = PAGINA_INDEX;
+        }
+    });
+
 });
+
+
+
+function borrarCuentaUsuario() {
+
+    return $.ajax({
+        url: ELIMINO_CUENTA_USUARIO,
+        type: "POST",
+        data: { usuario_email: usuarioConectado.usuario_email },
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            console.log(data);
+        },
+        error: function (data) {
+            console.log(data);
+        },
+    });
+};
+
+
+
 
 
 function dibujoPerfil() {
@@ -22,7 +52,7 @@ function dibujoPerfil() {
     htmlContentToAppend += `
         <div class="row">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h4 class="text-right">Mis datos</h4>
+                <h4 class="text-right">Mi Cuenta</h4>
             </div>
             <div class="col-md-12">
                 <!--MOVIDA DE LA IMAGEN-->
@@ -77,6 +107,10 @@ function dibujoPerfil() {
                     <button id="btn-guardar" type="button" class="btn btn-outline-dark btn-warning"style="margin-top: 10px;margin-left: 10px;">Guardar</button>
 
             </div>
+            <br>
+            <br>
+            <br>
+            <small  id="borrar-cuenta" class="rojo cursor">eliminar cuenta</small>
             <style>
                 a {text-decoration: none;}
                 img{padding: 8px;}

@@ -82,7 +82,7 @@ function cargoNavbar() {
                     <a class="dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(33,33,33);"> Mi Taberna</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="`+ PAGINA_CARRITO + `">Carrito</a>
-                        <a class="dropdown-item" href="`+ PAGINA_MIS_DATOS + `">Mis datos</a>
+                        <a class="dropdown-item" href="`+ PAGINA_MIS_DATOS + `">Mi Cuenta</a>
                         <a class="dropdown-item" href="`+ PAGINA_MIS_PRODUCTOS + `">Mis productos</a>
                         <a class="dropdown-item" href="`+ PAGINA_MIS_COMPRAS + `">Mis Compras</a>
                         <a class="dropdown-item" href="`+ PAGINA_MIS_VENTAS + `">Mis Ventas</a>
@@ -120,7 +120,7 @@ function cargoFooter() {
                                 <a href="#">Contactanos</a>
                             </li>
                             <li>
-                                <a href="#">Instagram</a>
+                                <a target="_blank" href="https://www.instagram.com/beerapp_oficial.uy/">Instagram</a>
                             </li>
                         </ul>
                     </div>
@@ -139,9 +139,11 @@ function cargoFooter() {
                 </div>
             </div>
             <div class="footer-copyright">
-                <p>Desarrollado por GESTEMA&nbsp;<span style="font-weight: normal !important; font-style: normal !important;">©2022&nbsp;</span>
+                <a href="#" target="_blank">
+                    <p>Desarrollado por GESTEMA&nbsp;<span style="font-weight: normal !important; font-style: normal !important;">©2022&nbsp;</span>
                     <br>
-                </p>
+                    </p>
+                </a>
             </div>
         </footer>`
     document.getElementById("footer-contenedor").innerHTML = htmlContentToAppend;

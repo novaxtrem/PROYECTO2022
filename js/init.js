@@ -52,3 +52,4 @@ const ACTUALIZO_VENTA = "/PROYECTO2022/php/actualizo-venta.php";
 
 //DELETE - BORRADO LOGICO
 const ELIMINO_PRODUCTO = "/PROYECTO2022/php/eliminar-producto.php";
+const ELIMINO_CUENTA_USUARIO ="/PROYECTO2022/php/eliminar-cuenta-usuario.php"

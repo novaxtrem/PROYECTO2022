@@ -74,6 +74,14 @@
 
 /*VARIOS*/
 
+.rojo{
+    color: red;
+}
+
+.cursor{
+    cursor: pointer;
+}
+
 .naranja{
     color: orange;
 }
