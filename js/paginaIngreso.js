@@ -27,7 +27,7 @@ function inicioSesion(usuario_email, usuario_pass) {
             } else {
 
                 var usuarioConectado = JSON.parse(data);
-               
+
                 if (usuarioConectado.usuario_estado == "ADMIN") {
                     mostarAlerta();
                     window.location.href = PAGINA_ADMIN;

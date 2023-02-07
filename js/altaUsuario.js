@@ -1,6 +1,6 @@
 var usuario_QR_mercado_libre;
 
-
+//
 $(document).ready(function () {
 
     $('#inputFileToLoad').on('change', function () {
@@ -15,15 +15,14 @@ $(document).ready(function () {
         usuario_direccion = $("#usuario-direccion").val();
         usuario_telefono = $("#usuario-telefono").val();
         //
-        if (checkmail(usuario_email)){
-            if (usuario_contrasenia && usuario_nombre && usuario_direccion && usuario_telefono)
-            {
+        if (checkmail(usuario_email)) {
+            if (usuario_contrasenia && usuario_nombre && usuario_direccion && usuario_telefono) {
                 agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_QR_mercado_libre);
                 alert("Usuario registrado exitosamente")
-                }
-         else alert("Debe completar todos los datos para registrar un usuario nuevo")
+            }
+            else alert("Debe completar todos los datos para registrar un usuario nuevo")
         }
-        
+
     });
 });
 
@@ -60,17 +59,12 @@ function encodeImageFileAsURL() {
 
 
 function checkmail(mail) {
-
-  var expresion = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-
-  if (!mail.match(expresion)) {
-
-     alert("El email no es correcto!");
-
-    return false;
-
-  }
-
-   return true;
-
+    // EXPRESION REGULAR
+    var expresion = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    //
+    if (!mail.match(expresion)) {
+        alert("El email no es correcto!");
+        return false;
+    }
+    return true;
 }

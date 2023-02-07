@@ -5,8 +5,6 @@ $(document).ready(function () {
     cargoNavbar();
     cargoFooter();
 
-
-
 });
 
 
@@ -38,7 +36,6 @@ function cargoNavbar() {
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Sobre Nosotros</a>
                             <div class="dropdown-menu">
-                               
                                 <a class="dropdown-item" href="`+ PAGINA_QUIENES_SOMOS + `">Quienes somos</a>
                                 <a class="dropdown-item" href="`+ PAGINA_FAQ + `">FAQ</a>
                             </div>

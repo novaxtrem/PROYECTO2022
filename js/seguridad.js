@@ -12,5 +12,5 @@ function verificoUsuarioConectado() {
         alert("debe iniciar sesion");
         window.location.href = PAGINA_INDEX;
     }
-   
+
 }

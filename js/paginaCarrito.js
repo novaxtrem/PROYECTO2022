@@ -123,10 +123,10 @@ function agregoOrdenCompra() {
 
     orden_compra_numero_operacion = $('#numero-de-operacion').val();
 
-  
-    
 
-    
+
+
+
 
 
     $.ajax({

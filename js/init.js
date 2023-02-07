@@ -20,7 +20,7 @@ const PAGINA_FAQ = "faq.html"
 const PAGINA_TERMINOS_DE_USO = "terminosUso.html";
 const PAGINA_QUIENES_SOMOS = "quienesSomos.html";
 const PAGINA_TOP_VENTAS = "topVentas.html";
-const PAGINA_ADMIN ="backendAdmin.html";
+const PAGINA_ADMIN = "backendAdmin.html";
 
 
 
@@ -50,5 +50,5 @@ const ACTUALIZO_PRODUCTO = "/PROYECTO2022/php/actualizo-producto.php";
 const ACTUALIZO_VENTA = "/PROYECTO2022/php/actualizo-venta.php";
 
 
-//DELETE
+//DELETE - BORRADO LOGICO
 const ELIMINO_PRODUCTO = "/PROYECTO2022/php/eliminar-producto.php";

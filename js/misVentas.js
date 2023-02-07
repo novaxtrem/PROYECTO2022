@@ -7,7 +7,7 @@ $(document).ready(function () {
     cargoArrayVentas();
     dibujoVentasDelUsuario();
 
- 
+
     $(".compra-estado").prop("readonly", true);
     $(".btn-confirmar-edicion").attr("disabled", true);
     $('.selector').prop('disabled', true);
@@ -44,12 +44,12 @@ function cargoArrayVentas() {
     return $.ajax({
         url: CONSULTO_MIS_VENTAS,
         type: "POST",
-        data: {orden_compra_vendedor_id: usuarioConectado.usuario_email },
+        data: { orden_compra_vendedor_id: usuarioConectado.usuario_email },
         dataType: 'json',
         async: false,
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                var compra = new OrdenDeCompra(data[i].orden_compra_id, data[i].orden_compra_vendedor_id, data[i].orden_compra_comprador_id, data[i].orden_compra_numero_operacion, data[i].orden_compra_direccion_envio, data[i].orden_compra_costo_envio,   data[i].orden_compra_total, data[i].orden_compra_estado, data[i].producto_imagen, data[i].producto_nombre, data[i].detalle_orden_compra_cantidad_productos_comprados  );
+                var compra = new OrdenDeCompra(data[i].orden_compra_id, data[i].orden_compra_vendedor_id, data[i].orden_compra_comprador_id, data[i].orden_compra_numero_operacion, data[i].orden_compra_direccion_envio, data[i].orden_compra_costo_envio, data[i].orden_compra_total, data[i].orden_compra_estado, data[i].producto_imagen, data[i].producto_nombre, data[i].detalle_orden_compra_cantidad_productos_comprados);
                 listaVentasDelUsuario.push(compra);
             }
         },
@@ -66,7 +66,7 @@ function dibujoVentasDelUsuario() {
     for (var i = 0; i < listaVentasDelUsuario.length; i++) {
 
         htmlContentToAppend +=
-           `<div class="compra product" id="` + listaVentasDelUsuario[i].orden_compra_id + `">
+            `<div class="compra product" id="` + listaVentasDelUsuario[i].orden_compra_id + `">
                 <div class="row justify-content-center align-items-center">
                        
                        <div class="col-md-3">
@@ -113,25 +113,24 @@ function actualizoVenta() {
 
     var compraID = $(productRow).prop('id');
     var compraEstado = $(productRow).find('.compra-estado').val();
-    if (compraEstado == "NUEVA" || compraEstado == "COMPLETADA" || compraEstado == "RECHAZADA")
-    {
-         return $.ajax({
-        url: ACTUALIZO_VENTA,
-        type: "POST",
-        data: {orden_compra_id: compraID, orden_compra_estado: compraEstado},
-        dataType: 'json',
-        async: false,
-        success: function (data) {
+    if (compraEstado == "NUEVA" || compraEstado == "COMPLETADA" || compraEstado == "RECHAZADA") {
+        return $.ajax({
+            url: ACTUALIZO_VENTA,
+            type: "POST",
+            data: { orden_compra_id: compraID, orden_compra_estado: compraEstado },
+            dataType: 'json',
+            async: false,
+            success: function (data) {
 
-            console.log(data);
-        },
-        error: function (data) {
-            console.log(data);
-        },
-    }); 
+                console.log(data);
+            },
+            error: function (data) {
+                console.log(data);
+            },
+        });
     }
-    else alert ("El estado puede ser NUEVA, COMPLETADA o RECHAZADA")
+    else alert("El estado puede ser NUEVA, COMPLETADA o RECHAZADA")
     //
-  
+
 
 };

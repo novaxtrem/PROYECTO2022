@@ -31,8 +31,7 @@ class Usuario {
 //////////////////////////////
 
 class OrdenDeCompra {
-
-    constructor(orden_compra_id, orden_compra_vendedor_id, orden_compra_comprador_id, orden_compra_numero_operacion, orden_compra_direccion_envio, orden_compra_total, orden_compra_estado, producto_nombre, cantidad_comprada) {
+    constructor(orden_compra_id, orden_compra_vendedor_id, orden_compra_comprador_id, orden_compra_numero_operacion, orden_compra_direccion_envio, orden_compra_total, orden_compra_estado) {
         this.orden_compra_id = orden_compra_id;
         this.orden_compra_vendedor_id = orden_compra_vendedor_id;
         this.orden_compra_comprador_id = orden_compra_comprador_id;
@@ -40,6 +39,5 @@ class OrdenDeCompra {
         this.orden_compra_direccion_envio = orden_compra_direccion_envio;
         this.orden_compra_total = orden_compra_total;
         this.orden_compra_estado = orden_compra_estado;
-        this.cantidad_comprada = cantidad_comprada;
     }
 }

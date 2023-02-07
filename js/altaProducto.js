@@ -3,23 +3,18 @@
 var producto_nombre, producto_id_vendedor, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen, srcData;
 //
 usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
-
+//
 
 $(document).ready(function () {
-
-
 
     $('#categorias-desplegable').on('change', function () {
         producto_categoria = $("#categorias-desplegable option:selected").val();
     });
-
-
+    //
     $('#inputFileToLoad').on('change', function () {
         encodeImageFileAsURL();
     });
-
-
-
+    //
     ////////////////////////////
     var marker = L.marker();
     var map = L.map('map').setView([-32.60, -56], 6);
@@ -38,8 +33,7 @@ $(document).ready(function () {
         producto_locacion_logitud = e.latlng.lng;
         producto_locacion_latitud = e.latlng.lat;
     }
-    ////////////////////////////
-
+    /////////IMAGEN
     function encodeImageFileAsURL() {
 
         var filesSelected = document.getElementById("inputFileToLoad").files;
@@ -59,6 +53,7 @@ $(document).ready(function () {
             fileReader.readAsDataURL(fileToLoad);
         }
     }
+    ///////////IMAGEN
 
     $("#btn-agregar-producto").click(function () {
 
@@ -74,24 +69,20 @@ $(document).ready(function () {
             producto_categoria = $("#categorias-desplegable option:selected").val();
         } else {
             producto_categoria = $("#categorias-desplegable option:selected").val();
-
         }
-
-
+        //
         if ((producto_locacion_logitud == undefined) || (producto_locacion_latitud) == undefined) {
             producto_locacion_logitud = 0;
             producto_locacion_latitud = 0;
             producto_locacion_alias = "sin nombre";
         }
-
-        if(producto_id_vendedor && producto_nombre && producto_categoria && producto_descripcion && producto_precio && producto_stock && producto_locacion_logitud && producto_locacion_latitud && producto_locacion_alias && producto_imagen)
+        //
+        if (producto_id_vendedor && producto_nombre && producto_categoria && producto_descripcion && producto_precio && producto_stock && producto_locacion_logitud && producto_locacion_latitud && producto_locacion_alias && producto_imagen)
             agregoProductos(producto_id_vendedor, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen);
-        else alert ("Debe ingresar todos los datos")
+        else alert("Debe ingresar todos los datos")
     });
 
-
 });
-
 
 function agregoProductos(producto_id_vendedor, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen) {
 
