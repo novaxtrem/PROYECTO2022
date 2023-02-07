@@ -1,7 +1,7 @@
 listaProductosCarrito = [];
 listaFinalProductosComprados = [];
 
-var orden_compra_id, orden_compra_vendedor_id, orden_compra_comprador_id, orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio, orden_compra_costo_envio, orden_compra_total, orden_compra_estado;
+var orden_compra_id, orden_compra_vendedor_id, orden_compra_comprador_id, orden_compra_numero_operacion, orden_compra_direccion_envio, orden_compra_costo_envio, orden_compra_total, orden_compra_estado;
 
 usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 
@@ -134,7 +134,7 @@ function agregoOrdenCompra() {
 
     //
     orden_compra_vendedor_id = localStorage.getItem('ID_VENDEDOR_PRODUCTO_AGREGADO_AL_CARRITO');
-    orden_compra_numero_operacion_mercado_pago = $('#numero-de-operacion').val();
+    orden_compra_numero_operacion = $('#numero-de-operacion').val();
     //
 
     orden_compra_direccion_envio= $('input[name="tipo-envio"]:checked').val();
@@ -146,13 +146,13 @@ function agregoOrdenCompra() {
         alert(orden_compra_direccion_envio);
     }
 
-    console.log(orden_compra_numero_operacion_mercado_pago);
+    console.log(orden_compra_numero_operacion);
 
 
     $.ajax({
         url: ALTA_ORDEN_COMPRA,
         type: "post",
-        data: { orden_compra_vendedor_id: orden_compra_vendedor_id, orden_compra_comprador_id: usuarioConectado.usuario_email, orden_compra_numero_operacion_mercado_pago: orden_compra_numero_operacion_mercado_pago, orden_compra_direccion_envio: orden_compra_direccion_envio, orden_compra_costo_envio: orden_compra_costo_envio, orden_compra_total: orden_compra_total, orden_compra_estado: orden_compra_estado, productos_comprados: JSON.stringify(listaFinalProductosComprados) },
+        data: { orden_compra_vendedor_id: orden_compra_vendedor_id, orden_compra_comprador_id: usuarioConectado.usuario_email, orden_compra_numero_operacion: orden_compra_numero_operacion, orden_compra_direccion_envio: orden_compra_direccion_envio, orden_compra_costo_envio: orden_compra_costo_envio, orden_compra_total: orden_compra_total, orden_compra_estado: orden_compra_estado, productos_comprados: JSON.stringify(listaFinalProductosComprados) },
         success: function (data) {
             console.log(data);
         }

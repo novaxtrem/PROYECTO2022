@@ -1,5 +1,7 @@
 listaProductosCarrito = [];
 //
+var tipodeEnvio = "retira";
+var medioPago = "transferencia";
 
 usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
@@ -18,6 +20,29 @@ $(document).ready(function () {
         eliminarProductoCarrito(this);
     });
 
+
+    if (listaProductosCarrito == null || listaProductosCarrito <= 0) {
+        $('btn-ingresar-orden').attr("disabled", true);
+    } else {
+        $('btn-ingresar-orden').attr("disabled", false);
+    }
+
+
+    $('#select-tipo-envio').on('change', function () {
+        tipodeEnvio = $(this).find(":selected").val();
+        if (tipodeEnvio == 'envio a domicilio') {
+            tipodeEnvio = usuarioConectado.usuario_direccion;
+        }
+    });
+
+    $('#select-medio-pago').on('change', function () {
+        medioPago = $(this).find(":selected").val();
+
+    });
+
+    $('#btn-ingresar-orden').click(function () {
+        agregoOrdenCompra();
+    });
 
 });
 
@@ -38,7 +63,7 @@ function dibujoCarrito() {
             `<div>
                 <h1 style="color:#f29c40;text-align:center;padding-top:15px">no hay productos en el carrito</h1>
             </div>`
-        document.getElementById("contenedor-principal").innerHTML = htmlContentToAppend;
+        document.getElementById("contenedor-productos-carrito").innerHTML = htmlContentToAppend;
 
     } else {
 
@@ -88,5 +113,29 @@ function eliminarProductoCarrito(e) {
 */
 
 
+
+}
+
+
+
+function agregoOrdenCompra() {
+
+
+    orden_compra_numero_operacion = $('#numero-de-operacion').val();
+
+  
+    
+
+    
+
+
+    $.ajax({
+        url: ALTA_ORDEN_COMPRA,
+        type: "post",
+        data: { orden_compra_vendedor_id: listaProductosCarrito[0].producto_id_vendedor, orden_compra_comprador_id: usuarioConectado.usuario_email, orden_compra_numero_operacion: orden_compra_numero_operacion, orden_compra_direccion_envio: tipodeEnvio, orden_compra_total: '10', productos_comprados: JSON.stringify(listaProductosCarrito) },
+        success: function (data) {
+            console.log(data);
+        }
+    });
 
 }

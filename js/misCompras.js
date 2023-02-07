@@ -19,7 +19,7 @@ function cargoArrayCompras() {
         async: false,
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
-                var compra = new OrdenDeCompra(data[i].orden_compra_id, data[i].orden_compra_vendedor_id, data[i].orden_compra_comprador_id, data[i].orden_compra_numero_operacion_mercado_pago, data[i].orden_compra_direccion_envio, data[i].orden_compra_costo_envio,   data[i].orden_compra_total, data[i].orden_compra_estado, data[i].producto_imagen, data[i].producto_nombre, data[i].detalle_orden_compra_cantidad_productos_comprados  );
+                var compra = new OrdenDeCompra(data[i].orden_compra_id, data[i].orden_compra_vendedor_id, data[i].orden_compra_comprador_id, data[i].orden_compra_numero_operacion, data[i].orden_compra_direccion_envio,  data[i].orden_compra_total, data[i].orden_compra_estado, data[i].producto_imagen, data[i].producto_nombre, data[i].detalle_orden_compra_cantidad_productos_comprados  );
                 listaComprasDelUsuario.push(compra);
             }
         },
@@ -52,7 +52,7 @@ function dibujoComprasDelUsuario() {
 
 
                     <div class="col-md-2 compra-operacion text-center" >
-                        <p class="compra-operacion"> ` + listaComprasDelUsuario[i].orden_compra_numero_operacion_mercado_pago + ` </p>
+                        <p class="compra-operacion"> ` + listaComprasDelUsuario[i].orden_compra_numero_operacion + ` </p>
                     </div>
 
                     <div class="col-md-2 compra-envio text-center" >

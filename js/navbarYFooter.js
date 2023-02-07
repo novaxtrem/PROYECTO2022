@@ -46,12 +46,8 @@ function cargoNavbar() {
                     </ul>
                 </div>
                 <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-warning login-btn">
-                        <a class="nav-link"  href="`+ PAGINA_ALTA_USUARIO + `"> registrate</a>
-                    </button>
-                    <button type="button" class="btn btn-warning login-btn">
-                        <a class="nav-link"  href="`+ PAGINA_INGRESO + `">inicia sesión</a>
-                    </button>
+                    <a href="`+ PAGINA_ALTA_USUARIO + `" class="btn btn-warning login-btn">registrate</a>
+                    <a href="`+ PAGINA_INGRESO + `" class="btn btn-warning login-btn">inicia sesión</a>
                 </div>
             </div>
         </nav>`
