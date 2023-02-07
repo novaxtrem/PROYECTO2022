@@ -38,6 +38,8 @@ $(document).ready(function () {
     $('#select-medio-pago').on('change', function () {
         medioPago = $(this).find(":selected").val();
 
+        
+
     });
 
     $('#btn-ingresar-orden').click(function () {

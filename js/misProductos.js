@@ -20,9 +20,11 @@ $(document).ready(function () {
     });
     //
     $('.btn-eliminar-producto').click(function () {
-        productRow = $(this).parent().parent();
-        eliminoProducto();
-        location.reload();
+        if (confirm("esta apunto de borrar su producto, esta seguro?")) {
+            productRow = $(this).parent().parent();
+            eliminoProducto();
+            location.reload();
+        }
     });
 
     $('.btn-editar-producto').click(function () {
@@ -34,6 +36,10 @@ $(document).ready(function () {
             $(this).css({ "background-color": "rgb(204, 0, 0)" });
             $(productRow).find('.btn-confirmar-edicion').css({ "display": "unset" });
             $(".btn-editar-producto").attr("disabled", true);
+            //
+            $(".btn-eliminar-producto").attr("disabled", true);
+            $(productRow).find($(".btn-eliminar-producto")).attr("disabled", false);
+            //
             $(this).attr("disabled", false);
             $(productRow).find($(".titulo")).prop("readonly", false);
             $(productRow).find($(".stock")).prop("readonly", false);

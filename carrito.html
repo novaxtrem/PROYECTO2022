@@ -9,7 +9,9 @@
         <!--/////////////////////////////////////////-->
         <link rel="stylesheet" href="../PROYECTO2022/css/bootstrap.min.css" />
         <!--/////////////////////////////////////////-->
-        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
         <!--/////////////////////////////////////////-->
         <script src="../PROYECTO2022/js/init.js"></script>
@@ -47,8 +49,9 @@
                         </select>
                         <p>Metodo de pago</p>
                         <select id="select-medio-pago">
-                            <option class="text-muted">QR Mercado Pago</option>
+                            <option class="text-muted">metodo de pago</option>
                             <option class="text-muted">Transferencia</option>
+                            <option class="text-muted">QR Mercado Pago</option>
                         </select>
                         <input id="numero-de-operacion" placeholder="numero de operacion">
                     </form>
@@ -59,7 +62,36 @@
                     <button id="btn-ingresar-orden" class="btn btn-warning">FINALIZAR ORDEN</button>
                 </div>
             </div>
-        </div>  
+        </div> 
+        <section id="modal-metodo-pago-transferencia">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Launch demo modal</button>
+
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+        </section>
         <br>
         <br>
         <div id="footer-contenedor"></div>    
@@ -67,6 +99,7 @@
         <link rel="stylesheet" href="../PROYECTO2022/css/tienda.css" />
         <link rel="stylesheet" href="../PROYECTO2022/css/carrito.css" />
         <!--/////////////////////////////////////////-->
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
         <!--/////////////////////////////////////////-->
         <script src="../PROYECTO2022/js/bs-init.js"></script>

@@ -25,28 +25,6 @@ $(document).ready(function () {
 });
 
 
-
-function borrarCuentaUsuario() {
-
-    return $.ajax({
-        url: ELIMINO_CUENTA_USUARIO,
-        type: "POST",
-        data: { usuario_email: usuarioConectado.usuario_email },
-        dataType: 'json',
-        async: false,
-        success: function (data) {
-            console.log(data);
-        },
-        error: function (data) {
-            console.log(data);
-        },
-    });
-};
-
-
-
-
-
 function dibujoPerfil() {
     var htmlContentToAppend = "";
     htmlContentToAppend += `
@@ -127,7 +105,7 @@ function dibujoPerfil() {
     document.getElementById("usuario-QR-mercado-libre").innerHTML = imgMeli.outerHTML;
     //
 }
-
+//
 function encodeImageFileAsURL() {
 
     var filesSelected = document.getElementById("inputFileToLoad").files;
@@ -144,8 +122,7 @@ function encodeImageFileAsURL() {
         fileReader.readAsDataURL(fileToLoad);
     }
 }
-
-
+//
 function actualizarDatosPerfil() {
     var usuario_QR_mercado_libre = "";
     var usuario_contrasenia = $("#usuario-contrasenia").val();
@@ -171,4 +148,20 @@ function actualizarDatosPerfil() {
     });
 
 };
+//
+function borrarCuentaUsuario() {
 
+    return $.ajax({
+        url: ELIMINO_CUENTA_USUARIO,
+        type: "POST",
+        data: { usuario_email: usuarioConectado.usuario_email },
+        dataType: 'json',
+        async: false,
+        success: function (data) {
+            //console.log(data);
+        },
+        error: function (data) {
+            console.log(data);
+        },
+    });
+};
