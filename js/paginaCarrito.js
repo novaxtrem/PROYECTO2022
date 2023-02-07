@@ -63,7 +63,7 @@ function dibujoModalTransferencia() {
 
     htmlContentToAppend = ""
 
-
+    document.getElementById("contenedor-productos-carrito").innerHTML = htmlContentToAppend;
 }
 
 

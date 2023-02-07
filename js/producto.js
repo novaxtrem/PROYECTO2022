@@ -170,6 +170,7 @@ function consultoProductosRelacionados() {
             for (var i = 0; i < data.length; i++) {
                 productoRelacionado = new Producto(data[i].producto_id, data[i].producto_id_vendedor, data[i].producto_nombre, data[i].producto_categoria, data[i].producto_descripcion, data[i].producto_precio, data[i].producto_stock, data[i].producto_locacion_logitud, data[i].producto_locacion_latitud, data[i].producto_locacion_alias, data[i].producto_imagen, data[i].producto_estado);
                 listaProductosRelacionados.push(productoRelacionado);
+
             }
         }
     });
@@ -177,7 +178,9 @@ function consultoProductosRelacionados() {
 //
 function dibujoProductosRelacionados() {
     var htmlContentToAppend = "";
+    console.log(listaProductosRelacionados);
     var maximo = listaProductosRelacionados.length;
+
     if (maximo >= 3) {
         maximo = 3;
     } else {
@@ -186,9 +189,12 @@ function dibujoProductosRelacionados() {
 
     if (listaProductosRelacionados.length > 0) {
         for (var i = 0; i < maximo; i++) {
-            if (listaProductosRelacionados[i].producto_imagen == "0") {
-                producto.producto_imagen = SIN_IMAGEN;
+
+            if (listaProductosRelacionados[i].producto_imagen == "") {
+                listaProductosRelacionados[i].producto_imagen = SIN_IMAGEN;
             }
+
+
             htmlContentToAppend += `
                 <div class="col-sm-6 col-lg-4 relacionado" id="`+ listaProductosRelacionados[i].producto_id + `">
                     <div class="clean-related-item">
