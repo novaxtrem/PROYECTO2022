@@ -113,10 +113,9 @@ function actualizoVenta() {
 
     var compraID = $(productRow).prop('id');
     var compraEstado = $(productRow).find('.compra-estado').val();
-
-    
-    //
-    return $.ajax({
+    if (compraEstado == "NUEVA" || compraEstado == "COMPLETADA" || compraEstado == "RECHAZADA")
+    {
+         return $.ajax({
         url: ACTUALIZO_VENTA,
         type: "POST",
         data: {orden_compra_id: compraID, orden_compra_estado: compraEstado},
@@ -129,6 +128,10 @@ function actualizoVenta() {
         error: function (data) {
             console.log(data);
         },
-    });
+    }); 
+    }
+    else alert ("El estado puede ser NUEVA, COMPLETADA o RECHAZADA")
+    //
+  
 
 };

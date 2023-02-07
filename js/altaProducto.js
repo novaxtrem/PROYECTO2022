@@ -83,8 +83,10 @@ $(document).ready(function () {
             producto_locacion_latitud = 0;
             producto_locacion_alias = "sin nombre";
         }
-        agregoProductos(producto_id_vendedor, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen);
 
+        if(producto_id_vendedor && producto_nombre && producto_categoria && producto_descripcion && producto_precio && producto_stock && producto_locacion_logitud && producto_locacion_latitud && producto_locacion_alias && producto_imagen)
+            agregoProductos(producto_id_vendedor, producto_nombre, producto_categoria, producto_descripcion, producto_precio, producto_stock, producto_locacion_logitud, producto_locacion_latitud, producto_locacion_alias, producto_imagen);
+        else alert ("Debe ingresar todos los datos")
     });
 
 
