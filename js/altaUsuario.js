@@ -33,7 +33,7 @@ function agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usua
         type: "post",
         data: { usuario_email: usuario_email, usuario_contrasenia: usuario_contrasenia, usuario_nombre: usuario_nombre, usuario_direccion: usuario_direccion, usuario_telefono: usuario_telefono, usuario_cuenta_bancaria: usuario_cuenta_bancaria, usuario_QR_mercado_libre: usuario_QR_mercado_libre },
         success: function (data) {
-            if (data.trim() == "ok") {
+            if (data) {
                 alert("usuario creado correctamente")
             }
         }
