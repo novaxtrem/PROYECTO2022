@@ -33,7 +33,14 @@ function agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usua
         data: { usuario_email: usuario_email, usuario_contrasenia: usuario_contrasenia, usuario_nombre: usuario_nombre, usuario_direccion: usuario_direccion, usuario_telefono: usuario_telefono, usuario_cuenta_bancaria: usuario_cuenta_bancaria, usuario_QR_mercado_libre: usuario_QR_mercado_libre },
         success: function (data) {
             if (data) {
-                alert("usuario creado correctamente")
+                alert("usuario creado correctamente");
+                $("#usuario-email").val("");
+                $("#usuario-contrasenia").val("");
+                $("#usuario-nombre").val("");
+                $("#usuario-direccion").val("");
+                $("#usuario-telefono").val("");
+                $("#usuario-cuenta-bancaria").val("");
+                window.location.href = PAGINA_INDEX;
             }
         }
     });
