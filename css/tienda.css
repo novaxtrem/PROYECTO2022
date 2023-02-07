@@ -70,12 +70,30 @@
 
 /*///////////////////////////////*/
 
+/*MODAL*/
+
 /*VARIOS*/
+
+.naranja{
+    color: orange;
+}
 
 /*
 .maximo {
     height: 1000px;
 }*/
+
+.zoom {
+    transition: transform .2s;
+    /* Animation */
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.zoom:hover {
+    transform: scale(1.2);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
 
 .container {
     padding-top: 40px;
@@ -87,18 +105,16 @@
 
 
 .login-btn, .login-btn a {
-  color: white;
-  display: inline-block;
+    color: white;
+    display: inline-block;
 }
 
- 
+
 .alert {
     display: none;
 }
 
-.no-editable{
-
-}
+.no-editable {}
 
 /*///////////////////////////////*/
 
@@ -154,7 +170,7 @@
     font-size: 25px;
 }
 
-#contenedor-mis-productos .price label, #contenedor-mis-compras .price label, 
+#contenedor-mis-productos .price label, #contenedor-mis-compras .price label,
 #contenedor-mis-ventas .price label {
     font-weight: normal;
     font-size: 15px;
@@ -168,7 +184,7 @@
 /*MIS COMPRAS*/
 
 #contenedor-mis-compras .text-orange {
-    color: rgb(253,157,13);
+    color: rgb(253, 157, 13);
 }
 
 #contenedor-mis-compras.items, #contenedor-mis-ventas.items {
@@ -202,8 +218,8 @@
 
 input.compra-estado {
     width: 100%;
-    color: rgb(253,157,13); 
-    border-width:0px; 
+    color: rgb(253, 157, 13);
+    border-width: 0px;
     margin-bottom: 5px;
 }
 
@@ -212,7 +228,8 @@ input.compra-estado {
 
 /*FORMS*/
 
- .container .content .form-login {width: 60%;
+.container .content .form-login {
+    width: 60%;
     margin: 0 auto;
     padding: 30px;
     display: block;
