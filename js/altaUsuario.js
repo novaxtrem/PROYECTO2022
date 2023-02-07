@@ -19,7 +19,6 @@ $(document).ready(function () {
         if (checkmail(usuario_email)) {
             if (usuario_contrasenia && usuario_nombre && usuario_direccion && usuario_telefono) {
                 agregoUsuarios(usuario_email, usuario_contrasenia, usuario_nombre, usuario_direccion, usuario_telefono, usuario_cuenta_bancaria, usuario_QR_mercado_libre);
-                alert("Usuario registrado exitosamente")
             }
             else alert("Debe completar todos los datos para registrar un usuario nuevo")
         }

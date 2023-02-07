@@ -37,8 +37,19 @@ $(document).ready(function () {
 
     $('#select-medio-pago').on('change', function () {
         medioPago = $(this).find(":selected").val();
+        console.log(medioPago);
+        if (medioPago == 'Transferencia') {
+            dibujoModalTransferencia();
+            //
+            $('#modalDePago').modal('show');
+        } else {
+            dibujoModalQR();
+            $('#modalDePago').modal('show');
+        }
 
-        
+        //
+
+
 
     });
 
@@ -48,8 +59,17 @@ $(document).ready(function () {
 
 });
 
+function dibujoModalTransferencia() {
+
+    htmlContentToAppend = ""
 
 
+}
+
+
+function dibujoModalQR() {
+
+}
 
 
 
@@ -124,7 +144,7 @@ function agregoOrdenCompra() {
 
     orden_compra_numero_operacion = $('#numero-de-operacion').val();
 
-    
+
     //
     $.ajax({
         url: ALTA_ORDEN_COMPRA,
