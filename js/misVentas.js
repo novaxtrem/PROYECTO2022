@@ -20,7 +20,7 @@ $(document).ready(function () {
 
     $('.btn-editar-producto').click(function () {
 
-        productRow = $(this).parent().parent();
+        productRow = $(this).parent().parent().parent();
         if ($(this).text() == "editar") {
             $(this).text("cancelar");
             $(productRow).find('.compra-estado').css({ "border-width": "1px" });
@@ -66,7 +66,7 @@ function dibujoVentasDelUsuario() {
     for (var i = 0; i < listaVentasDelUsuario.length; i++) {
 
         htmlContentToAppend +=
-           `<div class="compra product">
+           `<div class="compra product" id="` + listaVentasDelUsuario[i].orden_compra_id + `">
                 <div class="row justify-content-center align-items-center">
                        
                        <div class="col-md-3">
@@ -111,14 +111,15 @@ function dibujoVentasDelUsuario() {
 
 function actualizoVenta() {
 
-    var compraEstado = $(productRow).prop('id');
+    var compraID = $(productRow).prop('id');
+    var compraEstado = $(productRow).find('.compra-estado').val();
 
     
     //
     return $.ajax({
         url: ACTUALIZO_VENTA,
         type: "POST",
-        data: {orden_compra_estado: compraEstado},
+        data: {orden_compra_id: compraID, orden_compra_estado: compraEstado},
         dataType: 'json',
         async: false,
         success: function (data) {
