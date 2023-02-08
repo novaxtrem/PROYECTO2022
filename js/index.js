@@ -5,7 +5,7 @@ var listaProductos = [];
 //
 $(document).ready(function () {
     cargoArrayProductos();
-    dibujoTablaProductos();
+    //dibujoTablaProductos();
 
     $('.producto-item').click(function () {
 
