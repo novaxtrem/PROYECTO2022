@@ -56,7 +56,7 @@ function cargoProducto() {
 //
 function dibujoProducto() {
 
-    if (producto.producto_imagen == "0") {
+    if (producto.producto_imagen == "") {
         producto.producto_imagen = SIN_IMAGEN;
     }
 
