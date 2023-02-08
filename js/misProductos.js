@@ -96,7 +96,7 @@ function dibujoProductosPublicadosPorElUsuario() {
                     <div class="col-md-5 product-info">
                         <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
                         <button class="btn btn-primary btn-editar-producto" style="background-color: rgb(253,157,13);">editar</button>
-                        <button class="btn btn-primary btn-confirmar-edicion" style="background-color: rgb(0, 153, 204);display: none;">cofirmar</button>
+                        <button class="btn btn-primary btn-confirmar-edicion" style="background-color: rgb(0, 153, 204);display: none;">confirmar</button>
                         <button class="btn btn-primary btn-eliminar-producto" style="background-color: black">borrar</button>        
                         <select name="selector-disponibilidad" class="selector">
                             <option value="activo" selected>disponible</option>
@@ -123,7 +123,7 @@ function dibujoProductosPublicadosPorElUsuario() {
                     <div class="col-md-5 product-info">
                         <input class="product-name titulo" type="text" style="color: rgb(253,157,13); border-width:0px; " value="` + listaProductosDelUsuario[i].producto_nombre + `">
                         <button class="btn btn-primary btn-editar-producto"style="background-color: rgb(253,157,13);">editar</button>
-                        <button class="btn btn-primary btn-confirmar-edicion"style="background-color: rgb(0, 153, 204);display: none;">cofirmar</button>
+                        <button class="btn btn-primary btn-confirmar-edicion"style="background-color: rgb(0, 153, 204);display: none;">confirmar</button>
                         <button class="btn btn-primary btn-eliminar-producto"style="background-color: black">borrar</button>
                         <select name="selector-disponibilidad" class="selector">
                             <option value="activo" >disponible</option>
