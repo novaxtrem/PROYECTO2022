@@ -1,19 +1,19 @@
 listaProductosCarrito = [];
+var datosDelVendedor = [];
 //
 var tipodeEnvio = "retira";
 var medioPago = "transferencia";
-
-var datosDelVendedor = [];
-
-
-
+//
 usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
 
 $(document).ready(function () {
 
     dibujoCarrito();
-    cosultoDatosVendedor();
+
+    if (listaProductosCarrito.length > 0) {
+        cosultoDatosVendedor();
+    }
 
     $('.boton-eliminar').click(function () {
         eliminarProductoCarrito(this);
@@ -39,6 +39,7 @@ $(document).ready(function () {
     });
 
     $('#select-medio-pago').on('change', function () {
+        //
         medioPago = $(this).find(":selected").val();
         //
         if (medioPago == 'Transferencia') {
@@ -61,52 +62,43 @@ $(document).ready(function () {
 
 });
 
-
-
-
 function dibujoModal(datosDelVendedor) {
 
-    console.log(datosDelVendedor);
     htmlContentToAppend =
-        `<!-- Modal TRANSFERENCIA -->
-        <div class="modal fade" id="modal-de-pago-transferencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Pago con transferencia</h5>
+        `
+            <div class="modal fade" id="modal-de-pago-transferencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Pago con transferencia</h5>
+                        </div>
+                        <div class="modal-body">
+                            <h4> Numero de cuenta : `+ datosDelVendedor.usuario_cuenta_bancaria + `</h4>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <h4> Numero de cuenta : `+ datosDelVendedor.usuario_cuenta_bancaria + `</h4>
-                    </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-warning btn-cerrar-modal">salir</button>
+                </div>
             </div>
-        </div>
-        <!-- Modal QR -->
-        <div class="modal fade" id="modal-de-pago-QR" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Pago con QR</h5>
+            <!--/////////////////////////////////////////-->
+            <div class="modal fade" id="modal-de-pago-QR" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Pago con QR</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src=`+ datosDelVendedor.usuario_QR_mercado_libre + `>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <img class="img-fluid" src="`+ datosDelVendedor.usuario_QR_mercado_libre + `">
-                    </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-warning btn-cerrar-modal">salir</button>
+                </div>
             </div>
-        </div>`
+        `   
+        
     document.getElementById("contenedor-modal-de-pago").innerHTML = htmlContentToAppend;
 }
 
-
-
 function dibujoCarrito() {
 
-
     var htmlContentToAppend = "";
-
-
 
     if (listaProductosCarrito == null || listaProductosCarrito <= 0) {
         htmlContentToAppend =
@@ -136,9 +128,6 @@ function dibujoCarrito() {
             document.getElementById("contenedor-productos-carrito").innerHTML = htmlContentToAppend;
         }
     }
-
-
-
 }
 
 
@@ -166,8 +155,6 @@ function eliminarProductoCarrito(e) {
 
 }
 
-
-
 function cosultoDatosVendedor() {
 
     $.ajax({
@@ -180,11 +167,6 @@ function cosultoDatosVendedor() {
         }
     });
 }
-
-
-
-
-
 
 function agregoOrdenCompra() {
 
