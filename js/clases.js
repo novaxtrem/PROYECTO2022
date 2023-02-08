@@ -30,14 +30,24 @@ class Usuario {
 }
 //////////////////////////////
 
+
 class OrdenDeCompra {
-    constructor(orden_compra_id, orden_compra_vendedor_id, orden_compra_comprador_id, orden_compra_numero_operacion, orden_compra_direccion_envio, orden_compra_total, orden_compra_estado) {
+
+    constructor(orden_compra_id,  orden_compra_vendedor_id, orden_compra_comprador_id, orden_compra_numero_operacion, orden_compra_direccion_envio, orden_compra_costo_envio, orden_compra_total, orden_compra_estado, producto_imagen, producto_nombre, detalle_orden_compra_cantidad_productos_comprados, ) {
         this.orden_compra_id = orden_compra_id;
         this.orden_compra_vendedor_id = orden_compra_vendedor_id;
         this.orden_compra_comprador_id = orden_compra_comprador_id;
         this.orden_compra_numero_operacion = orden_compra_numero_operacion;
         this.orden_compra_direccion_envio = orden_compra_direccion_envio;
+        this.orden_compra_costo_envio = orden_compra_costo_envio;
         this.orden_compra_total = orden_compra_total;
         this.orden_compra_estado = orden_compra_estado;
+        this.producto_imagen = producto_imagen;
+        this.producto_nombre = producto_nombre;
+        this.detalle_orden_compra_cantidad_productos_comprados = detalle_orden_compra_cantidad_productos_comprados;
+
+
     }
+
+
 }
