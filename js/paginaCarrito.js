@@ -3,13 +3,17 @@ listaProductosCarrito = [];
 var tipodeEnvio = "retira";
 var medioPago = "transferencia";
 
+var datosDelVendedor = [];
+
+
+
 usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
 
 $(document).ready(function () {
 
     dibujoCarrito();
-
+    cosultoDatosVendedor();
 
     $('.boton-eliminar').click(function () {
         eliminarProductoCarrito(this);
@@ -27,7 +31,6 @@ $(document).ready(function () {
         $('btn-ingresar-orden').attr("disabled", false);
     }
 
-
     $('#select-tipo-envio').on('change', function () {
         tipodeEnvio = $(this).find(":selected").val();
         if (tipodeEnvio == 'envio a domicilio') {
@@ -37,38 +40,63 @@ $(document).ready(function () {
 
     $('#select-medio-pago').on('change', function () {
         medioPago = $(this).find(":selected").val();
-        console.log(medioPago);
-        if (medioPago == 'Transferencia') {
-            dibujoModalTransferencia();
-            //
-            $('#modalDePago').modal('show');
-        } else {
-            dibujoModalQR();
-            $('#modalDePago').modal('show');
-        }
-
         //
-
-
-
+        if (medioPago == 'Transferencia') {
+            //
+            $('#modal-de-pago-transferencia').modal('show');
+            //
+        } else if (medioPago == 'QR Mercado Pago') {
+            //
+            $('#modal-de-pago-QR').modal('show');
+            //
+        } else {
+            alert("debe selecciona un metodo de pago");
+        }
     });
 
+    //
     $('#btn-ingresar-orden').click(function () {
         agregoOrdenCompra();
     });
 
 });
 
-function dibujoModalTransferencia() {
-
-    htmlContentToAppend = ""
-
-    document.getElementById("contenedor-productos-carrito").innerHTML = htmlContentToAppend;
-}
 
 
-function dibujoModalQR() {
 
+function dibujoModal(datosDelVendedor) {
+
+    console.log(datosDelVendedor);
+    htmlContentToAppend =
+        `<!-- Modal TRANSFERENCIA -->
+        <div class="modal fade" id="modal-de-pago-transferencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pago con transferencia</h5>
+                    </div>
+                    <div class="modal-body">
+                        <h4> Numero de cuenta : `+ datosDelVendedor.usuario_cuenta_bancaria + `</h4>
+                    </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-cerrar-modal">salir</button>
+            </div>
+        </div>
+        <!-- Modal QR -->
+        <div class="modal fade" id="modal-de-pago-QR" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pago con QR</h5>
+                    </div>
+                    <div class="modal-body">
+                        <img class="img-fluid" src="`+ datosDelVendedor.usuario_QR_mercado_libre + `">
+                    </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-warning btn-cerrar-modal">salir</button>
+            </div>
+        </div>`
+    document.getElementById("contenedor-modal-de-pago").innerHTML = htmlContentToAppend;
 }
 
 
@@ -140,11 +168,27 @@ function eliminarProductoCarrito(e) {
 
 
 
+function cosultoDatosVendedor() {
+
+    $.ajax({
+        url: CONSULTO_DATOS_VENDEDOR,
+        type: "post",
+        data: { usuario_email: listaProductosCarrito[0].producto_id_vendedor },
+        success: function (data) {
+            datosDelVendedor = JSON.parse(data);
+            dibujoModal(datosDelVendedor);
+        }
+    });
+}
+
+
+
+
+
+
 function agregoOrdenCompra() {
 
     orden_compra_numero_operacion = $('#numero-de-operacion').val();
-
-
     //
     $.ajax({
         url: ALTA_ORDEN_COMPRA,
