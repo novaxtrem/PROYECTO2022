@@ -90,7 +90,10 @@ function dibujoProducto() {
                             producto agregado
                         </div>
                         <!--/////////////////////////////////////////-->
-                        <div id="map" style="height:200px;width: 200px;"></div>
+                         <div class="locacion">
+                            <p>Tienda: `+ producto.producto_locacion_alias + `</p>
+                        </div>
+                        <div id="map" style="height:400px;"></div>
                         <div id="locacion-alias-container"></div>
                     </div>
                 </div>
