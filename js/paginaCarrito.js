@@ -3,6 +3,10 @@ listaProductosCarrito = [];
 var tipodeEnvio = "retira";
 var medioPago = "transferencia";
 
+var datosDelVendedor = [];
+
+
+
 usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
 
@@ -39,12 +43,16 @@ $(document).ready(function () {
         medioPago = $(this).find(":selected").val();
         console.log(medioPago);
         if (medioPago == 'Transferencia') {
+            cosultoDatosVendedor();
+
             dibujoModalTransferencia();
             //
-            $('#modalDePago').modal('show');
+
+            $('#modal-de-pago').modal('show');
+
         } else {
             dibujoModalQR();
-            $('#modalDePago').modal('show');
+            $('#modal-de-pago').modal('show');
         }
 
         //
@@ -61,9 +69,16 @@ $(document).ready(function () {
 
 function dibujoModalTransferencia() {
 
-    htmlContentToAppend = ""
+    htmlContentToAppend = "";
 
-    document.getElementById("contenedor-productos-carrito").innerHTML = htmlContentToAppend;
+    htmlContentToAppend = `<h5>Numero de cuenta:` + listaProductosCarrito[i].producto_categoria + ` </h5>`
+
+
+
+
+
+
+    document.getElementById("modal-de-pago-contenedor-datos").innerHTML = htmlContentToAppend;
 }
 
 
@@ -137,6 +152,26 @@ function eliminarProductoCarrito(e) {
 
 
 }
+
+
+
+function cosultoDatosVendedor() {
+
+    $.ajax({
+        url: CONSULTO_DATOS_VENDEDOR,
+        type: "post",
+        data: { usuario_email: listaProductosCarrito[0].producto_id_vendedor },
+        success: function (data) {
+            console.log(data);
+            datosDelVendedor = JSON.parse(data);
+            console.log(datosDelVendedor);
+        }
+    });
+
+}
+
+
+
 
 
 

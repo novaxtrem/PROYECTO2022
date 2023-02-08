@@ -43,6 +43,8 @@ const CONSULTO_MIS_VENTAS = "/PROYECTO2022/php/consulto-mis-ventas.php";
 const CONSULTO_BUSCADOR = "/PROYECTO2022/php/buscador.php";
 const CONSULTO_PRODUCTOS_PUBLICADOS_POR_USUARIO = "/PROYECTO2022/php/consulto-productos-publicados-por-usuario.php"
 const CONSULTO_PRODUCTOS_RELACIONADOS = "/PROYECTO2022/php/consulto-productos-relacionados.php"
+const CONSULTO_DATOS_VENDEDOR ="/PROYECTO2022/php/consulto-datos-vendedor.php";
+
 
 //UPDATE
 const ACTUALIZO_DATOS_USUARIO = "/PROYECTO2022/php/actualizo-usuario.php";
