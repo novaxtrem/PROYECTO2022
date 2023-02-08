@@ -27,6 +27,10 @@ $(document).ready(function () {
 */
 });
 
+
+
+
+
 function cargoArrayProductos() {
 
     return $.ajax({

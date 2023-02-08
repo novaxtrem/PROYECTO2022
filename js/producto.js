@@ -6,6 +6,11 @@ var listaProductosRelacionados = [];
 var usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
 
+//Buscador
+var misparams = window.location.search;
+var producto_id = misparams.split("=",-1)[1];
+localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
+
 
 
 $(document).ready(function () {
