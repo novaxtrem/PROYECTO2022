@@ -15,6 +15,9 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <!--/////////////////////////////////////////-->
         <script src="../PROYECTO2022/js/init.js"></script>
+        <script src="../PROYECTO2022/js/clases.js"></script>
+        <script src="../PROYECTO2022/js/index.js"></script>
+        <script src="../PROYECTO2022/js/buscador.js"></script>
         <script src="../PROYECTO2022/js/navbarYFooter.js"></script>
         <!--/////////////////////////////////////////-->
     </head>
@@ -22,59 +25,32 @@
     <body>
         <div id="contenedor-navbar"></div>
         <div class="page-header">
-            <div class="container">
+            <div class="content">
+                <div class="container">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-caption">
                             <h1 class="page-title">TOP VENTAS</h1>
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="card-section">
+
+        <section class="clean-block clean-catalog dark">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                        <ul class="list-group ">
-                            <li class="list-group-item">
-                                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                                    <div class="media-body order-2 order-lg-1">
-                                        <h5 class="mt-0 font-weight-bold mb-2">Awesome product</h5>
-                                        <p class="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                                        <h6 class="font-weight-bold my-2">$120.00</h6>
-                                        <a href="#">enlace</a>
-                                    </div>
-                                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1556485076/shoes-1_gthops.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                   <div class="products ">
+                                  
+                                    <div class="row g-0" id="contenedor-productos-buscador"></div>
                                 </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                                    <div class="media-body order-2 order-lg-1">
-                                        <h5 class="mt-0 font-weight-bold mb-2">Awesome product</h5>
-                                        <p class="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                                        <h6 class="font-weight-bold my-2">$120.00</h6>
-                                        <a href="#">enlace</a>
-                                    </div>
-                                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1556485076/shoes-1_gthops.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
-                                    <div class="media-body order-2 order-lg-1">
-                                        <h5 class="mt-0 font-weight-bold mb-2">Awesome product</h5>
-                                        <p class="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                                        <h6 class="font-weight-bold my-2">$120.00</h6>
-                                        <a href="#">enlace</a>
-                                    </div>
-                                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1556485076/shoes-1_gthops.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
-                                </div>
-                            </li>
-                        </ul>
                     </div>
                 </div>
-            </div>
+            </div></section>
+           
             <br>
             <br>
         </div>

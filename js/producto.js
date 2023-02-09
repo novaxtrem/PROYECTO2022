@@ -90,9 +90,9 @@ function dibujoProducto() {
                             <i class="icon-basket"></i>Agregar al carrito
                         </button>
                         <!--/////////////////////////////////////////-->
-                        <div class="alert alert-success alert-dismissable" style="width: 150px;">
-                        <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
-                            producto agregado
+                        <div class="alert alert-success alert-dismissable" style="width:50%">
+                        <!--<button type="button" class="close" data-dismiss="alert"  aria-hidden="true">&times;</button>-->
+                            producto agregado al carrito
                         </div>
                         <!--/////////////////////////////////////////-->
                          <div class="locacion">
@@ -163,7 +163,7 @@ function mostarAlerta() {
 
     setTimeout(function () {
         $('.alert').fadeOut('slow');
-    }, 1300
+    }, 1800
     );
 }
 //

@@ -131,6 +131,15 @@ function dibujoCarrito() {
 }
 
 
+function mostarAlerta() {
+    $('.alert').show();
+
+    setTimeout(function () {
+        $('.alert').fadeOut('slow');
+    }, 2300
+    );
+}
+
 function eliminarProductoCarrito(e) {
 
     var productRow = $(e).parent().parent().parent();
@@ -175,9 +184,15 @@ function agregoOrdenCompra() {
     $.ajax({
         url: ALTA_ORDEN_COMPRA,
         type: "post",
-        data: { orden_compra_vendedor_id: listaProductosCarrito[0].producto_id_vendedor, orden_compra_comprador_id: usuarioConectado.usuario_email, orden_compra_numero_operacion: orden_compra_numero_operacion, orden_compra_direccion_envio: tipodeEnvio, orden_compra_total: '10', productos_comprados: JSON.stringify(listaProductosCarrito) },
+        data: { orden_compra_vendedor_id: listaProductosCarrito[0].producto_id_vendedor, orden_compra_comprador_id: usuarioConectado.usuario_email, orden_compra_numero_operacion: orden_compra_numero_operacion, orden_compra_direccion_envio: tipodeEnvio, orden_compra_total: listaProductosCarrito[0].producto_precio, productos_comprados: JSON.stringify(listaProductosCarrito) },
         success: function (data) {
             console.log(data);
+            mostarAlerta();
+            localStorage.removeItem('CARRITO');
+            setTimeout(function () {
+   window.location.href = PAGINA_MIS_COMPRAS; 
+}, 2000); 
+          
         }
     });
 

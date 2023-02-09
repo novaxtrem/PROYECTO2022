@@ -9,7 +9,7 @@ $orden_compra_direccion_envio = $_POST['orden_compra_direccion_envio'];
 $orden_compra_total = $_POST['orden_compra_total'];
 $productos_comprados = json_decode($_POST['productos_comprados'], true);
 //
-$q = "INSERT INTO `ordenes_de_compras`(`orden_compra_id`, `orden_compra_vendedor_id`, `orden_compra_comprador_id`, `orden_compra_numero_operacion`, `orden_compra_direccion_envio`, `orden_compra_total`, `orden_compra_estado`) VALUES (DEFAULT,'$orden_compra_vendedor_id','$orden_compra_comprador_id',120430,'$orden_compra_direccion_envio',$orden_compra_total,'NUEVA')";
+$q = "INSERT INTO `ordenes_de_compras`(`orden_compra_id`, `orden_compra_vendedor_id`, `orden_compra_comprador_id`, `orden_compra_numero_operacion`, `orden_compra_direccion_envio`, `orden_compra_total`, `orden_compra_estado`) VALUES (DEFAULT,'$orden_compra_vendedor_id','$orden_compra_comprador_id','$orden_compra_numero_operacion','$orden_compra_direccion_envio','$orden_compra_total','NUEVA')";
 $query = mysqli_query($conn, $q);
 //
 if ($query) {
