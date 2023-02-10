@@ -4,11 +4,18 @@ var listaProductosCarrito;
 var listaProductosRelacionados = [];
 //
 var usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
-listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
+
+if (localStorage.getItem('CARRITO') == '') {
+    localStorage.setItem('CARRITO', '[]');
+} else {
+    listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
+
+}
+
 
 //Buscador
 var misparams = window.location.search;
-var producto_id = misparams.split("=",-1)[1];
+var producto_id = misparams.split("=", -1)[1];
 localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
 
 
@@ -127,7 +134,7 @@ function rutninaUsuarioLogiado() {
     } else {
         $('#btn-agregar-carrito').click(function () {
 
-            if ((localStorage.getItem('CARRITO') == null) || (listaProductosCarrito.length <= 0)) {
+            if ((localStorage.getItem('CARRITO') == null) || (listaProductosCarrito.length <= 0) || (localStorage.getItem('CARRITO') == '')) {
                 //
                 producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
                 listaProductosCarrito.push(producto);

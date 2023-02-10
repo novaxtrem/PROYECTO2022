@@ -20,6 +20,17 @@ $(document).ready(function () {
     });
 
 
+    $('.disminuye-cantidad').click(function () {
+        rutinaDisminuir(this);
+    });
+
+
+    $('.aumento-cantidad').click(function () {
+        rutinaAumentar(this);
+    });
+
+
+
     $('.btn-borrar-producto-carrito').click(function () {
         eliminarProductoCarrito(this);
     });
@@ -91,10 +102,121 @@ function dibujoModal(datosDelVendedor) {
                     </div>
                 </div>
             </div>
-        `   
-        
+        `
+
     document.getElementById("contenedor-modal-de-pago").innerHTML = htmlContentToAppend;
 }
+
+
+
+function eliminarProductoCarrito(e) {
+
+
+    var productRow = $(e).parent().parent().parent();
+    idProducto = $(productRow).children().children('.name-and-id').children('.id-producto').attr('id');
+
+
+    for (var i = 0; i < listaProductosCarrito.length; i++) {
+
+
+
+        if (idProducto == listaProductosCarrito[i].producto_id) {
+            listaProductosCarrito.splice(i);
+
+            if (listaProductosCarrito.length == 0) {
+                localStorage.setItem('CARRITO', '[]');
+            } else {
+                localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
+            }
+
+
+            location.reload();
+
+        } else {
+            alert("ocurrio un problema");
+            location.reload();
+        }
+    }
+
+
+}
+
+
+
+
+
+
+
+function rutinaDisminuir(e) {
+
+    var productRow = $(e).parent().parent().parent();
+    idProducto = $(productRow).children().children('.name-and-id').children('.id-producto').attr('id');
+    cantidadComprados = $(productRow).children().children('.control-cantidad').children('.cantidad-comprada').text();
+    //
+
+    if (cantidadComprados <= 1) {
+        alert("la cantidad minima es 1 unidad");
+        cantidadComprados = 1;
+    } else {
+        cantidadComprados = cantidadComprados - 1;
+    }
+
+
+    for (var i = 0; i < listaProductosCarrito.length; i++) {
+        if (idProducto == listaProductosCarrito[i].producto_id) {
+
+            listaProductosCarrito[i].producto_catidad_agregados_compra = cantidadComprados;
+
+        } else {
+            alert("error");
+        }
+    }
+
+    localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
+    location.reload();
+}
+
+
+function rutinaAumentar(e) {
+
+
+    var productRow = $(e).parent().parent().parent();
+    idProducto = $(productRow).children().children('.name-and-id').children('.id-producto').attr('id');
+    cantidadComprados = $(productRow).children().children('.control-cantidad').children('.cantidad-comprada').text();
+    //
+    for (var i = 0; i < listaProductosCarrito.length; i++) {
+        if (idProducto == listaProductosCarrito[i].producto_id) {
+            if (cantidadComprados > listaProductosCarrito[i].producto_stock) {
+                alert("no hay tantas unidades el maximo posible es de: " + listaProductosCarrito[i].producto_stock);
+                cantidadComprados = listaProductosCarrito[i].producto_stock;
+            } else {
+                cantidadComprados++;
+            }
+            listaProductosCarrito[i].producto_catidad_agregados_compra = cantidadComprados;
+        } else{
+            alert("hubo un problema, intenteluego");
+        }
+        
+     
+
+    }
+
+
+ 
+    localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));
+    location.reload();
+
+
+
+}
+
+
+
+
+
+
+
+
 
 function dibujoCarrito() {
 
@@ -113,15 +235,19 @@ function dibujoCarrito() {
             htmlContentToAppend +=
                 `<div class="row border-top border-bottom">
                     <div class="row main align-items-center">
-                        <div class="col-2"><img class="img-fluid" src="`+ listaProductosCarrito[i].producto_imagen + `"></div>
-                        <div class="col">
+                        <div class="col-2">
+                            <img class="img-fluid" src="`+ listaProductosCarrito[i].producto_imagen + `">
+                        </div>
+                        <div class="col name-and-id">
                             <div class="row text-muted">`+ listaProductosCarrito[i].producto_categoria + `</div>
-                            <div class="row" id="`+ listaProductosCarrito[i].producto_id + `">` + listaProductosCarrito[i].producto_nombre + `</div>
+                            <div class="id-producto" id="`+ listaProductosCarrito[i].producto_id + `">` + listaProductosCarrito[i].producto_nombre + `</div>
                         </div>
-                        <div class="col">
-                            <a href="#">-</a><a href="#" class="border">`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `</a><a href="#">+</a>
+                        <div class="col control-cantidad">
+                            <button class="disminuye-cantidad">-</a>
+                            <button class="border cantidad-comprada">`+ listaProductosCarrito[i].producto_catidad_agregados_compra + `</a>
+                            <button class="aumento-cantidad">+</a>
                         </div>
-                        <div class="col">`+ listaProductosCarrito[i].producto_precio + `$ <span class="close btn-borrar-producto-carrito"> borrar</span></div>
+                        <div class="col">`+ listaProductosCarrito[i].producto_precio + `$ <span class="close btn-borrar-producto-carrito">  borrar</span></div>
                     </div>
                  </div>
                 `
@@ -140,29 +266,6 @@ function mostarAlerta() {
     );
 }
 
-function eliminarProductoCarrito(e) {
-
-    var productRow = $(e).parent().parent().parent();
-    productRow.remove();
-    //
-    /*
-    idProducto = $(productRow).children().children('.product-info').children('.id-producto').text();
-
-    alert(idProducto);
-
-    for (var i = 0; i < listaProductosCarrito.length; i++) {
-        if (listaProductosCarrito[i].producto_id == idProducto) {
-            listaProductosCarrito.splice(i, 12);
-            localStorage.setItem('CARRITO', "[" + JSON.stringify(listaProductosCarrito) + "]");
-            location.reload();
-        }
-    }
-
-*/
-
-
-
-}
 
 function cosultoDatosVendedor() {
 
@@ -190,9 +293,9 @@ function agregoOrdenCompra() {
             mostarAlerta();
             localStorage.removeItem('CARRITO');
             setTimeout(function () {
-   window.location.href = PAGINA_MIS_COMPRAS; 
-}, 2000); 
-          
+                window.location.href = PAGINA_MIS_COMPRAS;
+            }, 2000);
+
         }
     });
 
