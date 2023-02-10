@@ -16,13 +16,16 @@ if (localStorage.getItem('CARRITO') == '') {
 //Buscador
 var misparams = window.location.search;
 var producto_id = misparams.split("=", -1)[1];
-localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
+
+//localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
 
 
 
 $(document).ready(function () {
 
     cargoProducto();
+    //
+
     //
     if (producto.producto_id == null || producto.producto_id == undefined) {
         window.location.href = PAGINA_404;
@@ -36,7 +39,21 @@ $(document).ready(function () {
         consultoProductosRelacionados();
         dibujoProductosRelacionados();
         //
+        $('#cantidad-unidades').change(function () {
+
+            if ($('#cantidad-unidades').val() <= 0) {
+                alert("el minimo de unidades es de 1");
+            }
+
+            if (parseInt($('#cantidad-unidades').val()) > parseInt(producto.producto_stock)) {
+
+                alert("no hay suficiente stock, el maximo es " + producto.producto_stock);
+                $('#cantidad-unidades').val(producto.producto_stock);
+            }
+        });
+        //
         $('.relacionado').click(function () {
+            //alert($(this).attr('id'));
             localStorage.setItem('ID_PRODUCT_SELECCIONADO', $(this).attr('id'));
         });
         //
@@ -47,6 +64,7 @@ $(document).ready(function () {
         } else {
             window.location.href = PAGINA_404;
         }
+
     }
 })
 
@@ -91,10 +109,10 @@ function dibujoProducto() {
                         </div>
                         <div class="col-6 col-md-2 quantity" style="margin-bottom: 10px;">
                             <label class="form-label d-none d-md-block" for="quantity">Cantidad</label>
-                            <input type="number" id="cantidad-unidades" class="form-control quantity-input" value="1">
+                            <input type="number" id="cantidad-unidades" class="form-control quantity-input"  min="1" value="1">
                         </div>
                         <button class="btn btn-primary" id="btn-agregar-carrito" type="button" style="background: rgb(253,157,13);">
-                            <i class="icon-basket"></i>Agregar al carrito
+                            <i class="icon-basket"></i>agregar al carrito
                         </button>
                         <!--/////////////////////////////////////////-->
                         <div class="alert alert-success alert-dismissable" style="width:50%">
@@ -106,7 +124,7 @@ function dibujoProducto() {
                             <p>Tienda: `+ producto.producto_locacion_alias + `</p>
                         </div>
                         <div id="map" style="height:400px;"></div>
-                        <div id="locacion-alias-container"></div>
+                        <div id="locacion-alias-container"style="display:none"></div>
                     </div>
                 </div>
             </div>
@@ -130,12 +148,26 @@ function rutninaUsuarioNoLogiado() {
 function rutninaUsuarioLogiado() {
     if (usuarioConectado.usuario_email == producto.producto_id_vendedor) {
         $('#btn-agregar-carrito').prop('disabled', true);
+        $('.quantity').hide();
         $('#btn-agregar-carrito').text("autocompra no disponible");
     } else {
         $('#btn-agregar-carrito').click(function () {
 
+            if (producto.producto_stock == 0) {
+                $('.quantity').hide();
+                $('#btn-agregar-carrito').prop('disabled', true);
+                $('#btn-agregar-carrito').text("sin stock");
+            } else {
+                $('.quantity').show();
+                $('#btn-agregar-carrito').prop('disabled', false);
+                $('#btn-agregar-carrito').text("agregar al carrito");
+            }
+
             if ((localStorage.getItem('CARRITO') == null) || (listaProductosCarrito.length <= 0) || (localStorage.getItem('CARRITO') == '')) {
                 //
+
+
+
                 producto.producto_catidad_agregados_compra = $("#cantidad-unidades").val();
                 listaProductosCarrito.push(producto);
                 localStorage.setItem('CARRITO', JSON.stringify(listaProductosCarrito));

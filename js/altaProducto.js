@@ -90,6 +90,8 @@ function verificoCampos() {
         producto_locacion_logitud = 0;
         producto_locacion_latitud = 0;
         producto_locacion_alias = "sin nombre";
+    } else {
+        producto_locacion_alias = $('#comercio-alias').val();
     }
     //
     if (producto_categoria == undefined) {

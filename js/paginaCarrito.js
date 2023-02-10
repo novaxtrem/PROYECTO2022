@@ -3,6 +3,7 @@ var datosDelVendedor = [];
 //
 var tipodeEnvio = "retira";
 var medioPago = "transferencia";
+var total = 0;
 
 //
 usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
@@ -12,9 +13,11 @@ $(document).ready(function () {
 
     dibujoCarrito();
 
-    if (listaProductosCarrito.length > 0) {
+    if ((listaProductosCarrito != null || listaProductosCarrito != undefined) && listaProductosCarrito > 0) {
         cosultoDatosVendedor();
     }
+
+
 
     $('.boton-eliminar').click(function () {
         eliminarProductoCarrito(this);
@@ -69,6 +72,7 @@ $(document).ready(function () {
 
     //
     $('#btn-ingresar-orden').click(function () {
+        calculoCarrito();
         agregoOrdenCompra();
     });
 
@@ -171,9 +175,9 @@ function rutinaAumentar(e) {
     //
     for (var i = 0; i < listaProductosCarrito.length; i++) {
         if (idProducto == listaProductosCarrito[i].producto_id) {
-            if (cantidadComprados > listaProductosCarrito[i].producto_stock) {
+            if (parseInt(cantidadComprados) > parseInt(listaProductosCarrito[i].producto_stock)) {
                 alert("no hay tantas unidades el maximo posible es de: " + listaProductosCarrito[i].producto_stock);
-                cantidadComprados = listaProductosCarrito[i].producto_stock;
+                cantidadComprados = listaProductosCarrito[i].producto_catidad_agregados_compra;
             } else {
                 cantidadComprados++;
             }
@@ -226,15 +230,17 @@ function dibujoCarrito() {
 }
 
 function calculoCarrito() {
-    var total = 0;
+    
+    if ((listaProductosCarrito != null || listaProductosCarrito != undefined) && listaProductosCarrito.length >= 0) {
 
-
-    for (var i = 0; i < listaProductosCarrito.length; i++) {
-        total = listaProductosCarrito[i].producto_precio * listaProductosCarrito[i].producto_catidad_agregados_compra;
+        for (var i = 0; i < listaProductosCarrito.length; i++) {
+            total = listaProductosCarrito[i].producto_precio * listaProductosCarrito[i].producto_catidad_agregados_compra;
+        }
+        $('#precio-total-importe').text(total);
+    } else {
+        $('#precio-total-importe').text(total);
     }
 
-
-    $('#precio-total-importe').text(total);
 }
 
 
@@ -265,19 +271,23 @@ function agregoOrdenCompra() {
 
     orden_compra_numero_operacion = $('#numero-de-operacion').val();
     //
-    $.ajax({
-        url: ALTA_ORDEN_COMPRA,
-        type: "post",
-        data: { orden_compra_vendedor_id: listaProductosCarrito[0].producto_id_vendedor, orden_compra_comprador_id: usuarioConectado.usuario_email, orden_compra_numero_operacion: orden_compra_numero_operacion, orden_compra_direccion_envio: tipodeEnvio, orden_compra_total: listaProductosCarrito[0].producto_precio, productos_comprados: JSON.stringify(listaProductosCarrito) },
-        success: function (data) {
-            console.log(data);
-            mostarAlerta();
-            localStorage.removeItem('CARRITO');
-            setTimeout(function () {
-                window.location.href = PAGINA_MIS_COMPRAS;
-            }, 2000);
-
-        }
-    });
-
+    if (listaProductosCarrito <= 0) {
+        alert("no tiene productos en el carrito");
+    } else if (orden_compra_numero_operacion == 0) {
+        alert("debe ingresar el numero de operacion para finalizar la compra");
+    } else {
+        $.ajax({
+            url: ALTA_ORDEN_COMPRA,
+            type: "post",
+            data: { orden_compra_vendedor_id: listaProductosCarrito[0].producto_id_vendedor, orden_compra_comprador_id: usuarioConectado.usuario_email, orden_compra_numero_operacion: orden_compra_numero_operacion, orden_compra_direccion_envio: tipodeEnvio, orden_compra_total: total, productos_comprados: JSON.stringify(listaProductosCarrito) },
+            success: function (data) {
+                console.log(data);
+                mostarAlerta();
+                localStorage.removeItem('CARRITO');
+                setTimeout(function () {
+                    window.location.href = PAGINA_MIS_COMPRAS;
+                }, 2000);
+            }
+        });
+    }
 }
