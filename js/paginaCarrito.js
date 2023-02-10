@@ -12,8 +12,11 @@ listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
 $(document).ready(function () {
 
     dibujoCarrito();
+    cosultoDatosVendedor();
+    dibujoModal(datosDelVendedor);
 
     if ((listaProductosCarrito != null || listaProductosCarrito != undefined) && listaProductosCarrito > 0) {
+      
         cosultoDatosVendedor();
     }
 
@@ -55,8 +58,9 @@ $(document).ready(function () {
 
     $('#select-medio-pago').on('change', function () {
         //
-        medioPago = $(this).find(":selected").val();
-        //
+      
+        var medioPago = $(this).find(":selected").val();
+      
         if (medioPago == 'Transferencia') {
             //
             $('#modal-de-pago-transferencia').modal('show');

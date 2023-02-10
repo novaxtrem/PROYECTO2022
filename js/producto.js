@@ -17,7 +17,7 @@ if (localStorage.getItem('CARRITO') == '') {
 var misparams = window.location.search;
 var producto_id = misparams.split("=", -1)[1];
 
-//localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
+localStorage.setItem('ID_PRODUCT_SELECCIONADO', producto_id);
 
 
 
