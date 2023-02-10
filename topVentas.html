@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <title>BeerApp Cerveceria</title>
         <meta property="og:type" content="website">
@@ -15,9 +16,6 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
         <!--/////////////////////////////////////////-->
         <script src="../PROYECTO2022/js/init.js"></script>
-        <script src="../PROYECTO2022/js/clases.js"></script>
-        <script src="../PROYECTO2022/js/index.js"></script>
-        <script src="../PROYECTO2022/js/buscador.js"></script>
         <script src="../PROYECTO2022/js/navbarYFooter.js"></script>
         <!--/////////////////////////////////////////-->
     </head>
@@ -25,32 +23,74 @@
     <body>
         <div id="contenedor-navbar"></div>
         <div class="page-header">
-            <div class="content">
-                <div class="container">
+            <div class="container">
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-caption">
                             <h1 class="page-title">TOP VENTAS</h1>
-                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <section class="clean-block clean-catalog dark">
+        <div class="card-section">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
-                   <div class="products ">
-                                  
-                                    <div class="row g-0" id="contenedor-productos-buscador"></div>
+                        <ul class="list-group ">
+                            <li class="list-group-item">
+                                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                                    <div class="media-body order-2 order-lg-1">
+                                        <img src="../PROYECTO2022/imagenes/genericas/maracuyaipa.png" alt="Oso Pardo - Maracuyipa" width="200" class="ml-lg-5 order-1 order-lg-2" align="left">
+                                        <h5 class="mt-0 font-weight-bold mb-2">Oso Pardo - Maracuyipa</h5>
+                                        <p class="font-italic text-muted mb-0 small">La Maracuyipa de Oso Pardo es la primera Doble IPA saborizada con maracuyá de Uruguay. Si buscas una cerveza potente, aplanadora, capaz de entregarte una explosión de sabor. Posiblemente sea la cerveza artesanal más intensa del mercado.</p><h6 class="font-weight-bold my-2">Cantidad vendida: 35</h6><br />
+                                        <h6 class="font-weight-bold my-2">Precio: $125</h6>
+                                        
+                                        <button type="button" class="btn btn-warning btn-detalle"> <a href="producto.html?producto_id=4" style="color: white">
+            comprar</a></button>
+                                    </div>
+                                    
                                 </div>
+                            </li>
+                         <li class="list-group-item">
+                                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                                    <div class="media-body order-2 order-lg-1">
+                                        <img src="../PROYECTO2022/imagenes/genericas/dubbel.png" alt="Volcánica - Dubbel" width="200" class="ml-lg-5 order-1 order-lg-2" align="left">
+                                        <h5 class="mt-0 font-weight-bold mb-2">Volcánica - Dubbel</h5>
+                                        <p class="font-italic text-muted mb-0 small">La Dubbel de Volcánica es la primera cerveza de origen belga del catálogo. Fuerte (un ABV o grado de alcohol de 6,9%) y compleja, con agregados de clavo de olor y coriandro.</p>
+                                        <h6 class="font-weight-bold my-2">Cantidad vendida: 30</h6>
+                                        <br />
+                                        <h6 class="font-weight-bold my-2">Precio: $145</h6>
+                                        
+                                        <button type="button" class="btn btn-warning btn-detalle"> <a href="#" style="color: white">
+            comprar</a></button>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                                    <div class="media-body order-2 order-lg-1">
+                                        <img src="../PROYECTO2022/imagenes/genericas/happyblonde.png" alt="Oso Pardo - Maracuyipa" width="200" class="ml-lg-5 order-1 order-lg-2" align="left">
+                                        <h5 class="mt-0 font-weight-bold mb-2">Davok - Happy Blonde</h5>
+                                        <p class="font-italic text-muted mb-0 small">Con bajo amargor y un nivel de alcohol medio la Hoppy Blonde de Davok puede haber sido la cerveza artesanal perfecta para los que se acercan al mundo de lo artesanal.</p>
+                                        <h6 class="font-weight-bold my-2">Cantidad vendida: 18</h6>
+                                        <br />
+                                        <h6 class="font-weight-bold my-2">Precio: $150</h6>
+                                        
+                                        <button type="button" class="btn btn-warning btn-detalle"> <a href="#" style="color: white">
+            comprar</a></button>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+
+                    
+                        </ul>
                     </div>
                 </div>
-            </div></section>
-           
+            </div>
             <br>
             <br>
         </div>
