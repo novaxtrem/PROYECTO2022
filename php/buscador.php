@@ -3,7 +3,7 @@ header('Access-Control-Allow-Origin: *');
 
 $buscar = $_POST['buscar'];
 if ($buscar) {
-  $qr = "SELECT * FROM productos WHERE `producto_estado`='ACTIVO' AND `producto_nombre` LIKE '%$buscar%';";
+  $qr = "SELECT * FROM productos `producto_nombre` LIKE '%$buscar%';";
 } else {
   $qr = "SELECT * FROM productos WHERE 1=1";
 }
@@ -11,9 +11,9 @@ if ($buscar) {
 if (isset($_POST['filtros'])) {
   $filtros = $_POST['filtros'];
   if (isset($qr))
-    $qr .= " AND `producto_estado`='ACTIVO' AND `producto_categoria` in ($filtros);";
+    $qr .= " AND `producto_categoria` in ($filtros);";
   else
-    $qr = "SELECT * FROM productos WHERE producto_estado='ACTIVO' AND producto_categoria in ($filtros);";
+    $qr = "SELECT * FROM productos WHERE producto_categoria in ($filtros);";
 }
 
 
