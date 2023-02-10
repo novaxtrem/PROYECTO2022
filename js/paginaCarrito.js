@@ -3,6 +3,7 @@ var datosDelVendedor = [];
 //
 var tipodeEnvio = "retira";
 var medioPago = "transferencia";
+
 //
 usuarioConectado = JSON.parse(localStorage.getItem('USUARIO_CONECTADO'));
 listaProductosCarrito = JSON.parse(localStorage.getItem('CARRITO'));
@@ -70,6 +71,8 @@ $(document).ready(function () {
     $('#btn-ingresar-orden').click(function () {
         agregoOrdenCompra();
     });
+
+    calculoCarrito();
 
 });
 
@@ -222,10 +225,16 @@ function dibujoCarrito() {
     }
 }
 
-function calculoCarrito(){
+function calculoCarrito() {
+    var total = 0;
 
 
+    for (var i = 0; i < listaProductosCarrito.length; i++) {
+        total = listaProductosCarrito[i].producto_precio * listaProductosCarrito[i].producto_catidad_agregados_compra;
+    }
 
+
+    $('#precio-total-importe').text(total);
 }
 
 
